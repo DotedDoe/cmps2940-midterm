@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog | Your Business Name</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Business Name</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inventory.html">Catalog</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="catalog-controls">
+      <label for="search-input">Search products</label>
+      <input type="search" id="search-input" placeholder="Search...">
+    </section>
+
+    <section class="catalog-grid" id="catalog-grid">
+      <!-- Product cards rendered/filtered by catalog.js -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Your Business Name</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>
