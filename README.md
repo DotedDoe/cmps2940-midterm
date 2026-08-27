@@ -3,8 +3,8 @@
 ## Team Members
 - Blair
 - Madee
-- (teammate)
-- (teammate)
+- Cody
+- Mason
 
 ## Description
 Frontend prototype for a small business web application. Built with
