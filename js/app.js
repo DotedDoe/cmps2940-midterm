@@ -30,5 +30,20 @@ brightness.addEventListener('input', updateImage);
 blur.addEventListener('input', updateImage);
 rotation.addEventListener('input', updateImage);
 size.addEventListener('input', updateImage);
+  const btn = document.getElementById('toggle-btn');
+  const overlay = document.getElementById('overlay-layer');
+
+  // Listen for the click event
+  btn.addEventListener('click', () => {
+    // .toggle() automatically removes the class if it's there, or adds it if it's missing
+    overlay.classList.toggle('hidden');
+    
+    // Optional: Change the button text depending on the state
+    if (overlay.classList.contains('hidden')) {
+      btn.textContent = 'Show Overlay';
+    } else {
+      btn.textContent = 'Hide Overlay';
+    }
+  });
 
 }

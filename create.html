@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class="cookie-builder">
+    <!-- The display window where the cookie updates -->
+    <div class="cookie-window">
+        <!-- 1. Cookie Base Layers (Only one active at a time) -->
+        <button id="toggle-btn"> Show Overlay</button>
+        <img id="layer-sugar" class="layer base-layer default" src="cookie base.png" alt="Sugar Cookie">
+        <img id="layer-chocolate" class="layer base-layer hidden" src="choco cookie.jpg" alt="Chocolate Cookie">
+        
+        <!-- 2. Frosting Layers -->
+        <img id="layer-frosting" class="layer frosting-layer hidden" src="frosting.png" alt="Frosting">
+        
+        <!-- 3. Mix-in/Topping Layers -->
+        <img id="layer-sprinkles" class="layer topping-layer hidden" src="sprinkled cookie.jpg" alt="Sprinkles">
+        <img id="layer-mms" class="layer topping-layer hidden" src="mm" alt="M&Ms">
+    </div>
+    <div class="image-container">
+    <!-- The image to customize -->
+    <img id="customImage" src="cookie base.png" alt="The base of the cookie">
+
+    <!-- The controls for the user -->
+
+
+
+    <!-- The Customization Panel -->
+    <div class="cookie-controls">
+        <h3>1. Choose Your Cookie Base</h3>
+        <!-- Radio buttons make it so checking one unchecks the other -->
+        <label><input type="radio" name="cookie-base" data-layer="layer" checked> Plain Sugar Cookie 🍪</label>
+        <label><input type="radio" name="cookie-base" data-layer="chocolate"> Double Chocolate 🍫</label>
+
+        <h3>2. Add Frosting & Toppings</h3>
+        <!-- Checkboxes let users mix and match multiple extras -->
+        <label><input type="checkbox" class="extra-toggle" data-layer="frosting"> White Frosting 🧁</label>
+        <label><input type="checkbox" class="extra-toggle" data-layer="sprinkles"> Rainbow Sprinkles ✨</label>
+        <label><input type="checkbox" class="extra-toggle" data-layer="mms"> M&M Candies 🔴</label>
+        <label><input type="checkbox" class="extra-toggle" data-layer="whitechoco"> White chocolate chips</label>
+    </div>
+</div>
+
+</html>
+

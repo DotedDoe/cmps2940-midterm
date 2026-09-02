@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | Your Business Name</title>
+  <title>Home | Bakery Time!</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -16,59 +16,25 @@
         <li><a href="inventory.html">Catalog</a></li>
         <li><a href="cart.html">Cart</a></li>
         <li><a href="login.html">Login</a></li>
+        <li><a href="create.html">Create your own!</a></li>
+        <li><a href="signature.html">Our signature creations</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <h1>Welcome to Cookie Time Cookie!</h1>
+      <h1>Welcome to Bakery Time!</h1>
       <p>We are an independent bakery that sells you baked goods!</p>
     </section>
 
     <section class="announcements">
       <!-- Announcement banner content -->
     </section>
-<div class="image-container">
-    <!-- The image to customize -->
-    <img id="customImage" src="9843710108_base.png" alt="Customizable Image">
+    <section class="customize">
 
-    <!-- The controls for the user -->
-    <div class="controls">
-        <label>Brightness: <input type="range" id="brightness" min="0" max="200" value="100">%</label>
-        <label>Blur: <input type="range" id="blur" min="0" max="20" value="0">px</label>
-        <label>Rotation: <input type="range" id="rotation" min="0" max="360" value="0">deg</label>
-        <label>Size (Width): <input type="range" id="size" min="100" max="600" value="300">px</label>
-    </div>
-<div class="cookie-builder">
-    <!-- The display window where the cookie updates -->
-    <div class="cookie-window">
-        <!-- 1. Cookie Base Layers (Only one active at a time) -->
-        <img id="layer-sugar" class="layer base-layer" src="9843710108_base.png" alt="Sugar Cookie">
-        <img id="layer-chocolate" class="layer base-layer hidden" src="URL_OF_CHOCOLATE_COOKIE_IMAGE" alt="Chocolate Cookie">
-        
-        <!-- 2. Frosting Layers -->
-        <img id="layer-frosting" class="layer frosting-layer hidden" src="URL_OF_FROSTING_IMAGE" alt="Frosting">
-        
-        <!-- 3. Mix-in/Topping Layers -->
-        <img id="layer-sprinkles" class="layer topping-layer hidden" src="URL_OF_SPRINKLES_IMAGE" alt="Sprinkles">
-        <img id="layer-mms" class="layer topping-layer hidden" src="mm" alt="M&Ms">
-    </div>
+    </section>
 
-    <!-- The Customization Panel -->
-    <div class="cookie-controls">
-        <h3>1. Choose Your Cookie Base</h3>
-        <!-- Radio buttons make it so checking one unchecks the other -->
-        <label><input type="radio" name="cookie-base" data-layer="sugar" checked> Plain Sugar Cookie 🍪</label>
-        <label><input type="radio" name="cookie-base" data-layer="chocolate"> Double Chocolate 🍫</label>
-
-        <h3>2. Add Frosting & Toppings</h3>
-        <!-- Checkboxes let users mix and match multiple extras -->
-        <label><input type="checkbox" class="extra-toggle" data-layer="frosting"> White Frosting 🧁</label>
-        <label><input type="checkbox" class="extra-toggle" data-layer="sprinkles"> Rainbow Sprinkles ✨</label>
-        <label><input type="checkbox" class="extra-toggle" data-layer="mms"> M&M Candies 🔴</label>
-    </div>
-</div>
 
     <section class="highlights">
       <h2>Featured Items</h2>
