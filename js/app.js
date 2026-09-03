@@ -33,17 +33,36 @@ size.addEventListener('input', updateImage);
   const btn = document.getElementById('toggle-btn');
   const overlay = document.getElementById('overlay-layer');
 
-  // Listen for the click event
-  btn.addEventListener('click', () => {
-    // .toggle() automatically removes the class if it's there, or adds it if it's missing
-    overlay.classList.toggle('hidden');
-    
-    // Optional: Change the button text depending on the state
-    if (overlay.classList.contains('hidden')) {
-      btn.textContent = 'Show Overlay';
-    } else {
-      btn.textContent = 'Hide Overlay';
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  const radioButtons = document.querySelectorAll('input[name="cookie-base"]');
+  const checkboxes = document.querySelectorAll('.extra-toggle');
+
+  // Handle Cookie Base Change
+  radioButtons.forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      // Hide all base layers
+      document.querySelectorAll('.base-layer').forEach(layer => layer.classList.add('hidden'));
+      // Show the selected base layer
+      const activeLayerId = e.target.getAttribute('data-layer');
+      document.getElementById(activeLayerId).classList.remove('hidden');
+    });
   });
 
-}
+  // Handle Toppings / Frosting Change
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      const targetLayerId = e.target.getAttribute('data-layer');
+      const targetLayer = document.getElementById(targetLayerId);
+      
+      if (e.target.checked) {
+        targetLayer.classList.remove('hidden');
+      } else {
+        targetLayer.classList.add('hidden');
+      }
+    });
+  });
+});
+
+  };
+
+

@@ -117,22 +117,21 @@ input {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: var(--accent-color); /* Kept your theme orange color */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  transition: background var(--transition-speed) ease;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--primary-color); /* Kept your theme dark blue color */
 }
 
 button:disabled {
   background-color: #cccccc;
-}
-
-.error-message {
-  color: #dc3545;
-  font-size: 12px;
-  margin-top: 4px;
-  display: block;
 }
 

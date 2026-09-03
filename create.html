@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalog | Your Business Name</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Business Name</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inventory.html">Catalog</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="create.html">Create your own!</a></li>
+      </ul>
+    </nav>
+  </header>
 <div class="cookie-builder">
+
+
     <!-- The display window where the cookie updates -->
     <div class="cookie-window">
         <!-- 1. Cookie Base Layers (Only one active at a time) -->
-        <button id="toggle-btn"> Show Overlay</button>
-        <img id="layer-sugar" class="layer base-layer default" src="cookie base.png" alt="Sugar Cookie">
-        <img id="layer-chocolate" class="layer base-layer hidden" src="choco cookie.jpg" alt="Chocolate Cookie">
+        
+        <img id="layer-sugar" class="layer base-layer default" src="images-for-website/base.png" alt="Sugar Cookie">
+        <img id="layer-chocolate" class="layer base-layer hidden" src="images-for-website/chocolate.png" alt="Chocolate Cookie">
         
         <!-- 2. Frosting Layers -->
-        <img id="layer-frosting" class="layer frosting-layer hidden" src="frosting.png" alt="Frosting">
+        <img id="layer-frosting" class="layer frosting-layer hidden" src="images-for-website/frosting.png" alt="Frosting">
         
         <!-- 3. Mix-in/Topping Layers -->
-        <img id="layer-sprinkles" class="layer topping-layer hidden" src="sprinkled cookie.jpg" alt="Sprinkles">
-        <img id="layer-mms" class="layer topping-layer hidden" src="mm" alt="M&Ms">
+        <img id="layer-sprinkles" class="layer topping-layer hidden" src="images-for-website/sprinkled.png" alt="Sprinkles">
+        <img id="layer-mms" class="layer topping-layer hidden" src="images-for-website/mm.png" alt="M&Ms">
     </div>
     <div class="image-container">
     <!-- The image to customize -->
-    <img id="customImage" src="cookie base.png" alt="The base of the cookie">
-
+    <img id="customImage" src="images-for-website/cookie base.png" alt="The base of the cookie">
+    </div>
     <!-- The controls for the user -->
 
 
@@ -37,7 +59,13 @@
         <label><input type="checkbox" class="extra-toggle" data-layer="mms"> M&M Candies 🔴</label>
         <label><input type="checkbox" class="extra-toggle" data-layer="whitechoco"> White chocolate chips</label>
     </div>
-</div>
 
+
+  <footer>
+    <p>&copy; 2026 Cookie Time Cookie</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
 </html>
 
