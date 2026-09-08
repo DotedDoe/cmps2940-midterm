@@ -1,71 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalog | Your Business Name</title>
+  <title>Customize Your Order</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Business Name</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="inventory.html">Catalog</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="create.html">Create your own!</a></li>
-      </ul>
-    </nav>
-  </header>
-<div class="cookie-builder">
 
+  <nav class="navbar">
+    <a href="index.html" class="brand">Your Bakery</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="inventory.html">Catalog</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
 
-    <!-- The display window where the cookie updates -->
-    <div class="cookie-window">
-        <!-- 1. Cookie Base Layers (Only one active at a time) -->
-        
-        <img id="layer-sugar" class="layer base-layer default" src="images-for-website/base.png" alt="Sugar Cookie">
-        <img id="layer-chocolate" class="layer base-layer hidden" src="images-for-website/chocolate.png" alt="Chocolate Cookie">
-        
-        <!-- 2. Frosting Layers -->
-        <img id="layer-frosting" class="layer frosting-layer hidden" src="images-for-website/frosting.png" alt="Frosting">
-        
-        <!-- 3. Mix-in/Topping Layers -->
-        <img id="layer-sprinkles" class="layer topping-layer hidden" src="images-for-website/sprinkled.png" alt="Sprinkles">
-        <img id="layer-mms" class="layer topping-layer hidden" src="images-for-website/mm.png" alt="M&Ms">
-    </div>
-    <div class="image-container">
-    <!-- The image to customize -->
-    <img id="customImage" src="images-for-website/cookie base.png" alt="The base of the cookie">
-    </div>
-    <!-- The controls for the user -->
+  <section class="hero">
+    <h1>Build Your Order</h1>
+    <p>Pick an item from the carousel below, then customize it just the way you like it.</p>
+  </section>
 
+  <section class="product-carousel-wrapper" aria-label="Choose an item to customize">
+    <button type="button" class="carousel-btn prev-btn" id="product-carousel-prev" aria-label="Previous item">&#10094;</button>
+    <div class="product-carousel-track" id="product-carousel-track"></div>
+    <button type="button" class="carousel-btn next-btn" id="product-carousel-next" aria-label="Next item">&#10095;</button>
+  </section>
 
-
-    <!-- The Customization Panel -->
-    <div class="cookie-controls">
-        <h3>1. Choose Your Cookie Base</h3>
-        <!-- Radio buttons make it so checking one unchecks the other -->
-        <label><input type="radio" name="cookie-base" data-layer="layer" checked> Plain Sugar Cookie 🍪</label>
-        <label><input type="radio" name="cookie-base" data-layer="chocolate"> Double Chocolate 🍫</label>
-
-        <h3>2. Add Frosting & Toppings</h3>
-        <!-- Checkboxes let users mix and match multiple extras -->
-        <label><input type="checkbox" class="extra-toggle" data-layer="frosting"> White Frosting 🧁</label>
-        <label><input type="checkbox" class="extra-toggle" data-layer="sprinkles"> Rainbow Sprinkles ✨</label>
-        <label><input type="checkbox" class="extra-toggle" data-layer="mms"> M&M Candies 🔴</label>
-        <label><input type="checkbox" class="extra-toggle" data-layer="whitechoco"> White chocolate chips</label>
-    </div>
-
+  <section id="customizer-panel" aria-live="polite">
+    <!-- Populated by js/create.js based on the selected product -->
+  </section>
 
   <footer>
-    <p>&copy; 2026 Cookie Time Cookie</p>
+    <p>&copy; 2026 Your Bakery. All rights reserved.</p>
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/create.js"></script>
 </body>
 </html>
-
