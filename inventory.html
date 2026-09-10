@@ -3,39 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalog | Your Business Name</title>
+  <title>Inventory — Bakery Time</title>
+
+  
   <link rel="stylesheet" href="css/styles.css">
+
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">Business Name</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="inventory.html">Catalog</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
+  
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Bakery Time</a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="inventory.html" class="active" aria-current="page">Inventory</a>
+        <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+        <a href="login.html">Login</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="catalog-controls">
-      <label for="search-input">Search products</label>
-      <input type="search" id="search-input" placeholder="Search...">
+  <main class="inventory-page">
+
+    
+    <section class="page-intro">
+      <h1>Our Bakery Case</h1>
+      <p>Everything we bake today, fresh from the oven. Items marked
+        <strong>Customizable</strong> can be built your way.</p>
     </section>
 
-    <section class="catalog-grid" id="catalog-grid">
-      <!-- Product cards rendered/filtered by catalog.js -->
+    
+    <section class="catalog-controls">
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Search the case… (e.g. brownie, sourdough)"
+        aria-label="Search inventory">
+
+      
+      <div class="filter-chips" role="group" aria-label="Filter by category">
+        <button class="filter-chip active" data-category="all">All</button>
+        <button class="filter-chip" data-category="cookies">Cookies</button>
+        <button class="filter-chip" data-category="brownies">Brownies</button>
+        <button class="filter-chip" data-category="cakes">Cakes</button>
+        <button class="filter-chip" data-category="breads">Breads</button>
+      </div>
     </section>
+
+    
+    
+    <section id="product-grid" class="product-grid" aria-live="polite">
+      <!-- cards injected here by js/catalog.js -->
+    </section>
+
+    
+    <p id="no-results" class="no-results" hidden>
+      Nothing in the case matches that search. Try a different term or
+      clear the filter.
+    </p>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Your Business Name</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 Bakery Time Bakery</p>
   </footer>
 
+  
   <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/catalog.js"></script>
 </body>
 </html>
