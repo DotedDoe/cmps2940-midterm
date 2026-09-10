@@ -36,7 +36,6 @@ const CATALOG_DATA = [
     price: 6.50,
     category: "breads",
     image: "images/sourdough.jpg"
-    // no `customizable` key — plain add-to-cart item
   },
   {
     id: "carrot-cake-slice",

@@ -1,22 +1,12 @@
-/* ==================================================================
-   DESIGN TOKENS
-   Every color, radius, and shadow used below reads from one of these
-   variables. This is what the "CSS variables are graded" requirement
-   is checking for — nothing in this file should have a hardcoded
-   hex value outside this block.
-   ================================================================== */
 :root {
-  /* -- Palette: warm bakery tones, not the generic cream+terracotta
-     combo you see everywhere. Crust-brown carries headings/nav,
-     berry-jam is the one accent color used sparingly for CTAs and
-     price emphasis. -- */
-  --color-cream:   #FBF3E3;  /* page background — "dough" */
-  --color-crust:   #7A4B32;  /* headings, nav, dark UI chrome */
-  --color-cocoa:   #2E1C12;  /* body text */
-  --color-berry:   #A63446;  /* accent: buttons, active states, prices */
-  --color-butter:  #E8B23D;  /* hover highlight */
-  --color-line:    #E2D0AC;  /* borders, dividers */
-  --color-card-bg: #FFFDF8;  /* product card background, lifted off page bg */
+  
+  --color-cream:   #FBF3E3;  
+  --color-crust:   #7A4B32;  
+  --color-cocoa:   #2E1C12;  
+  --color-berry:   #A63446;  
+  --color-butter:  #E8B23D;  
+  --color-line:    #E2D0AC;  
+  --color-card-bg: #FFFDF8;  
 
   /* -- Type -- */
   --font-display: 'Fraunces', Georgia, serif;
@@ -41,9 +31,7 @@ body {
 
 h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin: 0 0 0.5rem; }
 
-/* ==================================================================
-   HEADER / NAV — shared shell, reused on every page
-   ================================================================== */
+
 .site-header {
   background: var(--color-crust);
 }
@@ -87,9 +75,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   margin-left: 0.25rem;
 }
 
-/* ==================================================================
-   PAGE INTRO
-   ================================================================== */
+
 .inventory-page {
   max-width: 1100px;
   margin: 0 auto;
@@ -98,10 +84,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
 
 .page-intro { margin-bottom: 1.5rem; }
 
-/* ==================================================================
-   SEARCH + FILTER CONTROLS
-   Flex layout, wraps on narrow screens.
-   ================================================================== */
+
 .catalog-controls {
   display: flex;
   flex-wrap: wrap;
@@ -153,9 +136,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   color: var(--color-cream);
 }
 
-/* ==================================================================
-   PRODUCT GRID — CSS Grid, auto-fills columns based on available width
-   ================================================================== */
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
