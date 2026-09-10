@@ -9,6 +9,26 @@
   --transition-speed: 0.2s;
 }
 
+html[data-theme="dark"] { 
+    --primary-color: #0b0c0d;
+    --accent-color: #f39c4a;
+    --bg-color: #0f1720;
+    --text-color: #f1f5f9;
+}
+
+#themeToggle {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+}
+
+#themeToggle:hover,
+#themeToggle:focus {
+    background: var(--accent-color);
+    color: white;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
