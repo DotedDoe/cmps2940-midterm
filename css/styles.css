@@ -205,14 +205,12 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   transition: background var(--transition-fast);
 }
 
-/* Plain add-to-cart: filled berry button */
 .card-action.add-btn {
   background: var(--color-berry);
   color: var(--color-cream);
 }
 .card-action.add-btn:hover { background: #8f2c3a; }
 
-/* Customize: outlined, links out to create.html */
 .card-action.customize-btn {
   background: transparent;
   border: 1.5px solid var(--color-crust);
