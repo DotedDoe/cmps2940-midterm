@@ -1,602 +1,444 @@
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #e67e22;
-    --bg-color: #beaf8abc;
-    --text-color: #2d1f0c;
+  
+  --color-cream:   #FBF3E3;  
+  --color-crust:   #7A4B32;  
+  --color-cocoa:   #2E1C12;  
+  --color-berry:   #A63446;  
+  --color-butter:  #E8B23D;  
+  --color-line:    #E2D0AC;  
+  --color-card-bg: #FFFDF8;  
 
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 2rem;
+  /* -- Type -- */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
-    --transition-speed: 0.2s;
-
-    image-rendering: auto;
+  /* -- Layout -- */
+  --radius: 10px;
+  --shadow-card: 0 2px 8px rgb(122 75 50 / 0.12);
+  --shadow-card-hover: 0 6px 16px rgb(122 75 50 / 0.2);
+  --transition-fast: 0.18s ease;
 }
 
-/* =========================
-   GLOBAL RESET
-   ========================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; }
 
 body {
-    font-family: system-ui, "Times New Roman", Times, serif;
-    color: var(--text-color);
-    background: var(--bg-color);
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-cocoa);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin: 0 0 0.5rem; }
+
+
+.site-header {
+  background: var(--color-crust);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-display);
+  color: var(--color-cream);
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.main-nav a {
+  color: var(--color-cream);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  border-bottom-color: var(--color-butter);
+}
+
+.cart-count {
+  background: var(--color-berry);
+  color: var(--color-cream);
+  border-radius: 999px;
+  padding: 0 0.5em;
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+}
+
+
+.inventory-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.page-intro { margin-bottom: 1.5rem; }
+
+
+.catalog-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#search-input {
+  flex: 1 1 260px;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: var(--color-card-bg);
+}
+
+#search-input:focus {
+  outline: 2px solid var(--color-berry);
+  outline-offset: 1px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-chip {
+  border: 1px solid var(--color-line);
+  background: var(--color-card-bg);
+  color: var(--color-crust);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.filter-chip:hover {
+  background: var(--color-butter);
+}
+
+.filter-chip.active {
+  background: var(--color-berry);
+  border-color: var(--color-berry);
+  color: var(--color-cream);
+}
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.product-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.product-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card .card-body {
+  padding: 0.9rem 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.product-card h3 { font-size: 1.05rem; margin: 0; }
+
+.product-card .price {
+  color: var(--color-berry);
+  font-weight: 600;
+  margin: 0;
+}
+
+.product-card .badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  color: var(--color-crust);
+  background: var(--color-cream);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+.product-card .card-action {
+  margin-top: auto;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.card-action.add-btn {
+  background: var(--color-berry);
+  color: var(--color-cream);
+}
+.card-action.add-btn:hover { background: #8f2c3a; }
+
+.card-action.customize-btn {
+  background: transparent;
+  border: 1.5px solid var(--color-crust);
+  color: var(--color-crust);
+}
+.card-action.customize-btn:hover {
+  background: var(--color-crust);
+  color: var(--color-cream);
+}
+
+.no-results {
+  text-align: center;
+  color: var(--color-crust);
+  padding: 2rem 0;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--color-crust);
+  font-size: 0.85rem;
 }
 
 /* =========================
-   NAVBAR
+   CREATE.HTML — PRODUCT CAROUSEL
    ========================= */
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: var(--spacing-md) var(--spacing-lg);
-
-    background: var(--primary-color);
-    color: rgba(204, 209, 112, 0.501);
+.create-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
 }
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: var(--spacing-md);
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    transition: color var(--transition-speed) ease;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-    color: var(--accent-color);
-}
-
-/* =========================
-   HERO
-   ========================= */
-
-.hero {
-    padding: var(--spacing-lg);
-    text-align: center;
-}
-
-/* =========================
-   CARD GRID
-   ========================= */
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg);
-}
-
-.card-actions {
-    display: flex;
-    gap: var(--spacing-sm);
-    align-items: center;
-    margin-top: var(--spacing-sm);
-}
-
-.customize-link {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color var(--transition-speed) ease;
-}
-
-.customize-link:hover,
-.customize-link:focus {
-    color: var(--accent-color);
-}
-
-/* =========================
-   FORMS
-   ========================= */
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    max-width: 400px;
-    padding: var(--spacing-lg);
-}
-
-form button {
-    width: 100%;
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-
-    border: 1px solid #ccc;
-    border-radius: 4px;
-
-    box-sizing: border-box;
-}
-
-/* =========================
-   GENERAL BUTTONS
-   ========================= */
-
-button {
-    padding: 12px;
-
-    background: var(--accent-color);
-    color: white;
-
-    border: none;
-    border-radius: 4px;
-
-    cursor: pointer;
-    font-size: 16px;
-
-    transition: background var(--transition-speed) ease;
-}
-
-button:hover,
-button:focus {
-    background: var(--primary-color);
-}
-
-button:disabled {
-    background: #cccccc;
-}
-
-/* =========================
-   LOGIN
-   ========================= */
-
-.login-container {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 30px;
-
-    border-radius: 8px;
-
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-    font-family: Arial, sans-serif;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* =========================
-   COOKIE BUILDER
-   ========================= */
-
-.cookie-builder {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: var(--spacing-lg);
-
-    max-width: 900px;
-
-    margin: var(--spacing-lg) auto;
-    padding: var(--spacing-lg);
-
-    align-items: center;
-}
-
-/* =========================
-   COOKIE DISPLAY WINDOW
-   ========================= */
-
-.cookie-window {
-    position: relative;
-
-    width: 100%;
-    aspect-ratio: 1 / 1;
-
-    background-color: #ffffff;
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-/*
-   Keeps the cookie carousel the exact
-   same size as the display window.
-*/
-
-.cookie-carousel {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-}
-
-/* =========================
-   COOKIE LAYERS
-   ========================= */
-
-/*
-   Every cookie/frosting/topping is
-   stacked directly on top of the others.
-*/
-
-.layer {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: opacity var(--transition-speed) ease;
-}
-
-/*
-   Only the currently selected layer
-   gets displayed.
-*/
-
-.layer.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* =========================
-   LAYER STACKING ORDER
-   ========================= */
-
-/* Cookie base */
-.base-layer {
-    z-index: 1;
-}
-
-/* Frosting */
-#layer-frosting {
-    z-index: 2;
-}
-
-/* Sprinkles and M&Ms */
-#layer-sprinkles,
-#layer-mms {
-    z-index: 3;
-}
-
-/* Any other named layer (topping, topper, etc.) sits above frosting */
-.layer:not(.base-layer):not(#layer-frosting) {
-    z-index: 3;
-}
-
-/* =========================
-   CAROUSEL ARROWS
-   ========================= */
-
-.carousel-btn {
-    position: absolute;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    z-index: 10;
-
-    width: auto;
-
-    padding: 10px 14px;
-
-    background: rgba(44, 62, 80, 0.7);
-
-    color: white;
-
-    border: none;
-
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    font-size: 20px;
-
-    line-height: 1;
-
-    transition:
-        background var(--transition-speed) ease,
-        transform var(--transition-speed) ease;
-}
-
-.carousel-btn:hover,
-.carousel-btn:focus {
-    background: var(--primary-color);
-}
-
-.carousel-btn:hover {
-    transform: translateY(-50%) scale(1.05);
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-/* =========================
-   COOKIE CONTROLS
-   ========================= */
-
-.cookie-controls {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: var(--spacing-md);
-}
-
-.control-group {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: var(--spacing-sm);
-}
-
-.control-group select {
-    padding: 10px;
-
-    border: 1px solid #ccc;
-
-    border-radius: 6px;
-
-    font-size: 1rem;
-
-    background-color: white;
-
-    color: var(--text-color);
-
-    cursor: pointer;
-}
-
-/* =========================
-   PRODUCT CAROUSEL (create.html)
-   ========================= */
-
-/*
-   The item picker at the top of create.html — lets a shopper browse
-   every customizable product before they drop into that item's builder.
-*/
 
 .product-carousel-wrapper {
-    position: relative;
-
-    max-width: 900px;
-
-    margin: 0 auto var(--spacing-lg);
-    padding: 0 var(--spacing-lg);
+  position: relative;
+  margin-bottom: 2rem;
 }
 
 .product-carousel-track {
-    display: flex;
-
-    gap: var(--spacing-md);
-
-    overflow-x: auto;
-    scroll-behavior: smooth;
-
-    padding: var(--spacing-md) 48px;
-
-    scrollbar-width: thin;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.5rem 48px;
+  scrollbar-width: thin;
 }
 
 .product-carousel-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-sm);
+  flex: 0 0 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
 
-    flex: 0 0 140px;
+  background: var(--color-card-bg);
+  border: 2px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 0.6rem;
 
-    padding: var(--spacing-sm);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-cocoa);
+  cursor: pointer;
 
-    background: white;
-    color: var(--text-color);
-
-    border: 2px solid transparent;
-    border-radius: 10px;
-
-    cursor: pointer;
-
-    font-size: 14px;
-
-    transition:
-        border-color var(--transition-speed) ease,
-        transform var(--transition-speed) ease;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.product-carousel-item:hover,
-.product-carousel-item:focus {
-    background: white;
-    transform: translateY(-2px);
+.product-carousel-item:hover {
+  transform: translateY(-2px);
 }
 
 .product-carousel-item.active {
-    border-color: var(--accent-color);
+  border-color: var(--color-berry);
 }
 
 .product-carousel-item img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
 }
 
 .product-carousel-name {
-    font-weight: bold;
-    text-align: center;
+  font-weight: 600;
+  text-align: center;
 }
 
 .product-carousel-price {
-    color: var(--accent-color);
+  color: var(--color-berry);
 }
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  background: var(--color-crust);
+  color: var(--color-cream);
+  border: none;
+  border-radius: 50%;
+
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+
+  transition: background var(--transition-fast);
+}
+
+.carousel-btn:hover {
+  background: var(--color-berry);
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
 
 /* =========================
-   SIMPLE PREVIEW (non-layered products)
+   CREATE.HTML — CUSTOMIZER PANEL
    ========================= */
 
-.simple-preview {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.customizer-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
 }
 
-.simple-preview img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+.customizer-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
 }
 
-/* =========================
-   SWATCH CONTROLS
-   ========================= */
-
-.swatch-group {
-    display: flex;
-    gap: var(--spacing-sm);
+.customizer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
 }
 
-.swatch {
-    width: 36px;
-    height: 36px;
-
-    padding: 0;
-
-    border: 2px solid #ccc;
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    transition:
-        border-color var(--transition-speed) ease,
-        transform var(--transition-speed) ease;
+.base-price {
+  color: var(--color-crust);
+  margin: 0;
 }
 
-.swatch:hover,
-.swatch:focus {
-    transform: scale(1.1);
+.topping-list {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.swatch.active {
-    border-color: var(--primary-color);
+.topping-list legend {
+  font-family: var(--font-display);
+  color: var(--color-crust);
+  padding: 0 0.3rem;
 }
 
-/* =========================
-   PRICE + ADD TO CART
-   ========================= */
+.topping-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.topping-option span:first-of-type {
+  flex: 1;
+}
+
+.topping-price {
+  color: var(--color-berry);
+  font-size: 0.9rem;
+}
+
+.quantity-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantity-row input {
+  width: 70px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+}
 
 .price-display {
-    font-size: 1.25rem;
-    font-weight: bold;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-cocoa);
+  margin: 0;
 }
 
-/* =========================
-   MISSING-IMAGE FALLBACK
-   ========================= */
-
-/*
-   Shows a soft placeholder instead of a broken-image icon while real
-   product/layer artwork hasn't been added to images/ yet.
-*/
-
 .img-fallback {
-    background: linear-gradient(135deg, #f0ebe0, #ddd2ba);
+  background: linear-gradient(135deg, var(--color-cream), var(--color-line));
+  position: relative;
 }
 
 .img-fallback::after {
-    content: "🍪";
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 100%;
-    height: 100%;
-
-    font-size: 2.5rem;
+  content: "🥐";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
 }
-
-/* =========================
-   FOOTER
-   ========================= */
-
-footer {
-    text-align: center;
-
-    padding: var(--spacing-lg);
-
-    margin-top: var(--spacing-lg);
-}
-
-/* =========================
-   MOBILE RESPONSIVENESS
-   ========================= */
 
 @media (max-width: 700px) {
+  .customizer-card {
+    grid-template-columns: 1fr;
+  }
 
-    .navbar {
-        flex-direction: column;
-        gap: var(--spacing-md);
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .cookie-builder {
-        grid-template-columns: 1fr;
-
-        max-width: 500px;
-    }
-
-    .cookie-window {
-        width: 100%;
-    }
-
-    .product-carousel-wrapper {
-        padding: 0 var(--spacing-md);
-    }
-
-    .product-carousel-track {
-        padding: var(--spacing-sm) 40px;
-    }
-
-    .product-carousel-item {
-        flex-basis: 110px;
-    }
+  .product-carousel-track {
+    padding: 0.5rem 40px;
+  }
 }
