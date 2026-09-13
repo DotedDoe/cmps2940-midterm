@@ -1,47 +1,71 @@
-// cart.js — localStorage-backed cart management for cart.html
+const grid = document.getElementById('product-grid');
+const searchInput = document.getElementById('search-input');
+const filterChips = document.querySelectorAll('.filter-chip');
+const noResultsMsg = document.getElementById('no-results');
 
-const CART_KEY = 'cart_items';
+let activeCategory = 'all';
+let activeSearch = '';
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderCart(getCartItems());
+
+function renderProductCard(product) {
+  const badge = product.customizable
+    ? `<span class="badge">Customizable</span>`
+    : '';
+
+  const actionButton = product.customizable
+    ? `<a class="card-action customize-btn" href="create.html?product=${product.id}">Customize</a>`
+    : `<button class="card-action add-btn" data-product-id="${product.id}">Add to Cart</button>`;
+
+  return `
+    <article class="product-card">
+      <img src="${product.image}" alt="${product.name}">
+      <div class="card-body">
+        ${badge}
+        <h3>${product.name}</h3>
+        <p class="price">${formatPrice(product.price)}</p>
+        ${actionButton}
+      </div>
+    </article>
+  `;
+}
+
+
+function renderGrid() {
+  const items = getCatalogItems().filter(product => {
+    const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+    const matchesSearch = product.name.toLowerCase().includes(activeSearch.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  grid.innerHTML = items.map(renderProductCard).join('');
+  noResultsMsg.hidden = items.length > 0;
+}
+
+searchInput.addEventListener('input', (e) => {
+  activeSearch = e.target.value;
+  renderGrid();
 });
 
-// Wrapped so this can later be swapped for a real backend call to Symfony
-function getCartItems() {
-  const raw = localStorage.getItem(CART_KEY);
-  return raw ? JSON.parse(raw) : [];
-}
 
-function saveCartItems(items) {
-  localStorage.setItem(CART_KEY, JSON.stringify(items));
-}
+filterChips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    filterChips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeCategory = chip.dataset.category;
+    renderGrid();
+  });
+});
 
-function addToCart(item) {
-  const items = getCartItems();
-  items.push(item);
-  saveCartItems(items);
-  renderCart(items);
-}
 
-function removeFromCart(itemId) {
-  const items = getCartItems().filter(i => i.id !== itemId);
-  saveCartItems(items);
-  renderCart(items);
-}
+grid.addEventListener('click', (e) => {
+  const btn = e.target.closest('.add-btn');
+  if (!btn) return;
 
-function renderCart(items) {
-  const container = document.getElementById('cart-items');
-  const totalEl = document.getElementById('cart-total');
-  if (!container || !totalEl) return;
+  if (typeof addToCart === 'function') {
+    addToCart(btn.dataset.productId, []);
+  } else {
+    console.log(`Would add "${btn.dataset.productId}" to cart — cart.js not loaded yet.`);
+  }
+});
 
-  container.innerHTML = items.map(item => `
-    <div class="cart-line" data-id="${item.id}">
-      <span>${item.name}</span>
-      <span>$${item.price.toFixed(2)}</span>
-      <button class="remove-btn" data-id="${item.id}">Remove</button>
-    </div>
-  `).join('');
-
-  const total = items.reduce((sum, i) => sum + i.price, 0);
-  totalEl.textContent = `$${total.toFixed(2)}`;
-}
+renderGrid();
