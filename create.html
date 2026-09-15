@@ -29,4 +29,26 @@
       <p>Pick an item below, choose your toppings, and add it to your cart.</p>
     </section>
 
-    <section class="product-carousel-wrapper"
+   
+        <section class="product-carousel-wrapper" aria-label="Choose an item to customize">
+      <button type="button" class="carousel-btn prev-btn" id="product-carousel-prev" aria-label="Previous item">&#10094;</button>
+      <div class="product-carousel-track" id="product-carousel-track"></div>
+      <button type="button" class="carousel-btn next-btn" id="product-carousel-next" aria-label="Next item">&#10095;</button>
+    </section>
+
+    <section id="customizer-panel" class="customizer-panel" aria-live="polite">
+      <!-- Populated by js/create.js based on the selected product -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Bakery Time</p>
+  </footer>
+
+  <!-- catalog.js is deliberately NOT loaded here — it assumes #product-grid
+       exists and has no null-guard, so it would throw on this page. -->
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/create.js"></script>
+</body>
+</html>
