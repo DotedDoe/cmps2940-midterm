@@ -66,4 +66,44 @@ function updateCartCountBadge() {
   badge.textContent = totalQty;
 }
 
-document.addEventListener('DOMContentLoaded', updateCartCountBadge);
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartCountBadge();
+  initTheme();
+});
+
+function initTheme() {
+  const themeToggle = document.getElementById('themeToggle');
+
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme) {
+    document.documentElement.dataset.theme = savedTheme;
+  }
+
+  updateThemeButton(themeToggle);
+
+  if (!themeToggle) return;
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.dataset.theme;
+
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.dataset.theme = newTheme;
+
+    
+    localStorage.setItem('theme', newTheme);
+
+    updateThemeButton(themeToggle);
+  });
+}
+
+function updateThemeButton(themeToggle) {
+  if (!themeToggle) return;
+
+  if (document.documentElement.dataset.theme === 'dark') {
+    themeToggle.textContent = 'Light Mode';
+  } else {
+    themeToggle.textContent = 'Dark Mode';
+  }
+}
