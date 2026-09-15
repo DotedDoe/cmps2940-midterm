@@ -96,12 +96,12 @@ const CATALOG_DATA = [
     name: "Chocolate Chip Cookie",
     price: 2.50,
     category: "cookies",
-    image: "images/cookie.jpg",
+    image: "images-for-website/base.jpg",
     customizable: {
       label: "Choose toppings",
       options: [
         { id: "sprinkles", name: "Sprinkles", priceAdd: 0.25 },
-        { id: "mnms", name: "M&Ms", priceAdd: 0.50 },
+        { id: "mm", name: "M&Ms", priceAdd: 0.50 },
         { id: "icing", name: "Icing Drizzle", priceAdd: 0.50 }
       ]
     }
@@ -133,7 +133,7 @@ const CATALOG_DATA = [
     name: "Carrot Cake Slice",
     price: 4.25,
     category: "cakes",
-    image: "images/carrot-cake.jpg"
+    image: "images-for-website/ai-gen-slop.jpg"
   }
 ];
 
