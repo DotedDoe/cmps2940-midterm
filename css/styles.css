@@ -272,3 +272,212 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   color: var(--color-crust);
   font-size: 0.85rem;
 }
+
+/* =========================
+   CREATE.HTML — PRODUCT CAROUSEL
+   ========================= */
+
+.create-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.product-carousel-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.product-carousel-track {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.5rem 48px;
+  scrollbar-width: thin;
+}
+
+.product-carousel-item {
+  flex: 0 0 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+
+  background: var(--color-card-bg);
+  border: 2px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 0.6rem;
+
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-cocoa);
+  cursor: pointer;
+
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.product-carousel-item:hover {
+  transform: translateY(-2px);
+}
+
+.product-carousel-item.active {
+  border-color: var(--color-berry);
+}
+
+.product-carousel-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.product-carousel-name {
+  font-weight: 600;
+  text-align: center;
+}
+
+.product-carousel-price {
+  color: var(--color-berry);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 36px;
+  height: 36px;
+  padding: 0;
+
+  background: var(--color-crust);
+  color: var(--color-cream);
+  border: none;
+  border-radius: 50%;
+
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+
+  transition: background var(--transition-fast);
+}
+
+.carousel-btn:hover {
+  background: var(--color-berry);
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+/* =========================
+   CREATE.HTML — CUSTOMIZER PANEL
+   ========================= */
+
+.customizer-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+}
+
+.customizer-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.customizer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.base-price {
+  color: var(--color-crust);
+  margin: 0;
+}
+
+.topping-list {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.topping-list legend {
+  font-family: var(--font-display);
+  color: var(--color-crust);
+  padding: 0 0.3rem;
+}
+
+.topping-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.topping-option span:first-of-type {
+  flex: 1;
+}
+
+.topping-price {
+  color: var(--color-berry);
+  font-size: 0.9rem;
+}
+
+.quantity-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.quantity-row input {
+  width: 70px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+}
+
+.price-display {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-cocoa);
+  margin: 0;
+}
+
+.img-fallback {
+  background: linear-gradient(135deg, var(--color-cream), var(--color-line));
+  position: relative;
+}
+
+.img-fallback::after {
+  content: "🥐";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+}
+
+@media (max-width: 700px) {
+  .customizer-card {
+    grid-template-columns: 1fr;
+  }
+
+  .product-carousel-track {
+    padding: 0.5rem 40px;
+  }
+}

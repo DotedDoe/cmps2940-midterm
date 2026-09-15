@@ -1,5 +1,3 @@
-
-
 const grid = document.getElementById('product-grid');
 const searchInput = document.getElementById('search-input');
 const filterChips = document.querySelectorAll('.filter-chip');
@@ -14,7 +12,6 @@ function renderProductCard(product) {
     ? `<span class="badge">Customizable</span>`
     : '';
 
-  
   const actionButton = product.customizable
     ? `<a class="card-action customize-btn" href="create.html?product=${product.id}">Customize</a>`
     : `<button class="card-action add-btn" data-product-id="${product.id}">Add to Cart</button>`;
@@ -64,7 +61,6 @@ grid.addEventListener('click', (e) => {
   const btn = e.target.closest('.add-btn');
   if (!btn) return;
 
- 
   if (typeof addToCart === 'function') {
     addToCart(btn.dataset.productId, []);
   } else {
@@ -72,4 +68,4 @@ grid.addEventListener('click', (e) => {
   }
 });
 
-renderGrid(); 
+renderGrid();
