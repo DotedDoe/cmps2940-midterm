@@ -28,7 +28,7 @@ function addToCart(productId, selectedOptions = []) {
   }
 
   const product = getCatalogItems().find(p => p.id === productId);
-  if (!product) return; // defensive: bad id somehow got passed in
+  if (!product) return; 
 
   const addOnTotal = selectedOptions.reduce((sum, o) => sum + o.priceAdd, 0);
 
@@ -110,7 +110,7 @@ function renderCart() {
   const container = document.getElementById('cart-items');
   const emptyMsg = document.getElementById('empty-cart-message');
   const totalEl = document.getElementById('cart-total');
-  if (!container) return; // not on cart.html, nothing to do
+  if (!container) return; 
 
   const items = getCartItems();
 
