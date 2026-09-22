@@ -88,24 +88,14 @@
     </section>
 
     <section class="announcements">
-      <!-- Announcement banner content -->
     </section>
 
-<<<<<<< HEAD
-<section class="highlights">
-  <h2>Featured Items</h2>
-</section>
-<audio id="background-music" loop>
-  <source src="elevator.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-=======
 <audio id="background-music" loop>
   <source src="fluffing.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
->>>>>>> main
+
     <section class="highlights">
       <h2>Featured Items</h2>
 
@@ -160,6 +150,20 @@
       counts[id] = (counts[id] || 0) - 1;
       document.getElementById(id).textContent = counts[id];
     }
+  </script>
+  <script>
+    // Wait for the user to click anywhere on the page, then play the music
+document.addEventListener('click', function() {
+    const audio = document.getElementById('background-music');
+    
+    // Check if the audio is already playing to avoid restarting it on every click
+    if (audio.paused) {
+        audio.play().catch(error => {
+            console.log("Playback prevented by browser rules:", error);
+        });
+    }
+}, { once: true }); // '{ once: true }' ensures this listener only runs on the very first click
+
   </script>
 </body>
 </html>
