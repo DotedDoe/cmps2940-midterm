@@ -1,71 +1,146 @@
-const grid = document.getElementById('product-grid');
-const searchInput = document.getElementById('search-input');
-const filterChips = document.querySelectorAll('.filter-chip');
-const noResultsMsg = document.getElementById('no-results');
-
-let activeCategory = 'all';
-let activeSearch = '';
 
 
-function renderProductCard(product) {
-  const badge = product.customizable
-    ? `<span class="badge">Customizable</span>`
+const CART_STORAGE_KEY = 'sweetCrumbCart';
+
+function getCartItems() {
+  const raw = localStorage.getItem(CART_STORAGE_KEY);
+  return raw ? JSON.parse(raw) : [];
+}
+
+function saveCartItems(items) {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+}
+
+
+function addToCart(productId, selectedOptions = []) {
+  const items = getCartItems();
+
+  const cartLineId = selectedOptions.length
+    ? `${productId}-${selectedOptions.map(o => o.id).sort().join('-')}`
+    : productId;
+
+  const existingLine = items.find(item => item.cartLineId === cartLineId);
+  if (existingLine) {
+    existingLine.qty += 1;
+    saveCartItems(items);
+    updateCartCountBadge();
+    return;
+  }
+
+  const product = getCatalogItems().find(p => p.id === productId);
+  if (!product) return; 
+
+  const addOnTotal = selectedOptions.reduce((sum, o) => sum + o.priceAdd, 0);
+
+  items.push({
+    cartLineId,
+    productId,
+    name: product.name,
+    basePrice: product.price,
+    selectedOptions,
+    unitPrice: product.price + addOnTotal,
+    qty: 1
+  });
+
+  saveCartItems(items);
+  updateCartCountBadge();
+}
+
+
+function updateCartItemQty(cartLineId, delta) {
+  const items = getCartItems();
+  const line = items.find(item => item.cartLineId === cartLineId);
+  if (!line) return;
+
+  line.qty += delta;
+
+  const updatedItems = line.qty <= 0
+    ? items.filter(item => item.cartLineId !== cartLineId)
+    : items;
+
+  saveCartItems(updatedItems);
+  renderCart();
+  updateCartCountBadge();
+}
+
+function removeCartItem(cartLineId) {
+  const items = getCartItems().filter(item => item.cartLineId !== cartLineId);
+  saveCartItems(items);
+  renderCart();
+  updateCartCountBadge();
+}
+
+function calculateCartTotal(items) {
+  return items.reduce((sum, item) => sum + item.unitPrice * item.qty, 0);
+}
+
+
+function renderCartLine(item) {
+  const product = getCatalogItems().find(p => p.id === item.productId);
+  const image = product ? product.image : '';
+
+  
+  const optionsText = item.selectedOptions.length
+    ? `<p class="line-options">${item.selectedOptions.map(o => o.name).join(', ')}</p>`
     : '';
 
-  const actionButton = product.customizable
-    ? `<a class="card-action customize-btn" href="create.html?product=${product.id}">Customize</a>`
-    : `<button class="card-action add-btn" data-product-id="${product.id}">Add to Cart</button>`;
+  const lineTotal = item.unitPrice * item.qty;
 
   return `
-    <article class="product-card">
-      <img src="${product.image}" alt="${product.name}">
-      <div class="card-body">
-        ${badge}
-        <h3>${product.name}</h3>
-        <p class="price">${formatPrice(product.price)}</p>
-        ${actionButton}
+    <article class="cart-line" data-cart-line-id="${item.cartLineId}">
+      <img src="${image}" alt="${item.name}">
+      <div class="line-details">
+        <h3>${item.name}</h3>
+        ${optionsText}
+        <p class="line-unit-price">${formatPrice(item.unitPrice)} each</p>
       </div>
+      <div class="line-qty">
+        <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">&minus;</button>
+        <span class="qty-value">${item.qty}</span>
+        <button class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+      </div>
+      <p class="line-total">${formatPrice(lineTotal)}</p>
+      <button class="remove-btn" aria-label="Remove ${item.name} from cart">Remove</button>
     </article>
   `;
 }
 
 
-function renderGrid() {
-  const items = getCatalogItems().filter(product => {
-    const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
-    const matchesSearch = product.name.toLowerCase().includes(activeSearch.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+function renderCart() {
+  const container = document.getElementById('cart-items');
+  const emptyMsg = document.getElementById('empty-cart-message');
+  const totalEl = document.getElementById('cart-total');
+  if (!container) return; 
 
-  grid.innerHTML = items.map(renderProductCard).join('');
-  noResultsMsg.hidden = items.length > 0;
+  const items = getCartItems();
+
+  if (items.length === 0) {
+    container.innerHTML = '';
+    emptyMsg.hidden = false;
+    totalEl.textContent = formatPrice(0);
+    return;
+  }
+
+  emptyMsg.hidden = true;
+  container.innerHTML = items.map(renderCartLine).join('');
+  totalEl.textContent = formatPrice(calculateCartTotal(items));
 }
 
-searchInput.addEventListener('input', (e) => {
-  activeSearch = e.target.value;
-  renderGrid();
-});
+const cartItemsContainer = document.getElementById('cart-items');
+if (cartItemsContainer) {
+  cartItemsContainer.addEventListener('click', (e) => {
+    const line = e.target.closest('.cart-line');
+    if (!line) return;
+    const cartLineId = line.dataset.cartLineId;
 
-
-filterChips.forEach(chip => {
-  chip.addEventListener('click', () => {
-    filterChips.forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    activeCategory = chip.dataset.category;
-    renderGrid();
+    if (e.target.matches('.qty-btn[data-action="increase"]')) {
+      updateCartItemQty(cartLineId, 1);
+    } else if (e.target.matches('.qty-btn[data-action="decrease"]')) {
+      updateCartItemQty(cartLineId, -1);
+    } else if (e.target.matches('.remove-btn')) {
+      removeCartItem(cartLineId);
+    }
   });
-});
 
-
-grid.addEventListener('click', (e) => {
-  const btn = e.target.closest('.add-btn');
-  if (!btn) return;
-
-  if (typeof addToCart === 'function') {
-    addToCart(btn.dataset.productId, []);
-  } else {
-    console.log(`Would add "${btn.dataset.productId}" to cart — cart.js not loaded yet.`);
-  }
-});
-
-renderGrid();
+  renderCart();
+}
