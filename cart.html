@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart — Sweet Crumb Bakery</title>
+  <title>Cart — Bakery Time </title>
 
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,11 +11,9 @@
 </head>
 <body>
 
-  <!-- Same nav markup as inventory.html — keep this block identical
-       across every page, just move class="active"/aria-current here. -->
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="logo">Sweet Crumb</a>
+      <a href="index.html" class="logo">Bakery Time</a>
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="inventory.html">Inventory</a>
@@ -25,40 +23,27 @@
     </div>
   </header>
 
+
+  <div id="modeToggle">
+    <button id="themeToggle">Dark Mode</button>
+  </div>
+
   <main class="cart-page">
 
     <h1>Your Cart</h1>
 
-    <!-- ============================================================
-         CART LINES
-         Empty in the HTML on purpose, same reasoning as inventory.html's
-         #product-grid: cart.js is the single source of truth for what
-         a cart line looks like (renderCartLine() in cart.js), reading
-         straight from localStorage via getCartItems(). This container
-         gets fully rebuilt every time an item's quantity changes or
-         something is removed, so it always reflects what's actually
-         stored — never a stale copy.
-         ============================================================ -->
+    <!-- ONE #cart-items section — this is the only element cart.js's
+         renderCart() writes into. Having exactly one match for this id
+         is what makes document.getElementById('cart-items') reliable. -->
     <section id="cart-items" class="cart-items">
       <!-- cart line items injected here by js/cart.js's renderCart() -->
     </section>
 
-    <!-- Shown/hidden by renderCart() depending on whether the cart
-         array from localStorage is empty. -->
     <p id="empty-cart-message" class="empty-cart-message" hidden>
       Your cart is empty. Head over to the
       <a href="inventory.html">inventory</a> to find something sweet.
     </p>
 
-    <!-- ============================================================
-         ORDER SUMMARY
-         #cart-total is the only dynamic piece here — cart.js recalculates
-         it (unitPrice × qty, summed across every line) on every render.
-         The checkout button is intentionally non-functional for the
-         midterm: there's no backend to submit an order to yet. It's
-         left here as a visual placeholder for the final project, where
-         it'll POST to a real Symfony endpoint instead.
-         ============================================================ -->
     <section class="cart-summary">
       <div class="summary-row">
         <span>Total</span>
@@ -72,15 +57,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Sweet Crumb Bakery</p>
+    <p>&copy; 2026 Bakery Time Bakery</p>
   </footer>
 
-  <!-- app.js first (getCatalogItems, formatPrice, updateCartCountBadge),
-       then cart.js, which reads #cart-items and renders this whole
-       page — no separate "cart-page.js" needed, since rendering the
-       cart page IS what cart.js is for per the project's file-naming
-       spec. catalog.js isn't loaded here; this page has nothing to do
-       with search/filter. -->
   <script src="js/app.js"></script>
   <script src="js/cart.js"></script>
 </body>
