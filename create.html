@@ -18,17 +18,23 @@
         <a href="inventory.html">Inventory</a>
         <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
         <a href="login.html">Login</a>
+        <a href="create.html" class="active" aria-current="page">Create Your Own</a>
       </nav>
     </div>
   </header>
 
+  <div id="modeToggle">
+    <button id="themeToggle">Dark Mode</button>
+  </div>
+  
   <main class="create-page">
     <section class="page-intro">
       <h1>Build Your Order</h1>
       <p>Pick an item below, choose your toppings, and add it to your cart.</p>
     </section>
 
-    <section class="product-carousel-wrapper" aria-label="Choose an item to customize">
+   
+        <section class="product-carousel-wrapper" aria-label="Choose an item to customize">
       <button type="button" class="carousel-btn prev-btn" id="product-carousel-prev" aria-label="Previous item">&#10094;</button>
       <div class="product-carousel-track" id="product-carousel-track"></div>
       <button type="button" class="carousel-btn next-btn" id="product-carousel-next" aria-label="Next item">&#10095;</button>

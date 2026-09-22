@@ -6,17 +6,13 @@
    hex value outside this block.
    ================================================================== */
 :root {
-  /* -- Palette: warm bakery tones, not the generic cream+terracotta
-     combo you see everywhere. Crust-brown carries headings/nav,
-     berry-jam is the one accent color used sparingly for CTAs and
-     price emphasis. -- */
-  --color-cream:   #FBF3E3;  /* page background — "dough" */
-  --color-crust:   #7A4B32;  /* headings, nav, dark UI chrome */
-  --color-cocoa:   #2E1C12;  /* body text */
-  --color-berry:   #A63446;  /* accent: buttons, active states, prices */
-  --color-butter:  #E8B23D;  /* hover highlight */
-  --color-line:    #E2D0AC;  /* borders, dividers */
-  --color-card-bg: #FFFDF8;  /* product card background, lifted off page bg */
+  --color-cream:   #FBF3E3;  
+  --color-crust:   #7A4B32;  
+  --color-cocoa:   #2E1C12;  
+  --color-berry:   #A63446;  
+  --color-butter:  #E8B23D;  
+  --color-line:    #E2D0AC;  
+  --color-card-bg: #FFFDF8;  
 
   /* -- Type -- */
   --font-display: 'Fraunces', Georgia, serif;
@@ -30,42 +26,48 @@
 }
 
 html[data-theme="dark"] {
-  --color-cream: #4a3a30;
-  --color-crust: #6b4d3a;
-  --color-cocoa: #f5ead8;
-  --color-berry: #c94b5d;
+  --color-cream: #332820;
+  --color-crust: #6b4634;
+  --color-cocoa: #f8ead8;
+  --color-berry: #d45a6b;
   --color-butter: #e8b23d;
-  --color-line: #806552;
-  --color-card-bg: #59473b;
+  --color-line: #745847;
+  --color-card-bg: #46362d;
 }
 
 #modeToggle {
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 0.6rem 1.5rem;
   display: flex;
   justify-content: flex-end;
   background: var(--color-cream);
+  transition: background var(--transition-fast);
 }
 
 #themeToggle {
   background: var(--color-card-bg);
-  color: var(--color-crust);
+  color: var(--color-cocoa);
   border: 1px solid var(--color-line);
   border-radius: 999px;
   padding: 0.45rem 0.9rem;
   font-family: var(--font-body);
   font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition-fast),
-              color var(--transition-fast),
-              border-color var(--transition-fast);
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 #themeToggle:hover {
   background: var(--color-butter);
   color: var(--color-cocoa);
   border-color: var(--color-butter);
+  transform: translateY(-1px);
 }
 
 * { box-sizing: border-box; }
@@ -76,6 +78,13 @@ body {
   color: var(--color-cocoa);
   font-family: var(--font-body);
   line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin: 0 0 0.5rem; }
@@ -135,12 +144,6 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   padding: 2rem 1.5rem 4rem;
 }
 
-.page-intro { margin-bottom: 1.5rem; }
-
-/* ==================================================================
-   SEARCH + FILTER CONTROLS
-   Flex layout, wraps on narrow screens.
-   ================================================================== */
 .catalog-controls {
   display: flex;
   flex-wrap: wrap;
@@ -173,13 +176,13 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
 .filter-chip {
   border: 1px solid var(--color-line);
   background: var(--color-card-bg);
-  color: var(--color-crust);
+  color: var(--color-cocoa);
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
   cursor: pointer;
   font-family: var(--font-body);
   font-size: 0.9rem;
-  transition: background var(--transition-fast), color var(--transition-fast);
+  transition: background var(--transition-fast);
 }
 
 .filter-chip:hover {
@@ -232,7 +235,11 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   flex: 1;
 }
 
-.product-card h3 { font-size: 1.05rem; margin: 0; }
+.product-card h3 { 
+  font-size: 1.05rem; 
+  margin: 0; 
+  color: var(--color-crust);
+}
 
 .product-card .price {
   color: var(--color-berry);
@@ -288,7 +295,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
 }
 
 .site-footer {
-  text-align: center;
+  text-align: left;
   padding: 1.5rem;
   color: var(--color-crust);
   font-size: 0.85rem;
@@ -636,4 +643,127 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   .product-carousel-track {
     padding: 0.5rem 40px;
   }
+}
+
+/*login page ruleset*/
+
+.auth-form,
+.contact-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.auth-form h2,
+.contact-form h2 {
+  color: var(--color-light-text);
+  margin-bottom: 1.25rem;
+}
+
+.auth-form form,
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.auth-form label,
+.contact-form label {
+  color: var(--color-cocoa);
+  font-weight: 600;
+}
+
+.auth-form input,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+
+  background: var(--color-cream);
+  color: var(--color-cocoa);
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.auth-form input:focus,
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-berry);
+  box-shadow: 0 0 0 3px rgb(166 52 70 / 0.15);
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.auth-form button,
+.contact-form button {
+  margin-top: 0.75rem;
+  padding: 0.7rem 1rem;
+
+  background: var(--color-berry);
+  color: var(--color-cream);
+
+  border: none;
+  border-radius: var(--radius);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.auth-form button:hover,
+.contact-form button:hover {
+  background: var(--color-butter);
+  color: var(--color-cocoa);
+  transform: translateY(-1px);
+}
+
+/*dark mode text color change ruleset*/
+
+html[data-theme="dark"] .product-card h3,
+html[data-theme="dark"] .product-card .customize-btn,
+html[data-theme="dark"] .product-card .add-btn,
+html[data-theme="dark"] .filter-chip,
+html[data-theme="dark"] .auth-form h2,
+html[data-theme="dark"] .contact-form h2,
+html[data-theme="dark"] main h1,
+html[data-theme="dark"] .page-intro h1,
+html[data-theme="dark"] main h2,
+html[data-theme="dark"] .product-card .badge,
+html[data-theme="dark"] .site-footer,
+html[data-theme="dark"] .logo,
+html[data-theme="dark"] .featured-card h3,
+html[data-theme="dark"] .featured-image,
+html[data-theme="dark"] .main-nav a {
+  color: var(--color-cocoa);
 }
