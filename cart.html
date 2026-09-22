@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart | Bakery <Time></Time></title>
+  <title>Cart — Cookie Time Cookie</title>
+
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
 
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="logo">Bakery Time</a>
+      <a href="index.html" class="logo">Cookie Time Cookie</a>
       <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="inventory.html">Inventory</a>
@@ -22,23 +23,38 @@
     </div>
   </header>
 
+
   <div id="modeToggle">
     <button id="themeToggle">Dark Mode</button>
   </div>
 
-  <main>
-    <section class="cart-items" id="cart-items">
-      <!-- Cart line items rendered by cart.js -->
+  <main class="cart-page">
+
+    <h1>Your Cart</h1>
+
+    <section id="cart-items" class="cart-items">
+    
     </section>
+
+    <p id="empty-cart-message" class="empty-cart-message" hidden>
+      Your cart is empty. Head over to the
+      <a href="inventory.html">inventory</a> to find something sweet.
+    </p>
 
     <section class="cart-summary">
-      <p>Total: <span id="cart-total">$0.00</span></p>
-      <button id="checkout-btn">Checkout</button>
+      <div class="summary-row">
+        <span>Total</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      <button class="checkout-btn" disabled title="Checkout will be wired up in the final project">
+        Checkout
+      </button>
     </section>
+
   </main>
 
-  <footer>
-    <p>&copy; 2026 Bakery Time</p>
+  <footer class="site-footer">
+    <p>&copy; 2026 Cookie Time Cookie</p>
   </footer>
 
   <script src="js/app.js"></script>
