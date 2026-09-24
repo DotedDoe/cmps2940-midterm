@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* --- Image + counter overlay styles --- */
+    /*Image + counter overlay styles*/
     .card-grid {
       display: flex;
       flex-wrap: wrap;
@@ -17,7 +17,7 @@
     }
 
     .image-counter-card {
-      position: relative;      /* positioning reference for the overlay */
+      position: relative;      /*positioning reference for the overlay*/
       display: inline-block;
       width: 300px;
     }
@@ -31,7 +31,7 @@
     }
 
     .counter-overlay {
-      position: absolute;      /* sits on top of the image */
+      position: absolute;      /*sits on top of the image*/
       top: 10px;
       right: 10px;
       background: rgba(0, 0, 0, 0.65);
@@ -63,7 +63,6 @@
   </style>
 </head>
 <body>
-
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="logo">Cookie Time Cookie</a>
@@ -90,8 +89,8 @@
     <section class="announcements">
     </section>
 
-<audio id="background-music" loop>
-  <source src="fluffing.mp3" type="audio/mpeg">
+<audio id="background-music" loop> /*background music for homepage*/
+  <source src="audio/bakery.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
@@ -128,12 +127,21 @@
           </div>
         </div>
 
+        <div class="image-counter-card">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.simplyrecipes.com%2Fthmb%2FA18mTjqs5hhrzq9Xt1f5tdLzxTo%3D%2F1500x0%2Ffilters%3Ano_upscale()%3Amax_bytes(150000)%3Astrip_icc()%2Fsimply-recipes-dolly-parton-holiday-cookies-lead-2-9e62fdad1d1e49a98643bfab6fc1cb5f.jpg&f=1&nofb=1&ipt=a4e084a1765e2d92b2fd4df210716e9555e865a989e22d810e55c41b988ea88e" alt="Mrrr Chrima">
+          <div class="counter-overlay">
+            <button onclick="dec('count4')">−</button>
+            <span id="count4">0</span>
+            <button onclick="inc('count4')">+</button>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Bakery Time</p>
+    <p>&copy; 2026 Cookie Time Cookie</p>
   </footer>
 
   <script src="js/app.js"></script>
@@ -147,7 +155,7 @@
     }
 
     function dec(id) {
-      counts[id] = (counts[id] || 0) - 1;
+      counts[id] = Math.max((counts[id] || 0) - 1, 0);
       document.getElementById(id).textContent = counts[id];
     }
   </script>
