@@ -123,6 +123,15 @@
           </div>
         </div>
 
+        <div class="image-counter-card">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.simplyrecipes.com%2Fthmb%2FA18mTjqs5hhrzq9Xt1f5tdLzxTo%3D%2F1500x0%2Ffilters%3Ano_upscale()%3Amax_bytes(150000)%3Astrip_icc()%2Fsimply-recipes-dolly-parton-holiday-cookies-lead-2-9e62fdad1d1e49a98643bfab6fc1cb5f.jpg&f=1&nofb=1&ipt=a4e084a1765e2d92b2fd4df210716e9555e865a989e22d810e55c41b988ea88e" alt="Mrrr Chrima">
+          <div class="counter-overlay">
+            <button onclick="dec('count4')">−</button>
+            <span id="count4">0</span>
+            <button onclick="inc('count4')">+</button>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
@@ -142,9 +151,11 @@
     }
 
     function dec(id) {
-      counts[id] = (counts[id] || 0) - 1;
+      counts[id] = Math.max((counts[id] || 0) - 1, 0);
       document.getElementById(id).textContent = counts[id];
     }
+
+    
   </script>
 </body>
 </html>
