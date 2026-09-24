@@ -3,7 +3,7 @@
 // Depends on app.js (for getCatalogItems() / formatPrice()) and cart.js
 // (for addToCart()) being loaded first. Does NOT depend on catalog.js —
 // that file assumes #product-grid exists and will throw if loaded here.
-
+ 
 document.addEventListener('DOMContentLoaded', () => {
   const carouselTrack = document.getElementById('product-carousel-track');
   const panel = document.getElementById('customizer-panel');
@@ -186,4 +186,5 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1200);
     }
   }
+
 });
