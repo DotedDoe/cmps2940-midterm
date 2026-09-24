@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* --- Image + counter overlay styles --- */
+    /*Image + counter overlay styles*/
     .card-grid {
       display: flex;
       flex-wrap: wrap;
@@ -17,7 +17,7 @@
     }
 
     .image-counter-card {
-      position: relative;      /* positioning reference for the overlay */
+      position: relative;      /*positioning reference for the overlay*/
       display: inline-block;
       width: 300px;
     }
@@ -31,7 +31,7 @@
     }
 
     .counter-overlay {
-      position: absolute;      /* sits on top of the image */
+      position: absolute;      /*sits on top of the image*/
       top: 10px;
       right: 10px;
       background: rgba(0, 0, 0, 0.65);
@@ -63,7 +63,6 @@
   </style>
 </head>
 <body>
-
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="logo">Cookie Time Cookie</a>
@@ -90,7 +89,7 @@
     <section class="announcements">
     </section>
 
-<audio id="background-music" loop>
+<audio id="background-music" loop> /*background music for homepage*/
   <source src="fluffing.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -158,8 +157,6 @@
       counts[id] = Math.max((counts[id] || 0) - 1, 0);
       document.getElementById(id).textContent = counts[id];
     }
-
-    
   </script>
 </body>
 </html>
