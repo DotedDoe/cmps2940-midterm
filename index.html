@@ -60,6 +60,24 @@
     .counter-overlay button:hover {
       background: rgba(255, 255, 255, 0.4);
     }
+
+    .add-to-cart button {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border: none;
+      border-radius:8px;
+      background: #c8763a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .add-to-cart:hover {
+      background: a85f2b;
+    }
   </style>
 </head>
 <body>
@@ -106,6 +124,7 @@
             <span id="count1">0</span>
             <button onclick="inc('count1')">+</button>
           </div>
+          <button class="add-to-cart" onclick=""addtoCart(this, 'count1')>Add to Cart</button>
         </div>
 
         <div class="image-counter-card">
@@ -115,6 +134,7 @@
             <span id="count2">0</span>
             <button onclick="inc('count2')">+</button>
           </div>
+          <button class="add-to-cart" onclick=""addtoCart(this, 'count2')>Add to Cart</button>
         </div>
 
         <div class="image-counter-card">
@@ -124,6 +144,7 @@
             <span id="count3">0</span>
             <button onclick="inc('count3')">+</button>
           </div>
+          <button class="add-to-cart" onclick=""addtoCart(this, 'count3')>Add to Cart</button>
         </div>
 
         <div class="image-counter-card">
@@ -133,6 +154,7 @@
             <span id="count4">0</span>
             <button onclick="inc('count4')">+</button>
           </div>
+          <button class="add-to-cart" onclick=""addtoCart(this, 'count4')>Add to Cart</button>
         </div>
 
       </div>
@@ -157,6 +179,25 @@
       counts[id] = Math.max((counts[id] || 0) - 1, 0);
       document.getElementById(id).textContent = counts[id];
     }
+
+    function addToCart(btn, countId) {
+    const qty = counts[countId] || 0;
+    if (qty === 0) return; // nothing selected
+
+    const { id, name, price } = btn.closest('.image-counter-card').dataset;
+
+    const cart = getCart();
+    if (cart[id]) {
+      cart[id].qty += qty;
+    } else {
+      cart[id] = { name, price: parseFloat(price), qty };
+    }
+    saveCart(cart);
+
+    // reset the counter
+    counts[countId] = 0;
+    document.getElementById(countId).textContent = 0;
+  }
   </script>
 </body>
 </html>
