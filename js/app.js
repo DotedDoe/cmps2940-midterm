@@ -126,7 +126,7 @@ const CATALOG_DATA = [
     name: "Sourdough Loaf",
     price: 6.50,
     category: "breads",
-    image: "images/sourdough.jpg"
+    image: "images-for-website/sourdough.png"
   },
   {
     id: "carrot-cake-slice",
