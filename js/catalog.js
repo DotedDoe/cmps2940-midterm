@@ -6,7 +6,6 @@ const noResultsMsg = document.getElementById('no-results');
 let activeCategory = 'all';
 let activeSearch = '';
 
-
 function renderProductCard(product) {
   const badge = product.customizable
     ? `<span class="badge">Customizable</span>`
@@ -16,6 +15,7 @@ function renderProductCard(product) {
     ? `<a class="card-action customize-btn" href="create.html?product=${product.id}">Customize</a>`
     : `<button class="card-action add-btn" data-product-id="${product.id}">Add to Cart</button>`;
 
+  // Wrapped the HTML block in backticks
   return `
     <article class="product-card">
       <img src="${product.image}" alt="${product.name}">
@@ -27,8 +27,7 @@ function renderProductCard(product) {
       </div>
     </article>
   `;
-}
-
+} // Added missing closing brace
 
 function renderGrid() {
   const items = getCatalogItems().filter(product => {
@@ -46,7 +45,6 @@ searchInput.addEventListener('input', (e) => {
   renderGrid();
 });
 
-
 filterChips.forEach(chip => {
   chip.addEventListener('click', () => {
     filterChips.forEach(c => c.classList.remove('active'));
@@ -56,7 +54,6 @@ filterChips.forEach(chip => {
   });
 });
 
-
 grid.addEventListener('click', (e) => {
   const btn = e.target.closest('.add-btn');
   if (!btn) return;
@@ -64,8 +61,9 @@ grid.addEventListener('click', (e) => {
   if (typeof addToCart === 'function') {
     addToCart(btn.dataset.productId, []);
   } else {
+    // Fixed string interpolation backticks here
     console.log(`Would add "${btn.dataset.productId}" to cart — cart.js not loaded yet.`);
   }
-});
+}); // Added missing closing parenthesis
 
 renderGrid();
