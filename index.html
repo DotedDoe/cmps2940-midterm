@@ -7,8 +7,22 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  
   <style>
-    /*Image + counter overlay styles*/
+  .hero-banner {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+    
     .card-grid {
       display: flex;
       flex-wrap: wrap;
@@ -104,8 +118,11 @@
         <a href="create.html">Create Your Own</a>
       </nav>
     </div>
-  </header>
 
+  </header>
+  <div class="hero-banner">
+  <img src="images-for-website/cookies-for-background.jpg" alt="mister white yo" />
+  </div>
   <div id="modeToggle">
     <button id="themeToggle">Dark Mode</button>
   </div>
@@ -119,12 +136,10 @@
     <section class="announcements">
     </section>
 
-<audio id= controls loop> /*background music for homepage*/
+<audio id="background-music" loop> /*background music for homepage*/
   <source src="audio/bakery.mp3" type="audio/mpeg">
-
   Your browser does not support the audio element.
 </audio>
-
 
     <section class="highlights">
       <h2>Featured Items</h2>
@@ -237,20 +252,6 @@ function updateCartCount() {
 }
 
 updateCartCount();
-
-  </script>
-  <script>
-    // Wait for the user to click anywhere on the page, then play the music
-document.addEventListener('click', function() {
-    const audio = document.getElementById('background-music');
-    
-    // Check if the audio is already playing to avoid restarting it on every click
-    if (audio.paused) {
-        audio.play().catch(error => {
-            console.log("Playback prevented by browser rules:", error);
-        });
-    }
-}, { once: true }); // '{ once: true }' ensures this listener only runs on the very first click
 
   </script>
 </body>
