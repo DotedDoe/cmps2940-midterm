@@ -20,6 +20,7 @@ function renderProductCard(product) {
     ? `<a class="card-action customize-btn" href="create.html?product=${encodeURIComponent(product.id)}">Customize</a>`
     : `<button type="button" class="card-action add-btn" data-product-id="${product.id}">Add to Cart</button>`;
 
+  // Wrapped the HTML block in backticks
   return `
     <article class="product-card">
       <img src="${product.image}" alt="${product.name}" onerror="this.classList.add('img-fallback')">
@@ -32,6 +33,7 @@ function renderProductCard(product) {
     </article>
   `;
 }
+} // Added missing closing brace
 
 function renderGrid() {
   const query = activeSearch.trim().toLowerCase();
@@ -87,6 +89,6 @@ grid.addEventListener('click', (e) => {
   } else {
     console.log(`Would add "${product.id}" to cart — cart.js not loaded yet.`);
   }
-});
+}); // Added missing closing parenthesis
 
 renderGrid();

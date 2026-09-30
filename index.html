@@ -60,6 +60,36 @@
     .counter-overlay button:hover {
       background: rgba(255, 255, 255, 0.4);
     }
+
+    .add-to-cart button {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border: none;
+      border-radius:8px;
+      background: #c8763a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .add-to-cart:hover {
+      background: a85f2b;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      color: black;
+    }
+
+    .bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
   </style>
 </head>
 <body>
@@ -82,8 +112,8 @@
 
   <main>
     <section class="hero">
-      <h1>Welcome to Cookie Time Cookie</h1>
-      <p>We are an independent bakery that sells you baked goods!</p>
+      <h1>About Us!</h1>
+      <p>We are an independent bakery that sells cookies in a homemade fashion. Baked fresh to order and not stored all day like other stores!</p>
     </section>
 
     <section class="announcements">
@@ -101,40 +131,48 @@
 
       <div class="card-grid">
 
-        <div class="image-counter-card">
+        <div class="image-counter-card" data-id="choco-mountain" data-name="Choco Mountain" data-price="3.50">
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbakewithshivesh.com%2Fwp-content%2Fuploads%2F2020%2F05%2F151F814A-2749-4978-BA53-3AD2A962C933-scaled.jpg&f=1&nofb=1&ipt=fd4bddd16a29d46bfd11e9d93fb13b002a94f1f3ac3905ec48e6e902d98a0e93" alt="WE NEED TO COOK!">
+          <div class="centered">Choco Mountain</div>
           <div class="counter-overlay">
             <button onclick="dec('count1')">−</button>
             <span id="count1">0</span>
             <button onclick="inc('count1')">+</button>
           </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count1')">Add to Cart</button>
         </div>
 
-        <div class="image-counter-card">
+        <div class="image-counter-card" data-id="sweet-sweet-canyon" data-name="Sweet Sweet Canyon" data-price="2.50">
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbellyfull.net%2Fwp-content%2Fuploads%2F2025%2F02%2FSugar-Cookies-hero-1.jpg&f=1&nofb=1&ipt=d2836a14c2e40496aa96858c00c7fbcf72ac28a968b205a3f971c42e61227203" alt="R.I.P Dolly Parton">
+          <div class="centered">Sweet Sweet Canyon</div>
           <div class="counter-overlay">
             <button onclick="dec('count2')">−</button>
             <span id="count2">0</span>
             <button onclick="inc('count2')">+</button>
           </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count2')">Add to Cart</button>
         </div>
 
-        <div class="image-counter-card">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.modernhoney.com%2Fwp-content%2Fuploads%2F2017%2F11%2FThin-and-Crispy-Chocolate-Chip-Cookies-2.jpg&f=1&nofb=1&ipt=3d43b3cebdf51e9068b93d1f30298138f3ecb81bf1dba897e068d53faf4a56e1" alt="MR WHITE! IM TIRED YO!">
+         <div class="image-counter-card" data-id="pumpkin-pinball" data-name="Pumpkin Pinball" data-price="3.00">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwearerecipes.com%2Fwp-content%2Fuploads%2F2025%2F09%2Fpumpkin-cookies-1.webp&f=1&nofb=1&ipt=070717642ada13dddce7c3ff9a2d9923171204860fa6c36f31017b31d5135ce7&ipo=images" alt="MR WHITE! IM TIRED YO!">
+          <div class="centered">Pumpkin Pinball</div>
           <div class="counter-overlay">
             <button onclick="dec('count3')">−</button>
             <span id="count3">0</span>
             <button onclick="inc('count3')">+</button>
           </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count3')">Add to Cart</button>
         </div>
 
-        <div class="image-counter-card">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.simplyrecipes.com%2Fthmb%2FA18mTjqs5hhrzq9Xt1f5tdLzxTo%3D%2F1500x0%2Ffilters%3Ano_upscale()%3Amax_bytes(150000)%3Astrip_icc()%2Fsimply-recipes-dolly-parton-holiday-cookies-lead-2-9e62fdad1d1e49a98643bfab6fc1cb5f.jpg&f=1&nofb=1&ipt=a4e084a1765e2d92b2fd4df210716e9555e865a989e22d810e55c41b988ea88e" alt="Mrrr Chrima">
+        <div class="image-counter-card" data-id="rainbow-road" data-name="Rainbow Road" data-price="4.00">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbeyondfrosting.com%2Fwp-content%2Fuploads%2F2022%2F04%2FRainbow-Sugar-Cookies-2161-2.jpg&f=1&nofb=1&ipt=28845a5526de4068839f43a929cc79b67406a5a163af564b334df754d46a5c59&ipo=images" alt="Mrrr Chrima">
+          <div class="centered">Rainbow Road</div>
           <div class="counter-overlay">
             <button onclick="dec('count4')">−</button>
             <span id="count4">0</span>
             <button onclick="inc('count4')">+</button>
           </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count4')">Add to Cart</button>
         </div>
 
       </div>
@@ -159,6 +197,47 @@
       counts[id] = Math.max((counts[id] || 0) - 1, 0);
       document.getElementById(id).textContent = counts[id];
     }
+
+    function addToCart(btn, countId) {
+    const qty = counts[countId] || 0;
+    if (qty === 0) return; // nothing selected
+
+    const { id, name, price } = btn.closest('.image-counter-card').dataset;
+
+    const cart = getCart();
+    if (cart[id]) {
+      cart[id].qty += qty;
+    } else {
+      cart[id] = { name, price: parseFloat(price), qty };
+    }
+    saveCart(cart);
+
+    // reset the counter
+    counts[countId] = 0;
+    document.getElementById(countId).textContent = 0;
+  }
+
+  function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem('cart')) || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const total = Object.values(getCart()).reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById('cart-count');
+  if (badge) badge.textContent = total;
+}
+
+updateCartCount();
+
   </script>
   <script>
     // Wait for the user to click anywhere on the page, then play the music
