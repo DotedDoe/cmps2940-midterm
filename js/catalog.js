@@ -33,7 +33,6 @@ function renderProductCard(product) {
     </article>
   `;
 }
-} // Added missing closing brace
 
 function renderGrid() {
   const query = activeSearch.trim().toLowerCase();
