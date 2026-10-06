@@ -742,3 +742,41 @@ html[data-theme="dark"] .featured-image,
 html[data-theme="dark"] .main-nav a {
   color: var(--color-cocoa);
 }
+html[data-theme="dark"] .base-price,
+html[data-theme="dark"] .topping-list legend,
+html[data-theme="dark"] .line-details h3,
+html[data-theme="dark"] .line-options,
+html[data-theme="dark"] .line-unit-price,
+html[data-theme="dark"] .qty-btn,
+html[data-theme="dark"] .remove-btn,
+html[data-theme="dark"] .summary-row,
+html[data-theme="dark"] .empty-cart-message,
+html[data-theme="dark"] .no-results {
+  color: var(--color-cocoa);
+}
+html[data-theme="dark"] .carousel-btn {
+  background: var(--color-butter);
+  color: var(--color-cream);
+}
+
+html[data-theme="dark"] .carousel-btn:hover {
+  background: var(--color-berry);
+  color: var(--color-cocoa);
+}
+
+/* Quantity box: default white field with dark text looks wrong in dark mode */
+html[data-theme="dark"] .quantity-row input {
+  background: var(--color-cream);
+  color: var(--color-cocoa);
+}
+
+/* Create page "Add to Cart" button: match the inventory page's dark mode text */
+html[data-theme="dark"] .customizer-details .add-btn {
+  color: var(--color-cocoa);
+}
+/* About Us page content spacing */
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}

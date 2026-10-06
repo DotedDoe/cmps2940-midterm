@@ -96,7 +96,7 @@ const CATALOG_DATA = [
     name: "Chocolate Chip Cookie",
     price: 2.50,
     category: "cookies",
-    image: "images-for-website/base.jpg",
+    image: "images-for-website/chocolate.png",
     customizable: {
       label: "Choose toppings",
       options: [
@@ -111,7 +111,7 @@ const CATALOG_DATA = [
     name: "Fudge Brownie",
     price: 3.00,
     category: "brownies",
-    image: "images-for-website/slop.jpg",
+    image: "images/brownie.jpg",
     customizable: {
       label: "Choose toppings",
       options: [
@@ -161,6 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCountBadge();
   initTheme();
 });
+
+// Keep the badge correct when the page is restored with the browser's back button
+window.addEventListener('pageshow', updateCartCountBadge);
 
 function initTheme() {
   const themeToggle = document.getElementById('themeToggle');

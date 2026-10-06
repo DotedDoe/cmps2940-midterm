@@ -1,51 +1,60 @@
 
 
+// cart.js — localStorage cart: add, render, change quantity, remove, total.
+//
+// Depends on app.js (getCatalogItems / formatPrice / updateCartCountBadge).
+// addToCart() receives ONE item object — the same shape catalog.js and
+// create.js both send:
+//   { productId, name, price (unit price), qty, toppings: [topping names] }
+
 const CART_STORAGE_KEY = 'sweetCrumbCart';
 
 function getCartItems() {
-  const raw = localStorage.getItem(CART_STORAGE_KEY);
-  return raw ? JSON.parse(raw) : [];
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CART_STORAGE_KEY));
+    // Ignore anything that isn't a valid line (e.g. data saved in an older format)
+    return Array.isArray(parsed)
+      ? parsed.filter(item => item && typeof item.unitPrice === 'number' && item.qty > 0)
+      : [];
+  } catch {
+    return [];
+  }
 }
 
 function saveCartItems(items) {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
 }
 
+function addToCart(newItem) {
+  if (!newItem || !newItem.productId) return;
 
-function addToCart(productId, selectedOptions = []) {
+  const toppings = Array.isArray(newItem.toppings) ? newItem.toppings : [];
+  const qty = Math.max(1, parseInt(newItem.qty, 10) || 1);
+
+  // Same product + same toppings = same cart line, so quantities combine.
+  const cartLineId = [newItem.productId, ...[...toppings].sort()].join('|');
+
   const items = getCartItems();
-
-  const cartLineId = selectedOptions.length
-    ? `${productId}-${selectedOptions.map(o => o.id).sort().join('-')}`
-    : productId;
-
   const existingLine = items.find(item => item.cartLineId === cartLineId);
+
   if (existingLine) {
-    existingLine.qty += 1;
-    saveCartItems(items);
-    updateCartCountBadge();
-    return;
+    existingLine.qty += qty;
+  } else {
+    const product = getCatalogItems().find(p => p.id === newItem.productId);
+    items.push({
+      cartLineId,
+      productId: newItem.productId,
+      // Use the plain catalog name; toppings are shown on their own line in the cart.
+      name: product ? product.name : newItem.name,
+      unitPrice: Math.round(Number(newItem.price) * 100) / 100,
+      toppings,
+      qty
+    });
   }
-
-  const product = getCatalogItems().find(p => p.id === productId);
-  if (!product) return; 
-
-  const addOnTotal = selectedOptions.reduce((sum, o) => sum + o.priceAdd, 0);
-
-  items.push({
-    cartLineId,
-    productId,
-    name: product.name,
-    basePrice: product.price,
-    selectedOptions,
-    unitPrice: product.price + addOnTotal,
-    qty: 1
-  });
 
   saveCartItems(items);
   updateCartCountBadge();
 }
-
 
 function updateCartItemQty(cartLineId, delta) {
   const items = getCartItems();
@@ -74,43 +83,40 @@ function calculateCartTotal(items) {
   return items.reduce((sum, item) => sum + item.unitPrice * item.qty, 0);
 }
 
-
 function renderCartLine(item) {
   const product = getCatalogItems().find(p => p.id === item.productId);
   const image = product ? product.image : '';
 
-  
-  const optionsText = item.selectedOptions.length
-    ? `<p class="line-options">${item.selectedOptions.map(o => o.name).join(', ')}</p>`
+  const toppingsText = item.toppings && item.toppings.length
+    ? `<p class="line-options">${item.toppings.join(', ')}</p>`
     : '';
 
   const lineTotal = item.unitPrice * item.qty;
 
   return `
     <article class="cart-line" data-cart-line-id="${item.cartLineId}">
-      <img src="${image}" alt="${item.name}">
+      <img src="${image}" alt="${item.name}" onerror="this.classList.add('img-fallback')">
       <div class="line-details">
         <h3>${item.name}</h3>
-        ${optionsText}
+        ${toppingsText}
         <p class="line-unit-price">${formatPrice(item.unitPrice)} each</p>
       </div>
       <div class="line-qty">
-        <button class="qty-btn" data-action="decrease" aria-label="Decrease quantity">&minus;</button>
+        <button type="button" class="qty-btn" data-action="decrease" aria-label="Decrease quantity">&minus;</button>
         <span class="qty-value">${item.qty}</span>
-        <button class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
+        <button type="button" class="qty-btn" data-action="increase" aria-label="Increase quantity">+</button>
       </div>
       <p class="line-total">${formatPrice(lineTotal)}</p>
-      <button class="remove-btn" aria-label="Remove ${item.name} from cart">Remove</button>
+      <button type="button" class="remove-btn" aria-label="Remove ${item.name} from cart">Remove</button>
     </article>
   `;
 }
-
 
 function renderCart() {
   const container = document.getElementById('cart-items');
   const emptyMsg = document.getElementById('empty-cart-message');
   const totalEl = document.getElementById('cart-total');
-  if (!container) return; 
+  if (!container) return; // not on the cart page
 
   const items = getCartItems();
 
