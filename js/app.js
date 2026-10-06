@@ -111,7 +111,7 @@ const CATALOG_DATA = [
     name: "Fudge Brownie",
     price: 3.00,
     category: "brownies",
-    image: "images/brownie.jpg",
+    image: "images-for-website/slop.jpg",
     customizable: {
       label: "Choose toppings",
       options: [
