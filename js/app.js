@@ -93,10 +93,10 @@ function initCookieBuilder() {
 const CATALOG_DATA = [
   {
     id: "choc-chip-cookie",
-    name: "Chocolate Chip Cookie",
+    name: "Sugar Cookie",
     price: 2.50,
     category: "cookies",
-    image: "images-for-website/base.jpg",
+    image: "images-for-website/base.png",
     customizable: {
       label: "Choose toppings",
       options: [
@@ -104,6 +104,8 @@ const CATALOG_DATA = [
         { id: "mm", name: "M&Ms", priceAdd: 0.50 },
         { id: "icing", name: "Icing Drizzle", priceAdd: 0.50 }
       ]
+  
+      
     }
   },
   {
@@ -134,6 +136,13 @@ const CATALOG_DATA = [
     price: 4.25,
     category: "cakes",
     image: "images-for-website/ai-gen-slop.jpg"
+  },
+  {
+    id: "custom-bundle",
+    name: "Custom bundle of baked goods",
+    price: 9.99,
+    category: "all",
+    images: "images-for-website/basket.png"
   }
 ];
 
@@ -198,3 +207,52 @@ function updateThemeButton(themeToggle) {
     themeToggle.textContent = 'Dark Mode';
   }
 }
+const addToCartBtn = document.querySelector('.add-to-cart-btn');
+const bundleModal = document.getElementById('bundleModal');
+const addBundleBtn = document.getElementById('addBundleBtn');
+const skipBundleBtn = document.getElementById('skipBundleBtn');
+
+// Store temporary item data
+let pendingItem = null;
+
+// 1. When user clicks "Add to Cart" on a product
+addToCartBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  // Save the main item info (e.g., from dataset attributes)
+  pendingItem = {
+    name: addToCartBtn.dataset.name,
+    price: parseFloat(addToCartBtn.dataset.price)
+  };
+
+  // Show the bundle question popup
+  bundleModal.classList.add('active');
+});
+
+// 2. If user clicks "Yes, Add Bundle"
+addBundleBtn.addEventListener('click', () => {
+  const bundleItem = { name: "Accessory Bundle", price: 15.00 }; // Example bundle
+  
+  addToCart(pendingItem);
+  addToCart(bundleItem);
+  
+  closeModal();
+});
+
+// 3. If user clicks "No Thanks"
+skipBundleBtn.addEventListener('click', () => {
+  addToCart(pendingItem);
+  closeModal();
+});
+
+function closeModal() {
+  bundleModal.classList.remove('active');
+  pendingItem = null;
+}
+
+// Basic placeholder for your existing cart function
+function addToCart(item) {
+  console.log("Added to cart:", item);
+  // Put your actual cart array push / UI update logic here
+}
+
