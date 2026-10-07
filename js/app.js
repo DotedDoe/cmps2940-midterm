@@ -1,10 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCookieBuilder();
 });
 
-// 1. Basic client-side validation for login/contact forms
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   if (!contactForm) return;
@@ -15,7 +13,6 @@ function initContactForm() {
   });
 }
 
-// 2. Cookie Builder & Carousel Logic
 function initCookieBuilder() {
   const baseImages = Array.from(document.querySelectorAll('.base-layer'));
   const baseSelect = document.getElementById('baseSelect');
@@ -24,12 +21,10 @@ function initCookieBuilder() {
   const prevBtn = document.getElementById('prevCookie');
   const nextBtn = document.getElementById('nextCookie');
 
-  // If we aren't on the cookie builder page, exit cleanly
   if (!baseSelect || baseImages.length === 0) return;
 
   let currentBaseIndex = 0;
 
-  // Function to set active base cookie
   function updateBase(index) {
     baseImages.forEach((img, i) => {
       img.classList.toggle('active', i === index);
@@ -38,7 +33,6 @@ function initCookieBuilder() {
     currentBaseIndex = index;
   }
 
-  // Carousel Buttons
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       let nextIndex = (currentBaseIndex - 1 + baseImages.length) % baseImages.length;
@@ -53,12 +47,10 @@ function initCookieBuilder() {
     });
   }
 
-  // Base Dropdown Sync
   baseSelect.addEventListener('change', (e) => {
     updateBase(parseInt(e.target.value, 10));
   });
 
-  // Frosting Dropdown Handler
   if (frostingSelect) {
     frostingSelect.addEventListener('change', (e) => {
       const frostingLayer = document.getElementById('layer-frosting');
@@ -72,7 +64,6 @@ function initCookieBuilder() {
     });
   }
 
-  // Toppings Dropdown Handler
   if (toppingSelect) {
     toppingSelect.addEventListener('change', (e) => {
       // Hide all toppings first
@@ -97,6 +88,16 @@ const CATALOG_DATA = [
     price: 2.50,
     category: "cookies",
     image: "images-for-website/base.jpg",
+    description: "A classic bakery cookie loaded with semi-sweet chocolate chips, crisp on the edges and soft in the middle.",
+    nutrition: {
+      servingSize: "1 cookie (60g)",
+      calories: 280,
+      fat: "14g",
+      carbs: "36g",
+      sugar: "20g",
+      protein: "3g",
+      allergens: ["Wheat", "Egg", "Dairy", "May contain traces of nuts"]
+    },
     customizable: {
       label: "Choose toppings",
       options: [
@@ -111,7 +112,17 @@ const CATALOG_DATA = [
     name: "Fudge Brownie",
     price: 3.00,
     category: "brownies",
-    image: "images/brownie.jpg",
+    image: "images-for-website/brownie.jpg",
+    description: "Dense, fudgy, and rich with cocoa — baked in small batches so the center stays gooey.",
+    nutrition: {
+      servingSize: "1 brownie (70g)",
+      calories: 340,
+      fat: "18g",
+      carbs: "42g",
+      sugar: "28g",
+      protein: "4g",
+      allergens: ["Wheat", "Egg", "Dairy", "Soy"]
+    },
     customizable: {
       label: "Choose toppings",
       options: [
@@ -126,14 +137,92 @@ const CATALOG_DATA = [
     name: "Sourdough Loaf",
     price: 6.50,
     category: "breads",
-    image: "images/sourdough.jpg"
+    image: "images-for-website/sourdough.jpg",
+    description: "Naturally leavened with our house starter, fermented for 24 hours for a tangy flavor and chewy crumb.",
+    nutrition: {
+      servingSize: "1 slice (50g)",
+      calories: 130,
+      fat: "0.5g",
+      carbs: "26g",
+      sugar: "1g",
+      protein: "5g",
+      allergens: ["Wheat"]
+    }
   },
   {
     id: "carrot-cake-slice",
     name: "Carrot Cake Slice",
     price: 4.25,
     category: "cakes",
-    image: "images-for-website/ai-gen-slop.jpg"
+    image: "images-for-website/ai-gen-slop.jpg",
+    description: "Moist spiced cake packed with shredded carrots and walnuts, topped with cream cheese frosting.",
+    nutrition: {
+      servingSize: "1 slice (120g)",
+      calories: 410,
+      fat: "22g",
+      carbs: "48g",
+      sugar: "34g",
+      protein: "5g",
+      allergens: ["Wheat", "Egg", "Dairy", "Tree Nuts"]
+    }
+  },
+  {
+    id: "blueberry-muffin",
+    name: "Blueberry Muffin",
+    price: 3.25,
+    category: "breads",
+    image: "images-for-website/blueberry-muffin.jpg",
+    description: "A tender, bakery-style muffin studded with fresh blueberries and finished with a crunchy sugar top.",
+    nutrition: {
+      servingSize: "1 muffin (95g)",
+      calories: 320,
+      fat: "12g",
+      carbs: "48g",
+      sugar: "26g",
+      protein: "4g",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    }
+  },
+  {
+    id: "cinnamon-roll",
+    name: "Cinnamon Roll",
+    price: 4.00,
+    category: "breads",
+    image: "images-for-website/cinnamon-roll.jpg",
+    description: "Soft, pull-apart layers swirled with brown sugar and cinnamon, finished with a warm vanilla glaze.",
+    nutrition: {
+      servingSize: "1 roll (110g)",
+      calories: 430,
+      fat: "17g",
+      carbs: "62g",
+      sugar: "31g",
+      protein: "6g",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    },
+    customizable: {
+      label: "Choose add-ons",
+      options: [
+        { id: "extra-glaze", name: "Extra Glaze", priceAdd: 0.50 },
+        { id: "pecans", name: "Chopped Pecans", priceAdd: 0.75 }
+      ]
+    }
+  },
+  {
+    id: "red-velvet-cupcake",
+    name: "Red Velvet Cupcake",
+    price: 3.50,
+    category: "cakes",
+    image: "images-for-website/red-velvet-cupcake.jpg",
+    description: "A cocoa-kissed cupcake with a hint of tang, topped with a swirl of cream cheese frosting.",
+    nutrition: {
+      servingSize: "1 cupcake (85g)",
+      calories: 350,
+      fat: "16g",
+      carbs: "46g",
+      sugar: "32g",
+      protein: "3g",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    }
   }
 ];
 
