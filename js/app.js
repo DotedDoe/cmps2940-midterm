@@ -114,7 +114,7 @@ const CATALOG_DATA = [
     name: "Fudge Brownie",
     price: 3.00,
     category: "brownies",
-    image: "images-for-website/slop.jpg",
+    image: "images-for-website/slop.png",
     description: "Dense, fudgy, and rich with cocoa — baked in small batches so the center stays gooey.",
     nutrition: {
       servingSize: "1 brownie (70g)",
@@ -139,7 +139,7 @@ const CATALOG_DATA = [
     name: "Sourdough Loaf",
     price: 6.50,
     category: "breads",
-    image: "images-for-website/sourdough.jpg",
+    image: "images-for-website/sourdough.png",
     description: "Naturally leavened with our house starter, fermented for 24 hours for a tangy flavor and chewy crumb.",
     nutrition: {
       servingSize: "1 slice (50g)",
@@ -156,7 +156,7 @@ const CATALOG_DATA = [
     name: "Carrot Cake Slice",
     price: 4.25,
     category: "cakes",
-    image: "images-for-website/ai-gen-slop.jpg",
+    image: "images-for-website/ai-gen-slop.png",
     description: "Moist spiced cake packed with shredded carrots and walnuts, topped with cream cheese frosting.",
     nutrition: {
       servingSize: "1 slice (120g)",
@@ -173,7 +173,7 @@ const CATALOG_DATA = [
     name: "Blueberry Muffin",
     price: 3.25,
     category: "breads",
-    image: "images-for-website/blueberry-muffin.jpg",
+    image: "images-for-website/blueberry-muffin.png",
     description: "A tender, bakery-style muffin studded with fresh blueberries and finished with a crunchy sugar top.",
     nutrition: {
       servingSize: "1 muffin (95g)",
@@ -190,7 +190,7 @@ const CATALOG_DATA = [
     name: "Cinnamon Roll",
     price: 4.00,
     category: "breads",
-    image: "images-for-website/cinnamon-roll.jpg",
+    image: "images-for-website/cinnamon-roll.png",
     description: "Soft, pull-apart layers swirled with brown sugar and cinnamon, finished with a warm vanilla glaze.",
     nutrition: {
       servingSize: "1 roll (110g)",
@@ -214,7 +214,7 @@ const CATALOG_DATA = [
     name: "Red Velvet Cupcake",
     price: 3.50,
     category: "cakes",
-    image: "images-for-website/red-velvet-cupcake.jpg",
+    image: "images-for-website/red-velvet-cupcake.png",
     description: "A cocoa-kissed cupcake with a hint of tang, topped with a swirl of cream cheese frosting.",
     nutrition: {
       servingSize: "1 cupcake (85g)",
@@ -231,7 +231,7 @@ const CATALOG_DATA = [
     name: "Chocolate Muffin",
     price: 4.00,
     category: "breads",
-    image: "images-for-website/choco-muffin.jpg",
+    image: "images-for-website/choco-muffin.png",
     description: "A bakery style muffin with cocoa and chocolate chips both inside and outside.",
     nutrition: {
       servingSize: "1 muffin(95g)",
