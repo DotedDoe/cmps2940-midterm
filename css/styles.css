@@ -784,12 +784,6 @@ html[data-theme="dark"] .modal-close {
   color: var(--color-cocoa);
 }
 
-/* ==================================================================
-   NEW: PRODUCT DETAIL MODAL
-   Reuses the existing :root/dark-mode tokens above — no new colors
-   introduced. Cards are now clickable to open this on top of their
-   existing buttons, so a cursor is added to signal that.
-   ================================================================== */
 
 .product-card {
   cursor: pointer;
