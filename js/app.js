@@ -87,7 +87,7 @@ const CATALOG_DATA = [
     name: "Sugar Cookie",
     price: 2.50,
     category: "cookies",
-    image: "images-for-website/base.jpg",
+    image: "images-for-website/base.png",
     description: "A classic bakery cookie loaded with semi-sweet chocolate chips, crisp on the edges and soft in the middle.",
     nutrition: {
       servingSize: "1 cookie (60g)",
@@ -223,6 +223,23 @@ const CATALOG_DATA = [
       carbs: "46g",
       sugar: "32g",
       protein: "3g",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    }
+  },
+  {
+    id: "chocolate-muffin",
+    name: "Chocolate Muffin",
+    price: 4.00,
+    category: "breads",
+    image: "images-for-website/choco-muffin.jpg",
+    description: "A bakery style muffin with cocoa and chocolate chips both inside and outside.",
+    nutrition: {
+      servingSize: "1 muffin(95g)",
+      calories: 320,
+      fat: "12g",
+      carbs: "48g",
+      sugar: "26g",
+      protein: "4g",
       allergens: ["Wheat", "Egg", "Dairy"]
     }
   }
