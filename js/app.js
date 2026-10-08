@@ -84,7 +84,7 @@ function initCookieBuilder() {
 const CATALOG_DATA = [
   {
     id: "choc-chip-cookie",
-    name: "Chocolate Chip Cookie",
+    name: "Sugar Cookie",
     price: 2.50,
     category: "cookies",
     image: "images-for-website/base.jpg",
@@ -105,6 +105,8 @@ const CATALOG_DATA = [
         { id: "mm", name: "M&Ms", priceAdd: 0.50 },
         { id: "icing", name: "Icing Drizzle", priceAdd: 0.50 }
       ]
+  
+      
     }
   },
   {
@@ -286,4 +288,65 @@ function updateThemeButton(themeToggle) {
   } else {
     themeToggle.textContent = 'Dark Mode';
   }
+}
+
+// ---- Unfinished "bundle upsell" feature below (not wired to any real
+// button — no element in inventory.html has class "add-to-cart-btn",
+// so addToCartBtn was null and calling .addEventListener on it crashed
+// the page). Guarded with a null check so it no longer breaks the rest
+// of the site; left in place rather than deleted since it looks like
+// someone's in-progress work. Worth a team conversation before relying
+// on it further — addToCart(pendingItem) here passes a {name, price}
+// object, which doesn't match cart.js's actual addToCart(productId,
+// selectedOptions) signature, so this wouldn't function correctly even
+// once wired to a real button.
+const addToCartBtn = document.querySelector('.add-to-cart-btn');
+const bundleModal = document.getElementById('bundleModal');
+const addBundleBtn = document.getElementById('addBundleBtn');
+const skipBundleBtn = document.getElementById('skipBundleBtn');
+
+let pendingItem = null;
+
+if (addToCartBtn) {
+  addToCartBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    pendingItem = {
+      name: addToCartBtn.dataset.name,
+      price: parseFloat(addToCartBtn.dataset.price)
+    };
+
+    bundleModal.classList.add('active');
+  });
+}
+
+if (addBundleBtn) {
+  addBundleBtn.addEventListener('click', () => {
+    const bundleItem = { name: "Accessory Bundle", price: 15.00 };
+
+    addToCart(pendingItem);
+    addToCart(bundleItem);
+
+    closeModal();
+  });
+}
+
+if (skipBundleBtn) {
+  skipBundleBtn.addEventListener('click', () => {
+    addToCart(pendingItem);
+    closeModal();
+  });
+}
+
+function closeModal() {
+  if (bundleModal) bundleModal.classList.remove('active');
+  pendingItem = null;
+}
+
+// Basic placeholder for your existing cart function
+// NOTE: cart.js also defines addToCart(productId, selectedOptions), and it
+// loads after app.js, so cart.js's version is the one that actually runs on
+// pages that include it. This placeholder only matters if cart.js is missing.
+function addToCart(item) {
+  console.log("Added to cart:", item);
 }

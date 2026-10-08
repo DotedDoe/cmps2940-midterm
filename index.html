@@ -7,9 +7,106 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  
+  <style>
+  .hero-banner {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+    
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .image-counter-card {
+      position: relative;      /*positioning reference for the overlay*/
+      display: inline-block;
+      width: 300px;
+    }
+
+    .image-counter-card img {
+      display: block;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .counter-overlay {
+      position: absolute;      /*sits on top of the image*/
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .counter-overlay button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      line-height: 1;
+      font-size: 14px;
+    }
+
+    .counter-overlay button:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .add-to-cart button {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border: none;
+      border-radius:8px;
+      background: #c8763a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .add-to-cart:hover {
+      background: a85f2b;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      color: black;
+    }
+
+    .bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+  </style>
 </head>
 <body>
-
   <header class="site-header">
     <div class="nav-inner">
       <a href="index.html" class="logo">Cookie Time Cookie</a>
@@ -19,31 +116,141 @@
         <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
         <a href="login.html">Login</a>
         <a href="create.html">Create Your Own</a>
+        <a href="about-us.html">About Us!</a>
       </nav>
     </div>
-  </header>
 
+  </header>
+  <div class="hero-banner">
+  <img src="images-for-website/cookieforbackgroundmeow.avif" alt="mister white yo" />
+  </div>
   <div id="modeToggle">
     <button id="themeToggle">Dark Mode</button>
   </div>
 
   <main>
-    <section class="hero">
-      <h1>Welcome to Cookie Time Cookie!</h1>
-      <p>We are an independent bakery that sells you baked goods!</p>
-    </section>
+    
 
     <section class="announcements">
     </section>
 
-<section class="highlights">
-  <h2>Featured Items</h2>
-</section>
+<audio id="background-music" loop> /*background music for homepage*/
+  <source src="audio/bakery.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-<footer class="site-footer">
-  <p>&copy; 2026 Cookie Time Cookie</p>
-</footer>
+    <section class="highlights">
+      <h2>Featured Items</h2>
+
+      <div class="card-grid">
+
+        <div class="image-counter-card" data-id="choco-mountain" data-name="Choco Mountain" data-price="3.50">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbakewithshivesh.com%2Fwp-content%2Fuploads%2F2020%2F05%2F151F814A-2749-4978-BA53-3AD2A962C933-scaled.jpg&f=1&nofb=1&ipt=fd4bddd16a29d46bfd11e9d93fb13b002a94f1f3ac3905ec48e6e902d98a0e93" alt="WE NEED TO COOK!">
+          <div class="centered">Choco Mountain</div>
+          <div class="counter-overlay">
+            <button onclick="dec('count1')">−</button>
+            <span id="count1">0</span>
+            <button onclick="inc('count1')">+</button>
+          </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count1')">Add to Cart</button>
+        </div>
+
+        <div class="image-counter-card" data-id="sweet-sweet-canyon" data-name="Sweet Sweet Canyon" data-price="2.50">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbellyfull.net%2Fwp-content%2Fuploads%2F2025%2F02%2FSugar-Cookies-hero-1.jpg&f=1&nofb=1&ipt=d2836a14c2e40496aa96858c00c7fbcf72ac28a968b205a3f971c42e61227203" alt="R.I.P Dolly Parton">
+          <div class="centered">Sweet Sweet Canyon</div>
+          <div class="counter-overlay">
+            <button onclick="dec('count2')">−</button>
+            <span id="count2">0</span>
+            <button onclick="inc('count2')">+</button>
+          </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count2')">Add to Cart</button>
+        </div>
+
+         <div class="image-counter-card" data-id="pumpkin-pinball" data-name="Pumpkin Pinball" data-price="3.00">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwearerecipes.com%2Fwp-content%2Fuploads%2F2025%2F09%2Fpumpkin-cookies-1.webp&f=1&nofb=1&ipt=070717642ada13dddce7c3ff9a2d9923171204860fa6c36f31017b31d5135ce7&ipo=images" alt="MR WHITE! IM TIRED YO!">
+          <div class="centered">Pumpkin Pinball</div>
+          <div class="counter-overlay">
+            <button onclick="dec('count3')">−</button>
+            <span id="count3">0</span>
+            <button onclick="inc('count3')">+</button>
+          </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count3')">Add to Cart</button>
+        </div>
+
+        <div class="image-counter-card" data-id="rainbow-road" data-name="Rainbow Road" data-price="4.00">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbeyondfrosting.com%2Fwp-content%2Fuploads%2F2022%2F04%2FRainbow-Sugar-Cookies-2161-2.jpg&f=1&nofb=1&ipt=28845a5526de4068839f43a929cc79b67406a5a163af564b334df754d46a5c59&ipo=images" alt="Mrrr Chrima">
+          <div class="centered">Rainbow Road</div>
+          <div class="counter-overlay">
+            <button onclick="dec('count4')">−</button>
+            <span id="count4">0</span>
+            <button onclick="inc('count4')">+</button>
+          </div>
+          <button class="add-to-cart" onclick="addToCart(this, 'count4')">Add to Cart</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Cookie Time Cookie</p>
+  </footer>
 
   <script src="js/app.js"></script>
+  <script>
+    // Tracks a separate count per image, keyed by the span's id
+    const counts = {};
+
+    function inc(id) {
+      counts[id] = (counts[id] || 0) + 1;
+      document.getElementById(id).textContent = counts[id];
+    }
+
+    function dec(id) {
+      counts[id] = Math.max((counts[id] || 0) - 1, 0);
+      document.getElementById(id).textContent = counts[id];
+    }
+
+    function addToCart(btn, countId) {
+    const qty = counts[countId] || 0;
+    if (qty === 0) return; // nothing selected
+
+    const { id, name, price } = btn.closest('.image-counter-card').dataset;
+
+    const cart = getCart();
+    if (cart[id]) {
+      cart[id].qty += qty;
+    } else {
+      cart[id] = { name, price: parseFloat(price), qty };
+    }
+    saveCart(cart);
+
+    // reset the counter
+    counts[countId] = 0;
+    document.getElementById(countId).textContent = 0;
+  }
+
+  function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem('cart')) || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+function updateCartCount() {
+  const total = Object.values(getCart()).reduce((sum, item) => sum + item.qty, 0);
+  const badge = document.getElementById('cart-count');
+  if (badge) badge.textContent = total;
+}
+
+updateCartCount();
+
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 :root {
-  --color-cream:   #FBF3E3;  
+  --color-cream:   #fbf3e3;  
   --color-crust:   #7A4B32;  
   --color-cocoa:   #2E1C12;  
   --color-berry:   #A63446;  
@@ -73,6 +73,42 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+/* Modal overlay covers the whole screen */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Show class toggled via JavaScript */
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Box inside the modal */
+.modal-content {
+  background: #fbf3e3;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bundle-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
 }
 
 main {
