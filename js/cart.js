@@ -1,5 +1,3 @@
-
-
 const CART_STORAGE_KEY = 'sweetCrumbCart';
 
 function getCartItems() {
