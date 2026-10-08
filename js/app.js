@@ -114,7 +114,7 @@ const CATALOG_DATA = [
     name: "Fudge Brownie",
     price: 3.00,
     category: "brownies",
-    image: "images-for-website/brownie.jpg",
+    image: "images-for-website/slop.jpg",
     description: "Dense, fudgy, and rich with cocoa — baked in small batches so the center stays gooey.",
     nutrition: {
       servingSize: "1 brownie (70g)",
