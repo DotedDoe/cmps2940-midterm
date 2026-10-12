@@ -1,4 +1,4 @@
-# CMPS 2940 Midterm Project — [Business Name]
+# CMPS 2940 Midterm Project — Cookie Time Cookie
 
 ## Team Members
 - Blair
