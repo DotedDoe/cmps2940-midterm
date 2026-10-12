@@ -96,20 +96,21 @@
     .container {
       position: relative;
       text-align: center;
-      color: black;
+      color: rgb(255, 0, 0);
     }
 
-    .bottom-left {
+    .centered {
   position: absolute;
-  bottom: 8px;
-  left: 16px;
-}
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="logo">Cookie Time Cookie</a>
+      <a href="index.html" class="logo">Cookie Time Cookies</a>
       <nav class="main-nav">
         <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="inventory.html">Inventory</a>
@@ -123,6 +124,7 @@
   </header>
   <div class="hero-banner">
   <img src="images-for-website/cookieforbackgroundmeow.avif" alt="mister white yo" />
+  <div class="centered"><h1>Cookie Time Cookies</h1></div>
   </div>
   <div id="modeToggle">
     <button id="themeToggle">Dark Mode</button>
