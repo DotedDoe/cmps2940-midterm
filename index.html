@@ -105,12 +105,34 @@
   left: 50%;
   transform: translate(-50%, -50%)
     }
+
+    .hero-banner {
+  position: relative;   /* new: the logo positions itself against the banner */
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-banner .banner-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  /* centers it on the banner */
+  width: 200px;                      /* adjust to taste */
+  height: auto;
+}
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="logo">Cookie Time Cookies</a>
+      <a href="index.html" class="logo">Cookie Time Cookie</a>
       <nav class="main-nav">
         <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="inventory.html">Inventory</a>
@@ -121,11 +143,11 @@
       </nav>
     </div>
 
-  </header>
-  <div class="hero-banner">
+ </header>
+<div class="hero-banner">
   <img src="images-for-website/cookieforbackgroundmeow.avif" alt="mister white yo" />
-  <div class="centered"><h1>Cookie Time Cookies</h1></div>
-  </div>
+  <img src="images-for-website/cookie-time-cookie-logo.png" alt="IM DA DWIFTA" class="banner-logo" />
+</div>
   <div id="modeToggle">
     <button id="themeToggle">Dark Mode</button>
   </div>
@@ -138,7 +160,6 @@
 
 <audio id="background-music" loop> /*background music for homepage*/
   <source src="audio/bakery.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
     <section class="highlights">
@@ -252,6 +273,8 @@ function updateCartCount() {
 }
 
 updateCartCount();
+
+
 
   </script>
 </body>
