@@ -158,10 +158,20 @@
     <section class="announcements">
     </section>
 
-<audio id="background-music" loop> /*background music for homepage*/
-  <source src="audio/bakery.mp3" type="audio/mpeg">
-</audio>
+<audio id="bg" src="bakery.mp3" loop></audio>
 
+<script>
+  const bg = document.getElementById('bg');
+  function start(){
+    bg.play();
+    document.removeEventListener('click', start);
+    document.removeEventListener('keydown', start);
+    document.removeEventListener('touchstart', start);
+  }
+  document.addEventListener('click',start);
+  document.addEventListener('keydown', start);
+  document.addEventListener('touchstart',start);
+</script>
     <section class="highlights">
       <h2>Featured Items</h2>
 
