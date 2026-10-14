@@ -2,9 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initCookieBuilder();
 });
-bg.play().catch(() => {
-  document.addEventListener('click', () => bg.play(), {once: true});
-});
+
 
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
