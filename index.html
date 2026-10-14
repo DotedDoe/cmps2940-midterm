@@ -158,19 +158,36 @@
     <section class="announcements">
     </section>
 
-<audio id="bg" src="music/bakery.mp3" loop></audio>
+<audio id="bg" src="music/bakery.mp3" loop preload="auto"></audio>
+<button id="mute-btn" type="button" aria-label="Mute music">🔊</button>
 
 <script>
   const bg = document.getElementById('bg');
-  function start(){
-    bg.play();
-    document.removeEventListener('click', start);
-    document.removeEventListener('keydown', start);
-    document.removeEventListener('touchstart', start);
+  bg.volume = 0.4; // optional: background music shouldn't be loud
+
+  const events = ['pointerdown', 'click', 'keydown', 'touchend'];
+
+  function start() {
+    bg.play()
+      .then(() => {
+        // Only stop listening once playback actually started
+        events.forEach(e => document.removeEventListener(e, start));
+      })
+      .catch(err => {
+        // Blocked or failed: keep the listeners so the next tap/click retries
+        console.warn('Audio could not start yet:', err);
+      });
   }
-  document.addEventListener('click',start);
-  document.addEventListener('keydown', start);
-  document.addEventListener('touchstart',start);
+  const muteBtn = document.getElementById('mute-btn');
+
+muteBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // don't let this click also trigger start()
+  bg.muted = !bg.muted;
+  muteBtn.textContent = bg.muted ? '🔇' : '🔊';
+  muteBtn.setAttribute('aria-label', bg.muted ? 'Unmute music' : 'Mute music');
+});
+
+  events.forEach(e => document.addEventListener(e, start));
 </script>
     <section class="highlights">
       <h2>Featured Items</h2>

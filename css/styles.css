@@ -110,6 +110,20 @@ body {
   gap: 12px;
   justify-content: center;
 }
+#mute-btn {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
 
 main {
   flex: 1;
