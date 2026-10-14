@@ -99,18 +99,24 @@
       color: rgb(255, 0, 0);
     }
 
-    .centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%)
+    .bottom-left {
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+      color: rgb(255, 255, 255)
+    }
+
+    .bottom-right {
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
     }
 
     .hero-banner {
-  position: relative;   /* new: the logo positions itself against the banner */
-  width: 100%;
-  max-height: 400px;
-  overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
 }
 
 .hero-banner img {
@@ -169,46 +175,46 @@
 
         <div class="image-counter-card" data-id="choco-mountain" data-name="Choco Mountain" data-price="3.50">
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbakewithshivesh.com%2Fwp-content%2Fuploads%2F2020%2F05%2F151F814A-2749-4978-BA53-3AD2A962C933-scaled.jpg&f=1&nofb=1&ipt=fd4bddd16a29d46bfd11e9d93fb13b002a94f1f3ac3905ec48e6e902d98a0e93" alt="WE NEED TO COOK!">
-          <div class="centered">Choco Mountain</div>
+          <div class="bottom-left">Choco Mountain</div>
           <div class="counter-overlay">
             <button onclick="dec('count1')">−</button>
             <span id="count1">0</span>
             <button onclick="inc('count1')">+</button>
           </div>
-          <button class="add-to-cart" onclick="addToCart(this, 'count1')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count1')">Add to Cart</button>
         </div>
 
         <div class="image-counter-card" data-id="sweet-sweet-canyon" data-name="Sweet Sweet Canyon" data-price="2.50">
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbellyfull.net%2Fwp-content%2Fuploads%2F2025%2F02%2FSugar-Cookies-hero-1.jpg&f=1&nofb=1&ipt=d2836a14c2e40496aa96858c00c7fbcf72ac28a968b205a3f971c42e61227203" alt="R.I.P Dolly Parton">
-          <div class="centered">Sweet Sweet Canyon</div>
+          <div class="bottom-left">Sweet Sweet Canyon</div>
           <div class="counter-overlay">
             <button onclick="dec('count2')">−</button>
             <span id="count2">0</span>
             <button onclick="inc('count2')">+</button>
           </div>
-          <button class="add-to-cart" onclick="addToCart(this, 'count2')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count2')">Add to Cart</button>
         </div>
 
          <div class="image-counter-card" data-id="pumpkin-pinball" data-name="Pumpkin Pinball" data-price="3.00">
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwearerecipes.com%2Fwp-content%2Fuploads%2F2025%2F09%2Fpumpkin-cookies-1.webp&f=1&nofb=1&ipt=070717642ada13dddce7c3ff9a2d9923171204860fa6c36f31017b31d5135ce7&ipo=images" alt="MR WHITE! IM TIRED YO!">
-          <div class="centered">Pumpkin Pinball</div>
+          <div class="bottom-left">Pumpkin Pinball</div>
           <div class="counter-overlay">
             <button onclick="dec('count3')">−</button>
             <span id="count3">0</span>
             <button onclick="inc('count3')">+</button>
           </div>
-          <button class="add-to-cart" onclick="addToCart(this, 'count3')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count3')">Add to Cart</button>
         </div>
 
         <div class="image-counter-card" data-id="rainbow-road" data-name="Rainbow Road" data-price="4.00">
           <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbeyondfrosting.com%2Fwp-content%2Fuploads%2F2022%2F04%2FRainbow-Sugar-Cookies-2161-2.jpg&f=1&nofb=1&ipt=28845a5526de4068839f43a929cc79b67406a5a163af564b334df754d46a5c59&ipo=images" alt="Mrrr Chrima">
-          <div class="centered">Rainbow Road</div>
+          <div class="bottom-left">Rainbow Road</div>
           <div class="counter-overlay">
             <button onclick="dec('count4')">−</button>
             <span id="count4">0</span>
             <button onclick="inc('count4')">+</button>
           </div>
-          <button class="add-to-cart" onclick="addToCart(this, 'count4')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count4')">Add to Cart</button>
         </div>
 
       </div>
