@@ -86,18 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
 
     // FIX: Wrapped in backticks
-    const toppingsHtml = options.length > 0 ? `
-      <fieldset class="topping-list">
-        <legend>${product.customizable.label || 'Add-ons'}</legend>
-        ${options.map(opt => `
-          <label class="topping-option">
-            <input type="checkbox" value="\${opt.id}" data-price="opt.priceAdd" data-overlay="{opt.overlayImage || ''}">
-            <span>\${opt.name}</span>
-            <span class="topping-price">+\${formatPrice(opt.priceAdd)}</span>
-          </label>
-        `).join('')}
-      </fieldset>
-    ` : '';
+const toppingsHtml = options.length > 0 ? `
+  <fieldset class="topping-list">
+    <legend>${product.customizable.label || 'Add-ons'}</legend>
+    ${options.map(opt => `
+      <label class="topping-option">
+        <input type="checkbox"
+               value="${opt.id}"
+               data-price="${opt.priceAdd}"
+               data-overlay="${opt.overlayImage || ''}">
+        <span>${opt.name}</span>
+        <span class="topping-price">+${formatPrice(opt.priceAdd)}</span>
+      </label>
+    `).join('')}
+  </fieldset>
+` : '';
 
     // FIX: Wrapped in backticks
     panel.innerHTML = `
