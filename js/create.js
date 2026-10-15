@@ -75,29 +75,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Customizer panel ----------
 
-  function renderCustomizer(product) {
+   function renderCustomizer(product) {
     const options = product.customizable.options || [];
 
     const overlaysHtml = options.map(opt => `
-      <img id="layer-${opt.id}" class="customizer-overlay" alt=""
+      <img id="layer-${opt.id}" class="customizer-overlay" alt="" 
            style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
                   display:none; width:${opt.overlayScale || 100}%; height:${opt.overlayScale || 100}%;
                   object-fit:contain; pointer-events:none;">
     `).join('');
 
+    // FIX: Wrapped in backticks
     const toppingsHtml = options.length > 0 ? `
       <fieldset class="topping-list">
         <legend>${product.customizable.label || 'Add-ons'}</legend>
         ${options.map(opt => `
           <label class="topping-option">
-            <input type="checkbox" value="${opt.id}" data-price="${opt.priceAdd}" data-overlay="${opt.overlayImage || ''}">
-            <span>${opt.name}</span>
-            <span class="topping-price">+${formatPrice(opt.priceAdd)}</span>
+            <input type="checkbox" value="\${opt.id}" data-price="opt.priceAdd" data-overlay="{opt.overlayImage || ''}">
+            <span>\${opt.name}</span>
+            <span class="topping-price">+\${formatPrice(opt.priceAdd)}</span>
           </label>
         `).join('')}
       </fieldset>
     ` : '';
 
+    // FIX: Wrapped in backticks
     panel.innerHTML = `
       <div class="customizer-card">
         <div class="image-container" style="position: relative;">
@@ -124,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wireControls(product);
   }
+
 
   function wireControls(product) {
     panel.querySelectorAll('.topping-option input[type="checkbox"]').forEach(box => {
