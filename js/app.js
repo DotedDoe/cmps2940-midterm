@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieBuilder();
 });
 
+
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   if (!contactForm) return;

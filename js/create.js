@@ -75,29 +75,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Customizer panel ----------
 
-  function renderCustomizer(product) {
+   function renderCustomizer(product) {
     const options = product.customizable.options || [];
 
     const overlaysHtml = options.map(opt => `
-      <img id="layer-${opt.id}" class="customizer-overlay" alt=""
+      <img id="layer-${opt.id}" class="customizer-overlay" alt="" 
            style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
                   display:none; width:${opt.overlayScale || 100}%; height:${opt.overlayScale || 100}%;
                   object-fit:contain; pointer-events:none;">
     `).join('');
 
-    const toppingsHtml = options.length > 0 ? `
-      <fieldset class="topping-list">
-        <legend>${product.customizable.label || 'Add-ons'}</legend>
-        ${options.map(opt => `
-          <label class="topping-option">
-            <input type="checkbox" value="${opt.id}" data-price="${opt.priceAdd}" data-overlay="${opt.overlayImage || ''}">
-            <span>${opt.name}</span>
-            <span class="topping-price">+${formatPrice(opt.priceAdd)}</span>
-          </label>
-        `).join('')}
-      </fieldset>
-    ` : '';
+    // FIX: Wrapped in backticks
+const toppingsHtml = options.length > 0 ? `
+  <fieldset class="topping-list">
+    <legend>${product.customizable.label || 'Add-ons'}</legend>
+    ${options.map(opt => `
+      <label class="topping-option">
+        <input type="checkbox"
+               value="${opt.id}"
+               data-price="${opt.priceAdd}"
+               data-overlay="${opt.overlayImage || ''}">
+        <span>${opt.name}</span>
+        <span class="topping-price">+${formatPrice(opt.priceAdd)}</span>
+      </label>
+    `).join('')}
+  </fieldset>
+` : '';
 
+    // FIX: Wrapped in backticks
     panel.innerHTML = `
       <div class="customizer-card">
         <div class="image-container" style="position: relative;">
@@ -124,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     wireControls(product);
   }
+
 
   function wireControls(product) {
     panel.querySelectorAll('.topping-option input[type="checkbox"]').forEach(box => {
@@ -175,36 +181,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Cart integration ----------
 
-  function addCustomItemToCart(product) {
-    const options = product.customizable.options || [];
-    const toppingNames = selectedToppingIds
-      .map(id => options.find(o => o.id === id)?.name)
-      .filter(Boolean);
+function addCustomItemToCart(product) {
+  const options = product.customizable.options || [];
+  
+  // 1. Get the actual selected topping objects instead of just names
+  const selectedOptionsArray = selectedToppingIds
+    .map(id => options.find(o => o.id === id))
+    .filter(Boolean);
 
-    const unitPrice = calcUnitPrice(product);
-    const displayName = toppingNames.length > 0
-      ? `${product.name} (${toppingNames.join(', ')})`
-      : product.name;
+  // 2. Call addToCart with the correct arguments matching cart.js
+  addToCart(product.id, selectedOptionsArray);
 
-    const cartItem = {
-      id: `${product.id}-${Date.now()}`,
-      name: displayName,
-      // Unit price: the cart should multiply by qty. If your cart.js expects a
-      // line total instead, change this back to unitPrice * quantity.
-      price: parseFloat(unitPrice.toFixed(2)),
-      qty: quantity,
-      productId: product.id,
-      toppings: toppingNames
-    };
-
-    addToCart(cartItem);
-
-    const btn = document.getElementById('add-to-cart-btn');
-    if (btn) {
-      const original = btn.textContent;
-      btn.textContent = 'Added!';
-      btn.disabled = true;
-      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1200);
-    }
+  // 3. Handle UI feedback animation
+  const btn = document.getElementById('add-to-cart-btn');
+  if (btn) {
+    const original = btn.textContent;
+    btn.textContent = 'Added!';
+    btn.disabled = true;
+    setTimeout(() => { 
+      btn.textContent = original; 
+      btn.disabled = false; 
+    }, 1200);
   }
+}
 });
