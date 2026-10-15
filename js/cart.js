@@ -75,7 +75,8 @@ function calculateCartTotal(items) {
 
 function renderCartLine(item) {
   const product = getCatalogItems().find(p => p.id === item.productId);
-  const image = product ? product.image : '';
+  // Items added from the home page aren't in the catalog, so they carry their own image
+  const image = product ? product.image : (item.image || '');
 
   
   const optionsText = item.selectedOptions.length
@@ -104,6 +105,17 @@ function renderCartLine(item) {
 }
 
 
+// Turns the Checkout link on or off depending on whether the cart has items
+function updateCheckoutLink(hasItems) {
+  const checkoutLink = document.getElementById('checkout-btn');
+  if (!checkoutLink) return;
+
+  checkoutLink.classList.toggle('disabled', !hasItems);
+  checkoutLink.setAttribute('aria-disabled', hasItems ? 'false' : 'true');
+  checkoutLink.tabIndex = hasItems ? 0 : -1;
+}
+
+
 function renderCart() {
   const container = document.getElementById('cart-items');
   const emptyMsg = document.getElementById('empty-cart-message');
@@ -116,12 +128,14 @@ function renderCart() {
     container.innerHTML = '';
     emptyMsg.hidden = false;
     totalEl.textContent = formatPrice(0);
+    updateCheckoutLink(false);
     return;
   }
 
   emptyMsg.hidden = true;
   container.innerHTML = items.map(renderCartLine).join('');
   totalEl.textContent = formatPrice(calculateCartTotal(items));
+  updateCheckoutLink(true);
 }
 
 const cartItemsContainer = document.getElementById('cart-items');

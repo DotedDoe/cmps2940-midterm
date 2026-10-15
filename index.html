@@ -174,14 +174,14 @@
       <div class="card-grid">
 
         <div class="image-counter-card" data-id="choco-mountain" data-name="Choco Mountain" data-price="3.50">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbakewithshivesh.com%2Fwp-content%2Fuploads%2F2020%2F05%2F151F814A-2749-4978-BA53-3AD2A962C933-scaled.jpg&f=1&nofb=1&ipt=fd4bddd16a29d46bfd11e9d93fb13b002a94f1f3ac3905ec48e6e902d98a0e93" alt="WE NEED TO COOK!">
+          <img src="PASTE-YOUR-ORIGINAL-CHOCO-MOUNTAIN-SRC-HERE" alt="WE NEED TO COOK!">
           <div class="bottom-left">Choco Mountain</div>
           <div class="counter-overlay">
             <button onclick="dec('count1')">−</button>
             <span id="count1">0</span>
             <button onclick="inc('count1')">+</button>
           </div>
-          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count1')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addFeaturedToCart(this, 'count1')">Add to Cart</button>
         </div>
 
         <div class="image-counter-card" data-id="sweet-sweet-canyon" data-name="Sweet Sweet Canyon" data-price="2.50">
@@ -192,7 +192,7 @@
             <span id="count2">0</span>
             <button onclick="inc('count2')">+</button>
           </div>
-          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count2')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addFeaturedToCart(this, 'count2')">Add to Cart</button>
         </div>
 
          <div class="image-counter-card" data-id="pumpkin-pinball" data-name="Pumpkin Pinball" data-price="3.00">
@@ -203,7 +203,7 @@
             <span id="count3">0</span>
             <button onclick="inc('count3')">+</button>
           </div>
-          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count3')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addFeaturedToCart(this, 'count3')">Add to Cart</button>
         </div>
 
         <div class="image-counter-card" data-id="rainbow-road" data-name="Rainbow Road" data-price="4.00">
@@ -214,7 +214,7 @@
             <span id="count4">0</span>
             <button onclick="inc('count4')">+</button>
           </div>
-          <button class="bottom-right" class="add-to-cart" onclick="addToCart(this, 'count4')">Add to Cart</button>
+          <button class="bottom-right" class="add-to-cart" onclick="addFeaturedToCart(this, 'count4')">Add to Cart</button>
         </div>
 
       </div>
@@ -226,6 +226,7 @@
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
   <script>
     // Tracks a separate count per image, keyed by the span's id
     const counts = {};
@@ -240,48 +241,41 @@
       document.getElementById(id).textContent = counts[id];
     }
 
-    function addToCart(btn, countId) {
-    const qty = counts[countId] || 0;
-    if (qty === 0) return; // nothing selected
+    // Adds a featured item to the same cart the cart and checkout pages use
+    // (getCartItems / saveCartItems / updateCartCountBadge come from cart.js and app.js)
+    function addFeaturedToCart(btn, countId) {
+      const qty = counts[countId] || 0;
+      if (qty === 0) return; // nothing selected
 
-    const { id, name, price } = btn.closest('.image-counter-card').dataset;
+      const card = btn.closest('.image-counter-card');
+      const { id, name, price } = card.dataset;
+      const unitPrice = parseFloat(price);
 
-    const cart = getCart();
-    if (cart[id]) {
-      cart[id].qty += qty;
-    } else {
-      cart[id] = { name, price: parseFloat(price), qty };
+      const items = getCartItems();
+      const existing = items.find(item => item.cartLineId === id);
+
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        items.push({
+          cartLineId: id,
+          productId: id,
+          name,
+          basePrice: unitPrice,
+          selectedOptions: [],
+          unitPrice,
+          qty,
+          image: card.querySelector('img').src
+        });
+      }
+
+      saveCartItems(items);
+      updateCartCountBadge();
+
+      // reset the counter
+      counts[countId] = 0;
+      document.getElementById(countId).textContent = 0;
     }
-    saveCart(cart);
-
-    // reset the counter
-    counts[countId] = 0;
-    document.getElementById(countId).textContent = 0;
-  }
-
-  function getCart() {
-  try {
-    return JSON.parse(localStorage.getItem('cart')) || {};
-  } catch {
-    return {};
-  }
-}
-
-function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCount();
-}
-
-function updateCartCount() {
-  const total = Object.values(getCart()).reduce((sum, item) => sum + item.qty, 0);
-  const badge = document.getElementById('cart-count');
-  if (badge) badge.textContent = total;
-}
-
-updateCartCount();
-
-
-
   </script>
 </body>
 </html>
