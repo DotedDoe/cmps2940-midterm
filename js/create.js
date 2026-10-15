@@ -178,36 +178,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Cart integration ----------
 
-  function addCustomItemToCart(product) {
-    const options = product.customizable.options || [];
-    const toppingNames = selectedToppingIds
-      .map(id => options.find(o => o.id === id)?.name)
-      .filter(Boolean);
+function addCustomItemToCart(product) {
+  const options = product.customizable.options || [];
+  
+  // 1. Get the actual selected topping objects instead of just names
+  const selectedOptionsArray = selectedToppingIds
+    .map(id => options.find(o => o.id === id))
+    .filter(Boolean);
 
-    const unitPrice = calcUnitPrice(product);
-    const displayName = toppingNames.length > 0
-      ? `${product.name} (${toppingNames.join(', ')})`
-      : product.name;
+  // 2. Call addToCart with the correct arguments matching cart.js
+  addToCart(product.id, selectedOptionsArray);
 
-    const cartItem = {
-      id: `${product.id}-${Date.now()}`,
-      name: displayName,
-      // Unit price: the cart should multiply by qty. If your cart.js expects a
-      // line total instead, change this back to unitPrice * quantity.
-      price: parseFloat(unitPrice.toFixed(2)),
-      qty: quantity,
-      productId: product.id,
-      toppings: toppingNames
-    };
-
-    addToCart(cartItem);
-
-    const btn = document.getElementById('add-to-cart-btn');
-    if (btn) {
-      const original = btn.textContent;
-      btn.textContent = 'Added!';
-      btn.disabled = true;
-      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1200);
-    }
+  // 3. Handle UI feedback animation
+  const btn = document.getElementById('add-to-cart-btn');
+  if (btn) {
+    const original = btn.textContent;
+    btn.textContent = 'Added!';
+    btn.disabled = true;
+    setTimeout(() => { 
+      btn.textContent = original; 
+      btn.disabled = false; 
+    }, 1200);
   }
+}
 });
