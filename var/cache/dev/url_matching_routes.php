@@ -17,6 +17,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/inventory' => [[['_route' => 'inventory', '_controller' => 'App\\Controller\\HomeController::inventory'], null, null, null, false, false, null]],
+        '/about-us' => [[['_route' => 'about_us', '_controller' => 'App\\Controller\\HomeController::aboutUs'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

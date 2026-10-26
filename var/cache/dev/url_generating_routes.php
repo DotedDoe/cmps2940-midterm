@@ -20,6 +20,8 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'inventory' => [[], ['_controller' => 'App\\Controller\\HomeController::inventory'], [], [['text', '/inventory']], [], [], []],
+    'about_us' => [[], ['_controller' => 'App\\Controller\\HomeController::aboutUs'], [], [['text', '/about-us']], [], [], []],
     'App\\Controller\\HomeController::index' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'App\\Controller\\HomeController::inventory' => [[], ['_controller' => 'App\\Controller\\HomeController::inventory'], [], [['text', '/inventory']], [], [], []],
+    'App\\Controller\\HomeController::aboutUs' => [[], ['_controller' => 'App\\Controller\\HomeController::aboutUs'], [], [['text', '/about-us']], [], [], []],
 ];

@@ -27,3 +27,8 @@ dfcfd5,127.0.0.1,GET,http://127.0.0.1:8001/about-us.html,1793026540,,404,request
 932382,127.0.0.1,GET,http://127.0.0.1:8001/cart.html,1793026546,,404,request
 1516bc,127.0.0.1,GET,http://127.0.0.1:8001/create.html,1793026549,fa640e,404,request
 fa640e,127.0.0.1,GET,http://127.0.0.1:8001/create.html,1793026549,,404,request
+517793,127.0.0.1,GET,http://127.0.0.1:8001/,1793026823,,200,request
+014a9d,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
+ab20b6,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
+7f41fa,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
+face49,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
