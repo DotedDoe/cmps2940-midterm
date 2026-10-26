@@ -66,8 +66,14 @@ class __TwigTemplate_6726e396cd26047ce1025a53381394f3 extends Template
     <div class=\"nav-inner\">
      
       <nav class=\"main-nav\">
-        <a href=\"index.html\">Home</a>
-        <a href=\"inventory.html\" class=\"active\" aria-current=\"page\">Inventory</a>
+        <a href=\"";
+        // line 20
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        yield "\">Home</a>
+        <a href=\"";
+        // line 21
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inventory");
+        yield "\">Inventory</a>
         <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
         <a href=\"login.html\">Login</a>
         <a href=\"create.html\">Create Your Own</a>
@@ -176,6 +182,14 @@ aria-label=\"Search inventory\">
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDefaultEscapeStrategy(): string|false
     {
         return "html";
@@ -186,7 +200,7 @@ aria-label=\"Search inventory\">
      */
     public function getDebugInfo(): array
     {
-        return array (  50 => 1,);
+        return array (  75 => 21,  71 => 20,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -210,8 +224,8 @@ aria-label=\"Search inventory\">
     <div class=\"nav-inner\">
      
       <nav class=\"main-nav\">
-        <a href=\"index.html\">Home</a>
-        <a href=\"inventory.html\" class=\"active\" aria-current=\"page\">Inventory</a>
+        <a href=\"{{ path(\x27home\x27) }}\">Home</a>
+        <a href=\"{{ path(\x27inventory\x27) }}\">Inventory</a>
         <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
         <a href=\"login.html\">Login</a>
         <a href=\"create.html\">Create Your Own</a>

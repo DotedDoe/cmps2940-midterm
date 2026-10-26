@@ -188,8 +188,14 @@ class __TwigTemplate_2b34809d79726693eb9ecc1b4174c2c6 extends Template
   <header class=\"site-header\">
     <div class=\"nav-inner\">
       <nav class=\"main-nav\">
-        <a href=\"index.html\" class=\"active\" aria-current=\"page\">Home</a>
-        <a href=\"inventory.html\">Inventory</a>
+        <a href=\"";
+        // line 142
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        yield "\">Home</a>
+        <a href=\"";
+        // line 143
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inventory");
+        yield "\">Inventory</a>
         <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
         <a href=\"login.html\">Login</a>
         <a href=\"create.html\">Create Your Own</a>
@@ -384,6 +390,14 @@ muteBtn.addEventListener(\x27click\x27, (e) => {
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDefaultEscapeStrategy(): string|false
     {
         return "html";
@@ -394,7 +408,7 @@ muteBtn.addEventListener(\x27click\x27, (e) => {
      */
     public function getDebugInfo(): array
     {
-        return array (  50 => 1,);
+        return array (  197 => 143,  193 => 142,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -540,8 +554,8 @@ muteBtn.addEventListener(\x27click\x27, (e) => {
   <header class=\"site-header\">
     <div class=\"nav-inner\">
       <nav class=\"main-nav\">
-        <a href=\"index.html\" class=\"active\" aria-current=\"page\">Home</a>
-        <a href=\"inventory.html\">Inventory</a>
+        <a href=\"{{ path(\x27home\x27) }}\">Home</a>
+        <a href=\"{{ path(\x27inventory\x27) }}\">Inventory</a>
         <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
         <a href=\"login.html\">Login</a>
         <a href=\"create.html\">Create Your Own</a>
