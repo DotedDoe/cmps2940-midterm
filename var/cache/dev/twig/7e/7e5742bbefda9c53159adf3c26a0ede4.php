@@ -65,20 +65,34 @@ class __TwigTemplate_6726e396cd26047ce1025a53381394f3 extends Template
   <header class=\"site-header\">
     <div class=\"nav-inner\">
      
-      <nav class=\"main-nav\">
-        <a href=\"";
-        // line 20
+    
+<nav class=\"main-nav\">
+    <a href=\"";
+        // line 21
         yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         yield "\">Home</a>
-        <a href=\"";
-        // line 21
+    <a href=\"";
+        // line 22
         yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inventory");
         yield "\">Inventory</a>
-        <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
-        <a href=\"login.html\">Login</a>
-        <a href=\"create.html\">Create Your Own</a>
-        <a href=\"about-us.html\">About Us!</a>
-      </nav>
+    <a href=\"";
+        // line 23
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart");
+        yield "\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
+    <a href=\"";
+        // line 24
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+        yield "\">Login</a>
+    <a href=\"";
+        // line 25
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("create");
+        yield "\">Create Your Own</a>
+    <a href=\"";
+        // line 26
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about_us");
+        yield "\" class=\"active\" aria-current=\"page\">About Us!</a>
+</nav>
+
     </div>
   </header>
 
@@ -200,7 +214,7 @@ aria-label=\"Search inventory\">
      */
     public function getDebugInfo(): array
     {
-        return array (  75 => 21,  71 => 20,  50 => 1,);
+        return array (  92 => 26,  88 => 25,  84 => 24,  80 => 23,  76 => 22,  72 => 21,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -223,14 +237,16 @@ aria-label=\"Search inventory\">
   <header class=\"site-header\">
     <div class=\"nav-inner\">
      
-      <nav class=\"main-nav\">
-        <a href=\"{{ path(\x27home\x27) }}\">Home</a>
-        <a href=\"{{ path(\x27inventory\x27) }}\">Inventory</a>
-        <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
-        <a href=\"login.html\">Login</a>
-        <a href=\"create.html\">Create Your Own</a>
-        <a href=\"about-us.html\">About Us!</a>
-      </nav>
+    
+<nav class=\"main-nav\">
+    <a href=\"{{ path(\x27home\x27) }}\">Home</a>
+    <a href=\"{{ path(\x27inventory\x27) }}\">Inventory</a>
+    <a href=\"{{ path(\x27cart\x27) }}\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
+    <a href=\"{{ path(\x27login\x27) }}\">Login</a>
+    <a href=\"{{ path(\x27create\x27) }}\">Create Your Own</a>
+    <a href=\"{{ path(\x27about_us\x27) }}\" class=\"active\" aria-current=\"page\">About Us!</a>
+</nav>
+
     </div>
   </header>
 

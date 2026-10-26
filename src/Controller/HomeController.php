@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Controller;
@@ -19,9 +20,28 @@ class HomeController extends AbstractController
     {
         return $this->render('inventory/index.html.twig');
     }
-        #[Route('/about-us', name: 'about_us')]
+
+    #[Route('/about-us', name: 'about_us')]
     public function aboutUs(): Response
     {
-    return $this->render('about_us/index.html.twig');
-}
+        return $this->render('about_us/index.html.twig');
+    }
+
+    #[Route('/cart', name: 'cart')]
+    public function cart(): Response
+    {
+        return $this->render('cart/index.html.twig');
+    }
+
+    #[Route('/login', name: 'login')]
+    public function login(): Response
+    {
+        return $this->render('login/index.html.twig');
+    }
+
+    #[Route('/create', name: 'create')]
+    public function create(): Response
+    {
+        return $this->render('create/index.html.twig');
+    }
 }

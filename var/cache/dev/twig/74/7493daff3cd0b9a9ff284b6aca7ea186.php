@@ -187,20 +187,34 @@ class __TwigTemplate_2b34809d79726693eb9ecc1b4174c2c6 extends Template
 <body>
   <header class=\"site-header\">
     <div class=\"nav-inner\">
-      <nav class=\"main-nav\">
-        <a href=\"";
-        // line 142
+    
+<nav class=\"main-nav\">
+    <a href=\"";
+        // line 143
         yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         yield "\">Home</a>
-        <a href=\"";
-        // line 143
+    <a href=\"";
+        // line 144
         yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inventory");
         yield "\">Inventory</a>
-        <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
-        <a href=\"login.html\">Login</a>
-        <a href=\"create.html\">Create Your Own</a>
-        <a href=\"about-us.html\">About Us!</a>
-      </nav>
+    <a href=\"";
+        // line 145
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("cart");
+        yield "\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
+    <a href=\"";
+        // line 146
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
+        yield "\">Login</a>
+    <a href=\"";
+        // line 147
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("create");
+        yield "\">Create Your Own</a>
+    <a href=\"";
+        // line 148
+        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("about_us");
+        yield "\" class=\"active\" aria-current=\"page\">About Us!</a>
+</nav>
+
     </div>
 
  </header>
@@ -408,7 +422,7 @@ muteBtn.addEventListener(\x27click\x27, (e) => {
      */
     public function getDebugInfo(): array
     {
-        return array (  197 => 143,  193 => 142,  50 => 1,);
+        return array (  214 => 148,  210 => 147,  206 => 146,  202 => 145,  198 => 144,  194 => 143,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -553,14 +567,16 @@ muteBtn.addEventListener(\x27click\x27, (e) => {
 <body>
   <header class=\"site-header\">
     <div class=\"nav-inner\">
-      <nav class=\"main-nav\">
-        <a href=\"{{ path(\x27home\x27) }}\">Home</a>
-        <a href=\"{{ path(\x27inventory\x27) }}\">Inventory</a>
-        <a href=\"cart.html\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
-        <a href=\"login.html\">Login</a>
-        <a href=\"create.html\">Create Your Own</a>
-        <a href=\"about-us.html\">About Us!</a>
-      </nav>
+    
+<nav class=\"main-nav\">
+    <a href=\"{{ path(\x27home\x27) }}\">Home</a>
+    <a href=\"{{ path(\x27inventory\x27) }}\">Inventory</a>
+    <a href=\"{{ path(\x27cart\x27) }}\">Cart <span id=\"cart-count\" class=\"cart-count\">0</span></a>
+    <a href=\"{{ path(\x27login\x27) }}\">Login</a>
+    <a href=\"{{ path(\x27create\x27) }}\">Create Your Own</a>
+    <a href=\"{{ path(\x27about_us\x27) }}\" class=\"active\" aria-current=\"page\">About Us!</a>
+</nav>
+
     </div>
 
  </header>
