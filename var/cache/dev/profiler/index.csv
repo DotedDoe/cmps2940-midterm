@@ -32,3 +32,11 @@ fa640e,127.0.0.1,GET,http://127.0.0.1:8001/create.html,1793026549,,404,request
 ab20b6,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
 7f41fa,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
 face49,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026824,,200,request
+8d6620,127.0.0.1,GET,http://127.0.0.1:8001/,1793026855,,200,request
+f0fd95,127.0.0.1,GET,http://127.0.0.1:8001/cart.html,1793026856,85684c,404,request
+85684c,127.0.0.1,GET,http://127.0.0.1:8001/cart.html,1793026856,,404,request
+416ba7,127.0.0.1,GET,http://127.0.0.1:8001/about-us.html,1793026859,bb5290,404,request
+bb5290,127.0.0.1,GET,http://127.0.0.1:8001/about-us.html,1793026859,,404,request
+49daf1,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026862,,200,request
+106951,127.0.0.1,GET,http://127.0.0.1:8001/cart.html,1793026864,ed46f5,404,request
+ed46f5,127.0.0.1,GET,http://127.0.0.1:8001/cart.html,1793026864,,404,request

@@ -13,14 +13,16 @@
   <header class="site-header">
     <div class="nav-inner">
    
-      <nav class="main-nav">
-        <a href="{{ path('home') }}">Home</a>
-<a href="{{ path('inventory') }}">Inventory</a>
-        <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
-        <a href="login.html">Login</a>
-        <a href="create.html">Create Your Own</a>
-        <a href="about-us.html">About Us!</a>
-      </nav>
+     
+<nav class="main-nav">
+    <a href="{{ path('home') }}">Home</a>
+    <a href="{{ path('inventory') }}">Inventory</a>
+    <a href="{{ path('cart') }}">Cart <span id="cart-count" class="cart-count">0</span></a>
+    <a href="{{ path('login') }}">Login</a>
+    <a href="{{ path('create') }}">Create Your Own</a>
+    <a href="{{ path('about_us') }}" class="active" aria-current="page">About Us!</a>
+</nav>
+
     </div>
   </header>
 
