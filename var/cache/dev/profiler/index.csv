@@ -90,3 +90,8 @@ e6bba3,127.0.0.1,GET,http://127.0.0.1:8001/,1793128082,,200,request
 0bb1a4,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793128098,,200,request
 942de1,127.0.0.1,GET,http://127.0.0.1:8001/about-us,1793128102,959a60,500,request
 959a60,127.0.0.1,GET,http://127.0.0.1:8001/about-us,1793128102,,500,request
+6ad62e,127.0.0.1,GET,http://127.0.0.1:8001/about-us,1793128391,,200,request
+78e6d6,127.0.0.1,GET,http://127.0.0.1:8001/favicon.ico,1793128392,b433ee,404,request
+b433ee,127.0.0.1,GET,http://127.0.0.1:8001/favicon.ico,1793128392,,404,request
+dc4e60,127.0.0.1,GET,http://127.0.0.1:8001/create,1793128405,,200,request
+0af339,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793128410,,200,request
