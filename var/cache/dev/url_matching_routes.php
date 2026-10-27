@@ -18,6 +18,9 @@ return [
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/inventory' => [[['_route' => 'inventory', '_controller' => 'App\\Controller\\HomeController::inventory'], null, null, null, false, false, null]],
         '/about-us' => [[['_route' => 'about_us', '_controller' => 'App\\Controller\\HomeController::aboutUs'], null, null, null, false, false, null]],
+        '/cart' => [[['_route' => 'cart', '_controller' => 'App\\Controller\\HomeController::cart'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\HomeController::login'], null, null, null, false, false, null]],
+        '/create' => [[['_route' => 'create', '_controller' => 'App\\Controller\\HomeController::create'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

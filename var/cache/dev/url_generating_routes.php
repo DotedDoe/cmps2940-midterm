@@ -21,7 +21,13 @@ return [
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'inventory' => [[], ['_controller' => 'App\\Controller\\HomeController::inventory'], [], [['text', '/inventory']], [], [], []],
     'about_us' => [[], ['_controller' => 'App\\Controller\\HomeController::aboutUs'], [], [['text', '/about-us']], [], [], []],
+    'cart' => [[], ['_controller' => 'App\\Controller\\HomeController::cart'], [], [['text', '/cart']], [], [], []],
+    'login' => [[], ['_controller' => 'App\\Controller\\HomeController::login'], [], [['text', '/login']], [], [], []],
+    'create' => [[], ['_controller' => 'App\\Controller\\HomeController::create'], [], [['text', '/create']], [], [], []],
     'App\\Controller\\HomeController::index' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
     'App\\Controller\\HomeController::inventory' => [[], ['_controller' => 'App\\Controller\\HomeController::inventory'], [], [['text', '/inventory']], [], [], []],
     'App\\Controller\\HomeController::aboutUs' => [[], ['_controller' => 'App\\Controller\\HomeController::aboutUs'], [], [['text', '/about-us']], [], [], []],
+    'App\\Controller\\HomeController::cart' => [[], ['_controller' => 'App\\Controller\\HomeController::cart'], [], [['text', '/cart']], [], [], []],
+    'App\\Controller\\HomeController::login' => [[], ['_controller' => 'App\\Controller\\HomeController::login'], [], [['text', '/login']], [], [], []],
+    'App\\Controller\\HomeController::create' => [[], ['_controller' => 'App\\Controller\\HomeController::create'], [], [['text', '/create']], [], [], []],
 ];
