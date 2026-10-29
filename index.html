@@ -255,8 +255,37 @@ muteBtn.addEventListener('click', (e) => {
         </div>
 
       </div>
-    </section>
-  </main>
+      <div>
+        <button onclick="dec()">Decrease</button>
+        <button onclick="inc()">Increase</button>
+      </div>
+    </div>
+    </main>
+    <script>
+    let count = 0;
+    let incClicks = 0;
+    let decClicks = 0;
+
+    const countEl = document.getElementById("count");
+    const incEl = document.getElementById("incCount");
+    const decEl = document.getElementById("decCount");
+
+    function inc() {
+      count++;
+      incClicks++;
+      countEl.textContent = count;
+      incEl.textContent = incClicks;
+    }
+
+    function dec() {
+      count--;
+      decClicks++;
+      countEl.textContent = count;
+      decEl.textContent = decClicks;
+    }
+  </script>
+</body>
+
 
   <footer class="site-footer">
     <p>&copy; 2026 Cookie Time Cookie</p>
