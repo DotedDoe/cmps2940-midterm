@@ -95,3 +95,7 @@ e6bba3,127.0.0.1,GET,http://127.0.0.1:8001/,1793128082,,200,request
 b433ee,127.0.0.1,GET,http://127.0.0.1:8001/favicon.ico,1793128392,,404,request
 dc4e60,127.0.0.1,GET,http://127.0.0.1:8001/create,1793128405,,200,request
 0af339,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793128410,,200,request
+49f6be,127.0.0.1,GET,http://127.0.0.1:8001/,1793128542,,200,request
+c3f9aa,127.0.0.1,GET,http://127.0.0.1:8001/cart,1793128562,,200,request
+faa26b,127.0.0.1,GET,http://127.0.0.1:8001/checkout.html,1793128565,2a5542,404,request
+2a5542,127.0.0.1,GET,http://127.0.0.1:8001/checkout.html,1793128565,,404,request
