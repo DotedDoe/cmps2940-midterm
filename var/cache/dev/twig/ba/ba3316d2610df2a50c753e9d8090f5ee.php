@@ -1133,6 +1133,6 @@ class __TwigTemplate_efc2ea2b81013637327ca7bb2affd100 extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
     }
 }

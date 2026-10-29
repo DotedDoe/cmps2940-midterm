@@ -329,6 +329,6 @@ aria-label=\"Search inventory\">
 <script src=\"/js/cart.js\"></script>
 <script src=\"/js/catalog.js\"></script>
 </body>
-</html>", "inventory/index.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\templates\\inventory\\index.html.twig");
+</html>", "inventory/index.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\templates\\inventory\\index.html.twig");
     }
 }

@@ -235,6 +235,6 @@ class __TwigTemplate_fe78897e48f22d229238220aef70b873 extends Template
   <script src=\"js/app.js\"></script>
   <script src=\"js/cart.js\"></script>
 </body>
-</html>", "cart/index.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\templates\\cart\\index.html.twig");
+</html>", "cart/index.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\templates\\cart\\index.html.twig");
     }
 }

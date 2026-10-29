@@ -105,3 +105,16 @@ fc1480,127.0.0.1,GET,http://127.0.0.1:8001/login,1793301856,,200,request
 a4ff2c,127.0.0.1,GET,http://127.0.0.1:8001/create,1793301857,,200,request
 27581d,127.0.0.1,GET,http://127.0.0.1:8001/,1793301859,,200,request
 a061a7,127.0.0.1,GET,http://127.0.0.1:8001/,1793302064,,200,request
+0338cf,127.0.0.1,GET,http://127.0.0.1:8000/,1793302588,,200,request
+a037e6,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793302591,b696be,404,request
+b696be,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793302591,,404,request
+a5ae86,127.0.0.1,GET,http://127.0.0.1:8000/,1793302615,,200,request
+b61bb6,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793302616,2d27b5,404,request
+2d27b5,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793302616,,404,request
+54f7d6,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793302625,6925c3,404,request
+6925c3,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793302625,,404,request
+8e1a96,127.0.0.1,GET,http://127.0.0.1:8000/login,1793302625,,200,request
+3b277e,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1793302628,,200,request
+7cd21e,127.0.0.1,GET,http://127.0.0.1:8000/cart,1793302633,,200,request
+735195,127.0.0.1,GET,http://127.0.0.1:8000/checkout.html,1793302634,d5385f,404,request
+d5385f,127.0.0.1,GET,http://127.0.0.1:8000/checkout.html,1793302634,,404,request

@@ -1678,6 +1678,6 @@ class __TwigTemplate_7e73459501a0d4985b388b1f0a205f08 extends Template
         {{- (bytes / 1000 ** 2)|number_format(2) ~ \x27 MB\x27 -}}
     {%- endif -%}
 {% endmacro %}
-", "@WebProfiler/Collector/mailer.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\mailer.html.twig");
+", "@WebProfiler/Collector/mailer.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\mailer.html.twig");
     }
 }

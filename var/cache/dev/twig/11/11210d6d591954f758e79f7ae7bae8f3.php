@@ -193,6 +193,6 @@ class __TwigTemplate_8275831ec8c480d667a65eaee5bb2e26 extends Template
 
     {{ include(\x27@WebProfiler/Profiler/toolbar_item.html.twig\x27, {link: profiler_url, name: \x27time\x27, status: status_color}) }}
 {% endblock %}
-", "@WebProfiler/Collector/memory.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\memory.html.twig");
+", "@WebProfiler/Collector/memory.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\memory.html.twig");
     }
 }

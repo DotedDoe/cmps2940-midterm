@@ -219,6 +219,6 @@ class __TwigTemplate_9f5358a3e33185b75c25ceeedaec8c6c extends Template
 
   <script src=\"js/app.js\"></script>
 </body>
-</html>", "login/index.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\templates\\login\\index.html.twig");
+</html>", "login/index.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\templates\\login\\index.html.twig");
     }
 }
