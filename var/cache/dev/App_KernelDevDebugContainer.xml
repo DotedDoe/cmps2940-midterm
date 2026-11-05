@@ -362,6 +362,10 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\HomeController"/>
       </call>
     </service>
+    <service id="App\Entity\Product" class="App\Entity\Product" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver" priority="100">controller.argument_value_resolver</tag>
@@ -7499,6 +7503,7 @@
         <argument>service_container</argument>
         <argument>kernel</argument>
         <argument>App\Controller\HomeController</argument>
+        <argument>App\Entity\Product</argument>
         <argument>controller_resolver</argument>
         <argument>argument_metadata_factory</argument>
         <argument>argument_resolver</argument>
@@ -8441,6 +8446,8 @@
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController</argument>
         <argument>.instanceof.App\Controller\HomeController.0.App\Controller\HomeController</argument>
         <argument>.abstract.instanceof.App\Controller\HomeController</argument>
+        <argument>.instanceof.App\Entity\Product.0.App\Entity\Product</argument>
+        <argument>.abstract.instanceof.App\Entity\Product</argument>
         <argument>.service_locator.ryAvHi4</argument>
         <argument>debug.security.event_dispatcher.main</argument>
         <argument>maker.auto_command.make_auth</argument>
@@ -9606,6 +9613,9 @@
         </argument>
         <argument key="HomeController" type="collection">
           <argument>App\Controller\HomeController</argument>
+        </argument>
+        <argument key="Product" type="collection">
+          <argument>App\Entity\Product</argument>
         </argument>
         <argument key="ControllerResolver" type="collection">
           <argument>controller_resolver</argument>
@@ -12632,6 +12642,8 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\HomeController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Product.0.App\Entity\Product" class="App\Entity\Product" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Product" class="App\Entity\Product" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.ryAvHi4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
