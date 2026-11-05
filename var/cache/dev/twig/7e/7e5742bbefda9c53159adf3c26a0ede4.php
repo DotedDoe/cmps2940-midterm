@@ -173,6 +173,12 @@ aria-label=\"Search inventory\">
 
 <script src=\"/js/app.js\"></script>
 <script src=\"/js/cart.js\"></script>
+<script>
+    const CATALOG_DATA = ";
+        // line 110
+        yield (string) json_encode((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 110, $this->source); })()));
+        yield ";
+</script>
 <script src=\"/js/catalog.js\"></script>
 </body>
 </html>";
@@ -214,7 +220,7 @@ aria-label=\"Search inventory\">
      */
     public function getDebugInfo(): array
     {
-        return array (  92 => 26,  88 => 25,  84 => 24,  80 => 23,  76 => 22,  72 => 21,  50 => 1,);
+        return array (  179 => 110,  92 => 26,  88 => 25,  84 => 24,  80 => 23,  76 => 22,  72 => 21,  50 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -327,8 +333,11 @@ aria-label=\"Search inventory\">
 
 <script src=\"/js/app.js\"></script>
 <script src=\"/js/cart.js\"></script>
+<script>
+    const CATALOG_DATA = {{ products|json_encode|raw }};
+</script>
 <script src=\"/js/catalog.js\"></script>
 </body>
-</html>", "inventory/index.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\templates\\inventory\\index.html.twig");
+</html>", "inventory/index.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\templates\\inventory\\index.html.twig");
     }
 }
