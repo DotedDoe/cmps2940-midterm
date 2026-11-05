@@ -745,6 +745,6 @@ muteBtn.addEventListener(\x27click\x27, (e) => {
     }
   </script>
 </body>
-</html>", "home/index.html.twig", "C:\\Users\\madee\\cmps2940-midterm-1\\templates\\home\\index.html.twig");
+</html>", "home/index.html.twig", "C:\\Users\\mmill\\Documents\\GitHub\\cmps2940-midterm\\templates\\home\\index.html.twig");
     }
 }
