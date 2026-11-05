@@ -87,4 +87,58 @@ class Product
         $this->stock = $stock;
         return $this;
     }
+    #[ORM\Column(length: 100, unique: true)]
+private string $slug;
+
+#[ORM\Column(length: 50)]
+private string $category;
+
+#[ORM\Column(type: 'json', nullable: true)]
+private ?array $nutrition = null;
+
+#[ORM\Column(type: 'json', nullable: true)]
+private ?array $customizable = null;
+public function getSlug(): string
+{
+    return $this->slug;
+}
+
+public function setSlug(string $slug): static
+{
+    $this->slug = $slug;
+    return $this;
+}
+
+public function getCategory(): string
+{
+    return $this->category;
+}
+
+public function setCategory(string $category): static
+{
+    $this->category = $category;
+    return $this;
+}
+
+public function getNutrition(): ?array
+{
+    return $this->nutrition;
+}
+
+public function setNutrition(?array $nutrition): static
+{
+    $this->nutrition = $nutrition;
+    return $this;
+}
+
+public function getCustomizable(): ?array
+{
+    return $this->customizable;
+}
+
+public function setCustomizable(?array $customizable): static
+{
+    $this->customizable = $customizable;
+    return $this;
+}
 }

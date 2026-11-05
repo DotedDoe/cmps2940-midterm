@@ -354,6 +354,18 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command" command="app:catalog:import" description="Import Cookie Time products into the database" help=""/>
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setName">
+        <argument>app:catalog:import</argument>
+      </call>
+      <call method="setDescription">
+        <argument>Import Cookie Time products into the database</argument>
+      </call>
+    </service>
     <service id="App\Controller\HomeController" class="App\Controller\HomeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -7502,6 +7514,7 @@
       <argument type="collection">
         <argument>service_container</argument>
         <argument>kernel</argument>
+        <argument>App\Command\ImportCatalogCommand</argument>
         <argument>App\Controller\HomeController</argument>
         <argument>App\Entity\Product</argument>
         <argument>controller_resolver</argument>
@@ -8442,6 +8455,9 @@
         <argument>maker.maker.make_form_login</argument>
         <argument>maker.maker.make_custom_authenticator</argument>
         <argument>maker.maker.make_webhook</argument>
+        <argument>.instanceof.Symfony\Component\Console\Command\Command.0.App\Command\ImportCatalogCommand</argument>
+        <argument>.instanceof.App\Command\ImportCatalogCommand.0.App\Command\ImportCatalogCommand</argument>
+        <argument>.abstract.instanceof.App\Command\ImportCatalogCommand</argument>
         <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController</argument>
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController</argument>
         <argument>.instanceof.App\Controller\HomeController.0.App\Controller\HomeController</argument>
@@ -9610,6 +9626,9 @@
         <argument key="Kernel" type="collection">
           <argument>kernel</argument>
           <argument>App\Kernel</argument>
+        </argument>
+        <argument key="ImportCatalogCommand" type="collection">
+          <argument>App\Command\ImportCatalogCommand</argument>
         </argument>
         <argument key="HomeController" type="collection">
           <argument>App\Controller\HomeController</argument>
@@ -12638,6 +12657,9 @@
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.generator"/>
     </service>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Command\ImportCatalogCommand.0.App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\HomeController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
@@ -14202,6 +14224,13 @@
     <service id=".errored..service_locator.1vYpZ1B.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.1vYpZ1B&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
     </service>
+    <service id=".App\Command\ImportCatalogCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
+      <argument>app:catalog:import</argument>
+      <argument type="collection"/>
+      <argument>Import Cookie Time products into the database</argument>
+      <argument>false</argument>
+      <argument type="service_closure" id="App\Command\ImportCatalogCommand"/>
+    </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -14923,8 +14952,9 @@
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.Zi_tVKy"/>
+      <argument type="service" id=".service_locator.BV6aEY3"/>
       <argument type="collection">
+        <argument key="app:catalog:import">App\Command\ImportCatalogCommand</argument>
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
         <argument key="cache:clear">console.command.cache_clear</argument>
@@ -15050,9 +15080,10 @@
         <argument key="make:webhook">maker.auto_command.make_webhook</argument>
       </argument>
     </service>
-    <service id=".service_locator.Zi_tVKy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.BV6aEY3" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Command\ImportCatalogCommand" type="service_closure" id=".App\Command\ImportCatalogCommand.lazy"/>
         <argument key="console.command.about" type="service_closure" id=".console.command.about.lazy"/>
         <argument key="console.command.assets_install" type="service_closure" id=".console.command.assets_install.lazy"/>
         <argument key="console.command.cache_clear" type="service_closure" id=".console.command.cache_clear.lazy"/>
