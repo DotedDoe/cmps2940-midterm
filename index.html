@@ -136,6 +136,7 @@
   </style>
 </head>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <body>
   <header>
@@ -156,10 +157,11 @@
       <p>We are an independent bakery that sells you baked goods!</p>
     </section>
 =======
+=======
+>>>>>>> 3eac3d5eb1345d768cbc6008cbf27194aae735e9
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="logo">Cookie Time Cookie</a>
       <nav class="main-nav">
         <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="inventory.html">Inventory</a>
@@ -181,6 +183,7 @@
 
   <main>
     
+<<<<<<< HEAD
 >>>>>>> main
 
     <section class="announcements">
@@ -207,6 +210,11 @@
       <div class="counter">
         <p id="count">0</p>
 =======
+=======
+
+    <section class="announcements">
+    </section>
+>>>>>>> 3eac3d5eb1345d768cbc6008cbf27194aae735e9
 
 <audio id="bg" src="audio/bakery.mp3" loop preload="auto"></audio>
 <button id="mute-btn" type="button" aria-label="Mute music">🔊</button>
@@ -245,7 +253,7 @@ muteBtn.addEventListener('click', (e) => {
       <div class="card-grid">
 
         <div class="image-counter-card" data-id="choco-mountain" data-name="Choco Mountain" data-price="3.50">
-          <img src="PASTE-YOUR-ORIGINAL-CHOCO-MOUNTAIN-SRC-HERE" alt="WE NEED TO COOK!">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbakewithshivesh.com%2Fwp-content%2Fuploads%2F2020%2F05%2F151F814A-2749-4978-BA53-3AD2A962C933-scaled.jpg&f=1&nofb=1&ipt=fd4bddd16a29d46bfd11e9d93fb13b002a94f1f3ac3905ec48e6e902d98a0e93" alt="WE NEED TO COOK!">
           <div class="bottom-left">Choco Mountain</div>
           <div class="counter-overlay">
             <button onclick="dec('count1')">−</button>
@@ -288,7 +296,21 @@ muteBtn.addEventListener('click', (e) => {
           <button class="bottom-right" class="add-to-cart" onclick="addFeaturedToCart(this, 'count4')">Add to Cart</button>
         </div>
 
+<<<<<<< HEAD
 >>>>>>> main
+=======
+        <div class="image-counter-card" data-id="macaroon-beach" data-name="Macaroon Beach" data-price="3.75">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.jordanwinery.com%2Fwp-content%2Fuploads%2F2020%2F04%2FFrench-Macaron-Cookie-Recipe-WebHero-6435.jpg&f=1&nofb=1&ipt=b63971ffca0730e5af8b8000919f0029a95e78b5e184ca28e1ac2f65ea1b9198&ipo=images" alt="Yur mum">
+          <div class="bottom-left">Macaroon Beach</div>
+          <div class="counter-overlay">
+            <button onclick="dec('count5')">−</button>
+            <span id="count5">0</span>
+            <button onclick="inc('count5')">+</button>
+          </div>
+          <button class="bottom-right" class="add-to-cart" onclick="addFeaturedToCart(this, 'count5')">Add to Cart</button>
+        </div>
+
+>>>>>>> 3eac3d5eb1345d768cbc6008cbf27194aae735e9
       </div>
       <div>
         <button onclick="dec()">Decrease</button>
@@ -323,17 +345,20 @@ muteBtn.addEventListener('click', (e) => {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   <footer>
 =======
   <footer class="site-footer">
 >>>>>>> main
+=======
+  <footer class="site-footer">
+>>>>>>> 3eac3d5eb1345d768cbc6008cbf27194aae735e9
     <p>&copy; 2026 Cookie Time Cookie</p>
   </footer>
 
   <script src="js/app.js"></script>
   <script src="js/cart.js"></script>
   <script>
-    // Tracks a separate count per image, keyed by the span's id
     const counts = {};
 
     function inc(id) {

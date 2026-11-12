@@ -144,7 +144,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   margin: 0 auto;
   padding: 1rem 1.5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
