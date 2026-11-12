@@ -1146,3 +1146,42 @@ html[data-theme="dark"] h3 {
   text-align: center;
   cursor: pointer;
 }
+
+.flash {
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-line);
+  background: var(--color-card-bg);
+  color: var(--color-cocoa);
+}
+.flash-success { border-color: var(--color-butter); }
+.flash-error { border-color: var(--color-berry); }
+
+.flash-toast {
+  position: fixed;
+  top: 4rem;
+  left: 50%;
+  z-index: 1000;
+  width: max-content;
+  max-width: min(90vw, 420px);
+  margin: 0;
+  box-shadow: var(--shadow-card-hover);
+  animation: toast-in-out 4s ease forwards;
+}
+
+@keyframes toast-in-out {
+  0%   { opacity: 0; transform: translate(-50%, -10px); }
+  8%   { opacity: 1; transform: translate(-50%, 0); }
+  85%  { opacity: 1; transform: translate(-50%, 0); visibility: visible; }
+  100% { opacity: 0; transform: translate(-50%, -10px); visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-toast { animation-name: toast-fade-only; }
+  @keyframes toast-fade-only {
+    0%, 85% { opacity: 1; }
+    100%    { opacity: 0; visibility: hidden; }
+  }
+}

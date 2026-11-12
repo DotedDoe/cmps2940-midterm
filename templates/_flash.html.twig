@@ -1,0 +1,3 @@
+{% for message in app.flashes('success') %}
+  <div class="flash flash-success flash-toast" role="status">{{ message }}</div>
+{% endfor %}

@@ -50,12 +50,6 @@ public function inventory(ProductRepository $productRepository): Response
         return $this->render('cart/index.html.twig');
     }
 
-    #[Route('/login', name: 'login')]
-    public function login(): Response
-    {
-        return $this->render('login/index.html.twig');
-    }
-
     #[Route('/create', name: 'create')]
     public function create(): Response
     {
