@@ -146,6 +146,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -176,6 +177,45 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--color-crust); margin
   padding: 0 0.5em;
   font-size: 0.8rem;
   margin-left: 0.25rem;
+}
+
+.nav-icons {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--color-cream);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-icon:hover,
+.nav-icon.active {
+  background: var(--color-butter);
+  color: var(--color-cocoa);
+}
+
+.nav-icon .cart-count {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  margin: 0;
+  min-width: 18px;
+  text-align: center;
+  line-height: 18px;
+  padding: 0 4px;
 }
 
 
@@ -975,6 +1015,21 @@ html[data-theme="dark"] .checkout-form legend {
 html[data-theme="dark"] .empty-cart-message a,
 html[data-theme="dark"] .order-confirmation a {
   color: var(--color-butter);
+}
+
+html[data-theme="dark"] .nav-icon {
+  color: var(--color-cocoa);
+}
+
+html[data-theme="dark"] .nav-icon:hover,
+html[data-theme="dark"] .nav-icon.active {
+  color: #332820;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3 {
+  color: var(--color-cocoa);
 }
 
 
