@@ -213,3 +213,24 @@ b32309,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794946228,332307,404,req
 c7423d,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794946247,9b2a14,404,request
 9b2a14,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794946247,,404,request
 >>>>>>> main
+f03fc8,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794947523,d10f31,404,request
+d10f31,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794947524,,404,request
+24fc1a,127.0.0.1,GET,http://127.0.0.1:8000/,1794947525,,200,request
+25f877,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794947532,d4ba3f,404,request
+d4ba3f,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794947532,,404,request
+86d7f1,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794947533,40aaa1,404,request
+40aaa1,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794947533,,404,request
+fdd82a,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1794947560,043855,500,request
+043855,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1794947560,,500,request
+987b09,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1794947564,ecf558,500,request
+ecf558,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1794947564,,500,request
+b90eea,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794947567,d90fbb,404,request
+d90fbb,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794947567,,404,request
+54c73d,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794947568,ec81a1,404,request
+ec81a1,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794947568,,404,request
+1996d5,127.0.0.1,GET,http://127.0.0.1:8000/create.html,1794947570,bc22e7,404,request
+bc22e7,127.0.0.1,GET,http://127.0.0.1:8000/create.html,1794947570,,404,request
+404400,127.0.0.1,GET,http://127.0.0.1:8000/create.html,1794947571,995cdb,404,request
+995cdb,127.0.0.1,GET,http://127.0.0.1:8000/create.html,1794947571,,404,request
+b5cffc,127.0.0.1,GET,http://127.0.0.1:8000/about-us.html,1794947573,1e2614,404,request
+1e2614,127.0.0.1,GET,http://127.0.0.1:8000/about-us.html,1794947573,,404,request
