@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+adc322,127.0.0.1,GET,http://127.0.0.1:8000/,1794929286,,200,request
+693b7b,127.0.0.1,GET,http://127.0.0.1:8000/cart,1794929293,,200,request
+366dcf,127.0.0.1,GET,http://127.0.0.1:8000/,1794929294,,200,request
+5fce3e,127.0.0.1,GET,http://127.0.0.1:8000/about-us,1794929295,,200,request
+1c4eae,127.0.0.1,GET,http://127.0.0.1:8000/,1794929296,,200,request
+bb17bf,127.0.0.1,GET,http://127.0.0.1:8000/,1794941639,,200,request
+85d323,127.0.0.1,GET,http://127.0.0.1:8000/,1794941642,,200,request
+000623,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794941645,4c2b1a,404,request
+4c2b1a,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794941645,,404,request
+61aadc,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1794941662,d693c1,500,request
+d693c1,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1794941662,,500,request
+49c794,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794941680,1549c3,404,request
+1549c3,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794941680,,404,request
+cf598a,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794941687,55b1b4,404,request
+55b1b4,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794941687,,404,request
+e3ca20,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794941786,22ed13,404,request
+22ed13,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794941786,,404,request
+fef9cb,127.0.0.1,GET,http://127.0.0.1:8000/,1794942602,,200,request
+53409f,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794942603,ec7f41,404,request
+ec7f41,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794942603,,404,request
+0f4eb6,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794942612,3fd6c5,404,request
+3fd6c5,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794942612,,404,request
+=======
 12dc3d,127.0.0.1,GET,http://127.0.0.1:8001/inventory?utm_source=chatgpt.com,1793026127,bc03be,500,request
 bc03be,127.0.0.1,GET,http://127.0.0.1:8001/inventory?utm_source=chatgpt.com,1793026131,,500,request
 7d2a98,127.0.0.1,GET,http://127.0.0.1:8001/inventory,1793026137,,200,request
@@ -163,6 +187,29 @@ e2c6fb,127.0.0.1,GET,http://127.0.0.1:8000/,1793908843,,200,request
 db1426,127.0.0.1,GET,http://127.0.0.1:8000/,1793910408,,200,request
 cbb367,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793910413,7df198,404,request
 7df198,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1793910413,,404,request
+<<<<<<< HEAD
 379917,127.0.0.1,GET,http://127.0.0.1:8000/,1794514329,,200,request
 1d6360,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794514330,97601a,404,request
 97601a,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794514330,,404,request
+=======
+5a899d,127.0.0.1,GET,http://127.0.0.1:8000/,1794514385,,200,request
+5dc691,127.0.0.1,GET,http://127.0.0.1:8000/cart,1794514583,,200,request
+2bd521,127.0.0.1,GET,http://127.0.0.1:8000/login,1794514585,,200,request
+bab61b,127.0.0.1,GET,http://127.0.0.1:8000/create,1794514586,,200,request
+3e9cbb,127.0.0.1,GET,http://127.0.0.1:8000/,1794514588,,200,request
+0f3d33,127.0.0.1,GET,http://127.0.0.1:8000/,1794514589,,200,request
+e00c4e,127.0.0.1,GET,http://127.0.0.1:8000/,1794514590,,200,request
+>>>>>>> 60429d61a5d6dbde6633db3d0da2ca8a06be74cb
+3fb306,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794945221,acd910,404,request
+acd910,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794945222,,404,request
+7e56b2,127.0.0.1,GET,http://127.0.0.1:8000/,1794945630,,200,request
+0cf000,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794946123,e9162b,404,request
+e9162b,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794946123,,404,request
+d2b67c,127.0.0.1,GET,http://127.0.0.1:8000/,1794946226,,200,request
+b32309,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794946228,332307,404,request
+332307,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1794946228,,404,request
+5dee45,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794946235,683360,404,request
+683360,127.0.0.1,GET,http://127.0.0.1:8000/cart.html,1794946235,,404,request
+c7423d,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794946247,9b2a14,404,request
+9b2a14,127.0.0.1,GET,http://127.0.0.1:8000/login.html,1794946247,,404,request
+>>>>>>> main
