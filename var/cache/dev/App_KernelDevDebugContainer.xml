@@ -215,6 +215,9 @@
       <parameter key="default">doctrine.dbal.default_connection</parameter>
     </parameter>
     <parameter key="doctrine.default_connection">default</parameter>
+    <parameter key="doctrine.entity_manager_connections" type="collection">
+      <parameter key="default">default</parameter>
+    </parameter>
     <parameter key="doctrine.migrations.preferred_em">null</parameter>
     <parameter key="doctrine.migrations.preferred_connection">null</parameter>
     <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
@@ -224,6 +227,7 @@
     <parameter key="twig.default_path">C:\Users\madee\cmps2940-midterm-1/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
+    <parameter key=".turbo.mercure.ignore_cookie_domain_errors">false</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
       <parameter key="ROLE_EMPLOYEE" type="collection">
         <parameter>ROLE_USER</parameter>
@@ -615,6 +619,7 @@
         <argument key="debug.stopwatch" type="service" id="debug.stopwatch" on-invalid="ignore_uninitialized"/>
         <argument key="debug.event_dispatcher" type="service" id="debug.event_dispatcher" on-invalid="ignore_uninitialized"/>
         <argument key="debug.log_processor" type="service" id="debug.log_processor" on-invalid="ignore_uninitialized"/>
+        <argument key="router.request_context.resetter" type="service" id="router.request_context.resetter" on-invalid="ignore_uninitialized"/>
         <argument key="session_listener" type="service" id="session_listener" on-invalid="ignore_uninitialized"/>
         <argument key="form.choice_list_factory.cached" type="service" id="form.choice_list_factory.cached" on-invalid="ignore_uninitialized"/>
         <argument key="cache.validator_expression_language" type="service" id="cache.validator_expression_language" on-invalid="ignore_uninitialized"/>
@@ -629,6 +634,9 @@
         <argument key="form.type.entity" type="service" id="form.type.entity" on-invalid="ignore_uninitialized"/>
         <argument key="twig" type="service" id="twig" on-invalid="ignore_uninitialized"/>
         <argument key="twig.form.engine" type="service" id="twig.form.engine" on-invalid="ignore_uninitialized"/>
+        <argument key="web_profiler.csp.handler" type="service" id="web_profiler.csp.handler" on-invalid="ignore_uninitialized"/>
+        <argument key="twig.extension.webprofiler" type="service" id="twig.extension.webprofiler" on-invalid="ignore_uninitialized"/>
+        <argument key="turbo.doctrine.event_listener" type="service" id="turbo.doctrine.event_listener" on-invalid="ignore_uninitialized"/>
         <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore_uninitialized"/>
         <argument key="security.logout_url_generator" type="service" id="security.logout_url_generator" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
@@ -639,6 +647,7 @@
         <argument key="debug.security.firewall.authenticator.main" type="service" id="debug.security.firewall.authenticator.main" on-invalid="ignore_uninitialized"/>
         <argument key="monolog.handler.main" type="service" id="monolog.handler.main" on-invalid="ignore_uninitialized"/>
         <argument key="monolog.handler.console" type="service" id="monolog.handler.console" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.doctrine.orm.entity_value_resolver.expression_language" type="service" id="cache.doctrine.orm.entity_value_resolver.expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="debug.security.event_dispatcher.main" type="service" id="debug.security.event_dispatcher.main" on-invalid="ignore_uninitialized"/>
         <argument key=".debug.http_client" type="service" id=".debug.http_client" on-invalid="ignore_uninitialized"/>
       </argument>
@@ -703,6 +712,9 @@
         <argument key="debug.log_processor" type="collection">
           <argument>reset</argument>
         </argument>
+        <argument key="router.request_context.resetter" type="collection">
+          <argument>reset</argument>
+        </argument>
         <argument key="session_listener" type="collection">
           <argument>reset</argument>
         </argument>
@@ -745,6 +757,15 @@
         <argument key="twig.form.engine" type="collection">
           <argument>reset</argument>
         </argument>
+        <argument key="web_profiler.csp.handler" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="twig.extension.webprofiler" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="turbo.doctrine.event_listener" type="collection">
+          <argument>reset</argument>
+        </argument>
         <argument key="security.token_storage" type="collection">
           <argument>disableUsageTracking</argument>
           <argument>setToken</argument>
@@ -774,6 +795,9 @@
           <argument>reset</argument>
         </argument>
         <argument key="monolog.handler.console" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="cache.doctrine.orm.entity_value_resolver.expression_language" type="collection">
           <argument>reset</argument>
         </argument>
         <argument key="debug.security.event_dispatcher.main" type="collection">
@@ -957,6 +981,7 @@
         <argument>cache.security_expression_language</argument>
         <argument>cache.security_is_granted_attribute_expression_language</argument>
         <argument>cache.security_is_csrf_token_valid_attribute_expression_language</argument>
+        <argument>cache.doctrine.orm.entity_value_resolver.expression_language</argument>
       </argument>
       <call method="setName">
         <argument>cache:pool:clear</argument>
@@ -1007,6 +1032,7 @@
         <argument>cache.security_expression_language</argument>
         <argument>cache.security_is_granted_attribute_expression_language</argument>
         <argument>cache.security_is_csrf_token_valid_attribute_expression_language</argument>
+        <argument>cache.doctrine.orm.entity_value_resolver.expression_language</argument>
       </argument>
       <call method="setName">
         <argument>cache:pool:delete</argument>
@@ -1034,6 +1060,7 @@
         <argument>cache.security_expression_language</argument>
         <argument>cache.security_is_granted_attribute_expression_language</argument>
         <argument>cache.security_is_csrf_token_valid_attribute_expression_language</argument>
+        <argument>cache.doctrine.orm.entity_value_resolver.expression_language</argument>
       </argument>
       <call method="setName">
         <argument>cache:pool:list</argument>
@@ -1815,6 +1842,7 @@
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_is_granted_attribute_expression_language" type="service" id="cache.security_is_granted_attribute_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_is_csrf_token_valid_attribute_expression_language" type="service" id="cache.security_is_csrf_token_valid_attribute_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.doctrine.orm.entity_value_resolver.expression_language" type="service" id="cache.doctrine.orm.entity_value_resolver.expression_language" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id="cache.global_clearer" class="Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer" public="true">
@@ -1835,6 +1863,7 @@
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_is_granted_attribute_expression_language" type="service" id="cache.security_is_granted_attribute_expression_language" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_is_csrf_token_valid_attribute_expression_language" type="service" id="cache.security_is_csrf_token_valid_attribute_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.doctrine.orm.entity_value_resolver.expression_language" type="service" id="cache.doctrine.orm.entity_value_resolver.expression_language" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id="cache_pool_clearer.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\CachePoolClearerCacheWarmer">
@@ -2340,6 +2369,11 @@
             <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\validator/Resources/translations\validators.ca.xlf</argument>
             <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\form/Resources/translations\validators.ca.xlf</argument>
             <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\security-core/Resources/translations\security.ca.xlf</argument>
+          </argument>
+          <argument key="ckb" type="collection">
+            <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\validator/Resources/translations\validators.ckb.xlf</argument>
+            <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\form/Resources/translations\validators.ckb.xlf</argument>
+            <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\security-core/Resources/translations\security.ckb.xlf</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>C:\Users\madee\cmps2940-midterm-1\vendor\symfony\validator/Resources/translations\validators.cs.xlf</argument>
@@ -3776,6 +3810,10 @@
           <argument key="_locale">en</argument>
         </argument>
       </call>
+      <configurator service="router.request_context.resetter" method="__invoke"/>
+    </service>
+    <service id="router.request_context.resetter" class="Symfony\Bundle\FrameworkBundle\Routing\RequestContextResetter">
+      <tag name="kernel.reset" method="reset"/>
     </service>
     <service id="router.expression_language_provider" class="Symfony\Component\Routing\Matcher\ExpressionLanguageProvider">
       <tag name="routing.expression_language_provider"/>
@@ -5266,6 +5304,10 @@
         <argument>cache.security_is_csrf_token_valid_attribute_expression_language</argument>
         <argument type="service" id="cache.security_is_csrf_token_valid_attribute_expression_language"/>
       </call>
+      <call method="addInstance">
+        <argument>cache.doctrine.orm.entity_value_resolver.expression_language</argument>
+        <argument type="service" id="cache.doctrine.orm.entity_value_resolver.expression_language"/>
+      </call>
     </service>
     <service id="data_collector.ajax" class="Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector">
       <tag name="data_collector" template="@WebProfiler/Collector/ajax.html.twig" id="ajax" priority="315"/>
@@ -5369,9 +5411,41 @@
       <argument type="service" id="doctrine"/>
       <argument>true</argument>
       <argument type="service" id="doctrine.debug_data_holder" on-invalid="null"/>
+      <argument type="collection"/>
     </service>
     <service id="doctrine.dbal.connection_factory" class="Doctrine\Bundle\DoctrineBundle\ConnectionFactory">
-      <argument>%doctrine.dbal.connection_factory.types%</argument>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\AsciiStringType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\BigIntType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\BinaryType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\BlobType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\BooleanType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateImmutableType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateIntervalType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateTimeType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateTimeImmutableType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateTimeUtcType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateTimeUtcImmutableType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateTimeTzType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DateTimeTzImmutableType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\DecimalType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\NumberType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\EnumType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\FloatType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\GuidType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\IntegerType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\JsonType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\JsonObjectType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\JsonbType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\JsonbObjectType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\SimpleArrayType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\SmallFloatType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\SmallIntType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\StringType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\TextType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\TimeType"/>
+      <tag name="container.preload" class="Doctrine\DBAL\Types\TimeImmutableType"/>
+      <argument type="service" id=".service_locator.qn6_wIE"/>
       <argument type="service" id="doctrine.dbal.connection_factory.dsn_parser"/>
     </service>
     <service id="doctrine.dbal.connection_factory.dsn_parser" class="Doctrine\DBAL\Tools\DsnParser">
@@ -5401,6 +5475,7 @@
       <argument>%doctrine.entity_managers%</argument>
       <argument>default</argument>
       <argument>default</argument>
+      <argument type="service" id=".service_locator.dnMkq3N"/>
     </service>
     <service id="doctrine.twig.doctrine_extension" class="Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension">
       <tag name="twig.extension"/>
@@ -5459,6 +5534,9 @@
           <argument type="service" id="doctrine.dbal.debug_middleware.default"/>
           <argument type="service" id="doctrine.dbal.idle_connection_middleware.default"/>
         </argument>
+      </call>
+      <call method="setTypeProvider">
+        <argument type="service" id="doctrine.dbal.default_connection.type_provider"/>
       </call>
     </service>
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager">
@@ -5667,7 +5745,9 @@
       </argument>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.entity_value_resolver.expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage"/>
+    <service id="doctrine.orm.entity_value_resolver.expression_language" class="Symfony\Component\ExpressionLanguage\ExpressionLanguage">
+      <argument type="service" id="cache.doctrine.orm.entity_value_resolver.expression_language" on-invalid="null"/>
+    </service>
     <service id="doctrine.cache_clear_metadata_command" class="Doctrine\ORM\Tools\Console\Command\ClearCache\MetadataCommand">
       <tag name="console.command" command="doctrine:cache:clear-metadata"/>
       <tag name="container.no_preload"/>
@@ -5873,11 +5953,13 @@
       <argument type="service" id="doctrine.dbal.default_connection.event_manager"/>
       <configurator service="doctrine.orm.default_manager_configurator" method="configure"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager.property_info_extractor" class="Symfony\Bridge\Doctrine\PropertyInfo\DoctrineExtractor">
+    <service id="doctrine.orm.default_entity_manager.property_info_extractor" class="Doctrine\Bundle\DoctrineBundle\PropertyInfo\DoctrineExtractor">
       <tag name="property_info.list_extractor" priority="-1001"/>
       <tag name="property_info.type_extractor" priority="-999"/>
       <tag name="property_info.access_extractor" priority="-999"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="doctrine.dbal.default_connection.event_manager"/>
+      <argument type="service" id=".doctrine.orm.default_metadata_driver"/>
     </service>
     <service id="doctrine.orm.default_entity_manager.validator_loader" class="Symfony\Bridge\Doctrine\Validator\DoctrineLoader">
       <tag name="validator.auto_mapper" priority="-100"/>
@@ -6613,12 +6695,14 @@
       <argument type="service" id="profiler" on-invalid="null"/>
     </service>
     <service id="web_profiler.csp.handler" class="Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler">
+      <tag name="kernel.reset" method="reset"/>
       <argument type="service">
         <service class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator"/>
       </argument>
     </service>
     <service id="twig.extension.webprofiler" class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension">
       <tag name="twig.extension"/>
+      <tag name="kernel.reset" method="reset"/>
       <argument type="service">
         <service class="Symfony\Component\VarDumper\Dumper\HtmlDumper">
           <argument>null</argument>
@@ -6714,6 +6798,7 @@
     <service id="turbo.doctrine.event_listener" class="Symfony\UX\Turbo\Doctrine\BroadcastListener">
       <tag name="doctrine.event_listener" event="onFlush"/>
       <tag name="doctrine.event_listener" event="postFlush"/>
+      <tag name="kernel.reset" method="reset"/>
       <argument type="service" id="turbo.broadcaster.action_renderer"/>
       <argument>null</argument>
     </service>
@@ -6785,10 +6870,14 @@
       <argument type="service" id="security.authentication.trust_resolver"/>
       <argument type="service" id="security.authorization_checker"/>
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
+      <argument type="service" id="debug.security.access.decision_manager"/>
+      <argument type="service" id="security.token_storage"/>
     </service>
     <service id="security.access.closure_voter" class="Symfony\Component\Security\Core\Authorization\Voter\ClosureVoter">
       <tag name="security.voter" priority="245"/>
       <argument type="service" id="security.authorization_checker"/>
+      <argument type="service" id="debug.security.access.decision_manager"/>
+      <argument type="service" id="security.token_storage"/>
     </service>
     <service id="security.impersonate_url_generator" class="Symfony\Component\Security\Http\Impersonate\ImpersonateUrlGenerator">
       <argument type="service" id="request_stack"/>
@@ -7981,6 +8070,7 @@
         <argument>routing.loader</argument>
         <argument>router.default</argument>
         <argument>router.request_context</argument>
+        <argument>router.request_context.resetter</argument>
         <argument>router.expression_language_provider</argument>
         <argument>router.cache_warmer</argument>
         <argument>router_listener</argument>
@@ -8695,6 +8785,7 @@
         <argument>.instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository</argument>
         <argument>.abstract.instanceof.App\Repository\UserRepository</argument>
         <argument>.service_locator.ryAvHi4</argument>
+        <argument>cache.doctrine.orm.entity_value_resolver.expression_language</argument>
         <argument>debug.security.event_dispatcher.main</argument>
         <argument>maker.auto_command.make_auth</argument>
         <argument>maker.auto_command.make_command</argument>
@@ -9259,6 +9350,7 @@
         <argument key="routing.loader">Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader</argument>
         <argument key="router.default">Symfony\Bundle\FrameworkBundle\Routing\Router</argument>
         <argument key="router.request_context">Symfony\Component\Routing\RequestContext</argument>
+        <argument key="router.request_context.resetter">Symfony\Bundle\FrameworkBundle\Routing\RequestContextResetter</argument>
         <argument key="router.expression_language_provider">Symfony\Component\Routing\Matcher\ExpressionLanguageProvider</argument>
         <argument key="router.cache_warmer">Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer</argument>
         <argument key="router_listener">Symfony\Component\HttpKernel\EventListener\RouterListener</argument>
@@ -9537,7 +9629,7 @@
         <argument key="cache.doctrine.orm.default.query">Symfony\Component\Cache\Adapter\ArrayAdapter</argument>
         <argument key="doctrine.orm.default_entity_listener_resolver">Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver</argument>
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners">Doctrine\ORM\Tools\AttachEntityListenersListener</argument>
-        <argument key="doctrine.orm.default_entity_manager.property_info_extractor">Symfony\Bridge\Doctrine\PropertyInfo\DoctrineExtractor</argument>
+        <argument key="doctrine.orm.default_entity_manager.property_info_extractor">Doctrine\Bundle\DoctrineBundle\PropertyInfo\DoctrineExtractor</argument>
         <argument key="doctrine.orm.default_entity_manager.validator_loader">Symfony\Bridge\Doctrine\Validator\DoctrineLoader</argument>
         <argument key="doctrine.migrations.dependency_factory">Doctrine\Migrations\DependencyFactory</argument>
         <argument key="doctrine.migrations.configuration_loader">Doctrine\Migrations\Configuration\Migration\ExistingConfiguration</argument>
@@ -10656,6 +10748,9 @@
         <argument key="RequestContext" type="collection">
           <argument>router.request_context</argument>
           <argument>Symfony\Component\Routing\RequestContext</argument>
+        </argument>
+        <argument key="RequestContextResetter" type="collection">
+          <argument>router.request_context.resetter</argument>
         </argument>
         <argument key="ExpressionLanguageProvider" type="collection">
           <argument>router.expression_language_provider</argument>
@@ -12972,6 +13067,12 @@
         <argument key="urlencode" type="service_closure" id="container.env_var_processor"/>
       </argument>
     </service>
+    <service id="cache.doctrine.orm.entity_value_resolver.expression_language" class="Symfony\Component\Cache\Adapter\TraceableAdapter" public="true">
+      <tag name="cache.pool" pruneable="false"/>
+      <tag name="kernel.reset" method="reset"/>
+      <argument type="service" id="cache.doctrine.orm.entity_value_resolver.expression_language.recorder_inner"/>
+      <argument type="service" id="profiler.is_disabled_state_checker" on-invalid="ignore"/>
+    </service>
     <service id="debug.security.event_dispatcher.main" class="Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher">
       <tag name="security.event_dispatcher.main">event_dispatcher.dispatcher</tag>
       <tag name="monolog.logger" channel="event"/>
@@ -14106,6 +14207,29 @@
       </call>
       <configurator service="debug.debug_logger_configurator" method="pushDebugLogger"/>
     </service>
+    <service id=".service_locator.qn6_wIE" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="date_point" type="service_closure">
+          <argument type="service">
+            <service class="Symfony\Bridge\Doctrine\Types\DatePointType"/>
+          </argument>
+        </argument>
+        <argument key="day_point" type="service_closure">
+          <argument type="service">
+            <service class="Symfony\Bridge\Doctrine\Types\DayPointType"/>
+          </argument>
+        </argument>
+        <argument key="time_point" type="service_closure">
+          <argument type="service">
+            <service class="Symfony\Bridge\Doctrine\Types\TimePointType"/>
+          </argument>
+        </argument>
+      </argument>
+    </service>
+    <service id="doctrine.dbal.default_connection.type_provider" class="Doctrine\Bundle\DoctrineBundle\Dbal\TypeProviderGlobalFallback">
+      <argument type="service" id=".service_locator.qn6_wIE"/>
+    </service>
     <service id=".service_locator.6KVxCv0" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -14301,6 +14425,12 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="profiler" type="service_closure" id="profiler" on-invalid="ignore_uninitialized"/>
+      </argument>
+    </service>
+    <service id=".service_locator.dnMkq3N" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="default" type="service_closure" id=".doctrine.orm.default_metadata_driver"/>
       </argument>
     </service>
     <service id=".service_locator.1mjVCan" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -15685,6 +15815,14 @@
     </service>
     <service id="cache.security_is_csrf_token_valid_attribute_expression_language.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
       <argument>eKzvBlfBwc</argument>
+      <argument>0</argument>
+      <argument>%container.build_id%</argument>
+      <argument>C:\Users\madee\cmps2940-midterm-1\var\cache\dev/pools/system</argument>
+      <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+      <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+    </service>
+    <service id="cache.doctrine.orm.entity_value_resolver.expression_language.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface">
+      <argument>2CnIuAbhCy</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
       <argument>C:\Users\madee\cmps2940-midterm-1\var\cache\dev/pools/system</argument>
