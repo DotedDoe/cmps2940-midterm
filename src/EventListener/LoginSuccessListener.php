@@ -13,9 +13,12 @@ class LoginSuccessListener
     {
         $session = $event->getRequest()->getSession();
         if ($session instanceof FlashBagAwareSessionInterface) {
+            $isNew = $event->getRequest()->attributes->get('_route') === 'register';
+            $name = $event->getUser()->getUserIdentifier();
+
             $session->getFlashBag()->add(
                 'success',
-                'Welcome back, ' . $event->getUser()->getUserIdentifier() . '!'
+                $isNew ? "Account created. Welcome, $name!" : "Welcome back, $name!"
             );
         }
     }

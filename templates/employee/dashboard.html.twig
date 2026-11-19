@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Cookie Time Cookie</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  {% include '_header.html.twig' with { active: 'dashboard' } %}
+
+  <div id="modeToggle">
+    <button id="themeToggle">Dark Mode</button>
+  </div>
+
+  <main class="dashboard-page">
+    {% include '_flash.html.twig' %}
+
+    <h1>Order Dashboard</h1>
+
+    {% if orders is empty %}
+      <p>No orders yet.</p>
+    {% else %}
+      <div class="orders-list">
+        {% for order in orders %}
+          <article class="order-card">
+            <header class="order-card-head">
+              <h2>Order #{{ order.id }}</h2>
+              <span class="status-pill status-{{ order.status.value }}">{{ order.status.label }}</span>
+            </header>
+
+            <p class="order-meta">
+              {{ order.customer.userIdentifier }} &middot;
+              {{ order.createdAt|date('M j, g:i a') }} &middot;
+              ${{ order.total|number_format(2) }}
+            </p>
+
+            <ul class="order-items">
+              {% for item in order.items %}
+                <li>
+                  {{ item.quantity }} &times; {{ item.productName }}
+                  {% if item.selectedOptions %}
+                    <span class="order-options">({% for opt in item.selectedOptions %}{{ opt.name }}{% if not loop.last %}, {% endif %}{% endfor %})</span>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            {% if order.status.next %}
+              <form method="post" action="{{ path('employee_order_advance', { id: order.id }) }}">
+                <input type="hidden" name="_token" value="{{ csrf_token('advance' ~ order.id) }}">
+                <button type="submit">Mark as {{ order.status.next.label }}</button>
+              </form>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Cookie Time Cookie</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/cart.js"></script>
+</body>
+</html>

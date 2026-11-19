@@ -7,6 +7,9 @@
       <a href="{{ path('inventory') }}"{% if active == 'inventory' %} class="active" aria-current="page"{% endif %}>Inventory</a>
       <a href="{{ path('create') }}"{% if active == 'create' %} class="active" aria-current="page"{% endif %}>Create Your Own</a>
       <a href="{{ path('about_us') }}"{% if active == 'about_us' %} class="active" aria-current="page"{% endif %}>About Us!</a>
+      {% if is_granted('ROLE_EMPLOYEE') %}
+  <a href="{{ path('employee_dashboard') }}"{% if active == 'dashboard' %} class="active" aria-current="page"{% endif %}>Dashboard</a>
+{% endif %}
     </nav>
 
     <div class="nav-icons">
