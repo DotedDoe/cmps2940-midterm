@@ -387,6 +387,14 @@
         <argument>Import Cookie Time products into the database</argument>
       </call>
     </service>
+    <service id="App\Controller\EmployeeController" class="App\Controller\EmployeeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\EmployeeController"/>
+      </call>
+    </service>
     <service id="App\Controller\HealthController" class="App\Controller\HealthController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -403,6 +411,14 @@
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\HomeController"/>
       </call>
     </service>
+    <service id="App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="routing.controller"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.TJNRSaV.App\Controller\RegistrationController"/>
+      </call>
+    </service>
     <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="routing.controller"/>
@@ -410,6 +426,14 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.TJNRSaV.App\Controller\SecurityController"/>
       </call>
+    </service>
+    <service id="App\Entity\Order" class="App\Entity\Order" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
+    </service>
+    <service id="App\Entity\OrderItem" class="App\Entity\OrderItem" autowire="true" autoconfigure="true">
+      <tag name="container.excluded" source="because it's a Doctrine entity"/>
+      <tag name="container.excluded" source="with #[Doctrine\ORM\Mapping\Entity] attribute"/>
     </service>
     <service id="App\Entity\Product" class="App\Entity\Product" autowire="true" autoconfigure="true">
       <tag name="container.excluded" source="because it's a Doctrine entity"/>
@@ -421,6 +445,12 @@
     </service>
     <service id="App\EventListener\LoginSuccessListener" class="App\EventListener\LoginSuccessListener" autowire="true" autoconfigure="true">
       <tag name="kernel.event_listener" event="" method="" priority="0" dispatcher=""/>
+    </service>
+    <service id="App\Form\OrderStatus" class="App\Form\OrderStatus" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="The autoloader expected class &quot;App\Form\OrderStatus&quot; to be defined in file &quot;C:\Users\madee\cmps2940-midterm-1\vendor\composer/../../src\Form\OrderStatus.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
+    </service>
+    <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type" csrf_token_id="%.form.type_extension.csrf.token_id%"/>
     </service>
     <service id="App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -458,7 +488,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.5QKwnfR"/>
+      <argument type="service" id=".service_locator.F_HeGgP"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -1505,9 +1535,11 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\RegistrationFormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -3664,7 +3696,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.5QKwnfR"/>
+      <argument type="service" id=".service_locator.F_HeGgP"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -3746,8 +3778,10 @@
     <service id="routing.loader.attribute.services" class="Symfony\Component\Routing\Loader\AttributeServicesLoader">
       <tag name="routing.loader" priority="-10"/>
       <argument type="collection">
+        <argument>App\Controller\EmployeeController</argument>
         <argument>App\Controller\HealthController</argument>
         <argument>App\Controller\HomeController</argument>
+        <argument>App\Controller\RegistrationController</argument>
         <argument>App\Controller\SecurityController</argument>
       </argument>
     </service>
@@ -4290,7 +4324,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.rht_M5G"/>
+      <argument type="service" id=".service_locator.ps5ad0b"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4398,7 +4432,9 @@
       <argument>validators</argument>
       <argument type="service" id="form.server_params"/>
       <argument>%form.type_extension.csrf.field_attr%</argument>
-      <argument>submit</argument>
+      <argument type="collection">
+        <argument key="App\Form\RegistrationFormType">submit</argument>
+      </argument>
     </service>
     <service id="validator.builder" class="Symfony\Component\Validator\ValidatorBuilder">
       <call method="setConstraintValidatorFactory">
@@ -7797,12 +7833,18 @@
         <argument>kernel</argument>
         <argument>App\Command\CreateUserCommand</argument>
         <argument>App\Command\ImportCatalogCommand</argument>
+        <argument>App\Controller\EmployeeController</argument>
         <argument>App\Controller\HealthController</argument>
         <argument>App\Controller\HomeController</argument>
+        <argument>App\Controller\RegistrationController</argument>
         <argument>App\Controller\SecurityController</argument>
+        <argument>App\Entity\Order</argument>
+        <argument>App\Entity\OrderItem</argument>
         <argument>App\Entity\Product</argument>
         <argument>App\Entity\User</argument>
         <argument>App\EventListener\LoginSuccessListener</argument>
+        <argument>App\Form\OrderStatus</argument>
+        <argument>App\Form\RegistrationFormType</argument>
         <argument>App\Repository\ProductRepository</argument>
         <argument>App\Repository\UserRepository</argument>
         <argument>controller_resolver</argument>
@@ -8762,6 +8804,10 @@
         <argument>.instanceof.Symfony\Component\Console\Command\Command.0.App\Command\ImportCatalogCommand</argument>
         <argument>.instanceof.App\Command\ImportCatalogCommand.0.App\Command\ImportCatalogCommand</argument>
         <argument>.abstract.instanceof.App\Command\ImportCatalogCommand</argument>
+        <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EmployeeController</argument>
+        <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EmployeeController</argument>
+        <argument>.instanceof.App\Controller\EmployeeController.0.App\Controller\EmployeeController</argument>
+        <argument>.abstract.instanceof.App\Controller\EmployeeController</argument>
         <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HealthController</argument>
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HealthController</argument>
         <argument>.instanceof.App\Controller\HealthController.0.App\Controller\HealthController</argument>
@@ -8770,16 +8816,26 @@
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController</argument>
         <argument>.instanceof.App\Controller\HomeController.0.App\Controller\HomeController</argument>
         <argument>.abstract.instanceof.App\Controller\HomeController</argument>
+        <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegistrationController</argument>
+        <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController</argument>
+        <argument>.instanceof.App\Controller\RegistrationController.0.App\Controller\RegistrationController</argument>
+        <argument>.abstract.instanceof.App\Controller\RegistrationController</argument>
         <argument>.instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController</argument>
         <argument>.instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController</argument>
         <argument>.instanceof.App\Controller\SecurityController.0.App\Controller\SecurityController</argument>
         <argument>.abstract.instanceof.App\Controller\SecurityController</argument>
+        <argument>.instanceof.App\Entity\Order.0.App\Entity\Order</argument>
+        <argument>.abstract.instanceof.App\Entity\Order</argument>
+        <argument>.instanceof.App\Entity\OrderItem.0.App\Entity\OrderItem</argument>
+        <argument>.abstract.instanceof.App\Entity\OrderItem</argument>
         <argument>.instanceof.App\Entity\Product.0.App\Entity\Product</argument>
         <argument>.abstract.instanceof.App\Entity\Product</argument>
         <argument>.instanceof.App\Entity\User.0.App\Entity\User</argument>
         <argument>.abstract.instanceof.App\Entity\User</argument>
         <argument>.instanceof.App\EventListener\LoginSuccessListener.0.App\EventListener\LoginSuccessListener</argument>
         <argument>.abstract.instanceof.App\EventListener\LoginSuccessListener</argument>
+        <argument>.instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType</argument>
+        <argument>.abstract.instanceof.App\Form\RegistrationFormType</argument>
         <argument>.instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository</argument>
         <argument>.abstract.instanceof.App\Repository\ProductRepository</argument>
         <argument>.instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository</argument>
@@ -8818,13 +8874,19 @@
         <argument>.service_locator.1vYpZ1B</argument>
         <argument>.service_locator.1vYpZ1B.kernel::registerContainerConfiguration()</argument>
         <argument>.service_locator.1vYpZ1B.kernel::loadRoutes()</argument>
+        <argument>.service_locator.z0A7H.F</argument>
+        <argument>.service_locator.z0A7H.F.App\Controller\EmployeeController::dashboard()</argument>
+        <argument>.service_locator.s96J188</argument>
+        <argument>.service_locator.s96J188.App\Controller\EmployeeController::advance()</argument>
         <argument>.service_locator.sWWUFdD</argument>
         <argument>.service_locator.sWWUFdD.App\Controller\HealthController::health()</argument>
         <argument>.service_locator.dcfjolD</argument>
         <argument>.service_locator.dcfjolD.App\Controller\HomeController::inventory()</argument>
+        <argument>.service_locator.UeYRGx.</argument>
+        <argument>.service_locator.UeYRGx..App\Controller\RegistrationController::register()</argument>
         <argument>.service_locator.0MQaTBY</argument>
         <argument>.service_locator.0MQaTBY.App\Controller\SecurityController::login()</argument>
-        <argument>.service_locator.5QKwnfR</argument>
+        <argument>.service_locator.F_HeGgP</argument>
         <argument>.service_locator.S9tnIXR</argument>
         <argument>.service_locator.nqEKT7G</argument>
         <argument>.debug.serializer.normalizer.serializer.denormalizer.unwrapping</argument>
@@ -8862,7 +8924,7 @@
         <argument>.debug.value_resolver.argument_resolver.not_tagged_controller</argument>
         <argument>.debug.value_resolver.argument_resolver.request_payload</argument>
         <argument>.debug.value_resolver.argument_resolver.query_parameter_value_resolver</argument>
-        <argument>.service_locator.rht_M5G</argument>
+        <argument>.service_locator.ps5ad0b</argument>
         <argument>messenger.bus.default.middleware.traceable</argument>
         <argument>messenger.bus.default.middleware.add_bus_name_stamp_middleware</argument>
         <argument>messenger.bus.default.middleware.send_message</argument>
@@ -9962,14 +10024,26 @@
         <argument key="ImportCatalogCommand" type="collection">
           <argument>App\Command\ImportCatalogCommand</argument>
         </argument>
+        <argument key="EmployeeController" type="collection">
+          <argument>App\Controller\EmployeeController</argument>
+        </argument>
         <argument key="HealthController" type="collection">
           <argument>App\Controller\HealthController</argument>
         </argument>
         <argument key="HomeController" type="collection">
           <argument>App\Controller\HomeController</argument>
         </argument>
+        <argument key="RegistrationController" type="collection">
+          <argument>App\Controller\RegistrationController</argument>
+        </argument>
         <argument key="SecurityController" type="collection">
           <argument>App\Controller\SecurityController</argument>
+        </argument>
+        <argument key="Order" type="collection">
+          <argument>App\Entity\Order</argument>
+        </argument>
+        <argument key="OrderItem" type="collection">
+          <argument>App\Entity\OrderItem</argument>
         </argument>
         <argument key="Product" type="collection">
           <argument>App\Entity\Product</argument>
@@ -9979,6 +10053,12 @@
         </argument>
         <argument key="LoginSuccessListener" type="collection">
           <argument>App\EventListener\LoginSuccessListener</argument>
+        </argument>
+        <argument key="OrderStatus" type="collection">
+          <argument>App\Form\OrderStatus</argument>
+        </argument>
+        <argument key="RegistrationFormType" type="collection">
+          <argument>App\Form\RegistrationFormType</argument>
         </argument>
         <argument key="ProductRepository" type="collection">
           <argument>App\Repository\ProductRepository</argument>
@@ -13019,6 +13099,10 @@
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Command\ImportCatalogCommand.0.App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Command\ImportCatalogCommand" class="App\Command\ImportCatalogCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EmployeeController" class="App\Controller\EmployeeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EmployeeController" class="App\Controller\EmployeeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\EmployeeController.0.App\Controller\EmployeeController" class="App\Controller\EmployeeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EmployeeController" class="App\Controller\EmployeeController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HealthController" class="App\Controller\HealthController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HealthController" class="App\Controller\HealthController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\HealthController.0.App\Controller\HealthController" class="App\Controller\HealthController" autowire="true" abstract="true"/>
@@ -13027,16 +13111,26 @@
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\HomeController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.App\Controller\RegistrationController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.App\Controller\SecurityController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\Order.0.App\Entity\Order" class="App\Entity\Order" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\Order" class="App\Entity\Order" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.App\Entity\OrderItem.0.App\Entity\OrderItem" class="App\Entity\OrderItem" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Entity\OrderItem" class="App\Entity\OrderItem" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\Product.0.App\Entity\Product" class="App\Entity\Product" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\Product" class="App\Entity\Product" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\Entity\User.0.App\Entity\User" class="App\Entity\User" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Entity\User" class="App\Entity\User" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.App\EventListener\LoginSuccessListener.0.App\EventListener\LoginSuccessListener" class="App\EventListener\LoginSuccessListener" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\EventListener\LoginSuccessListener" class="App\EventListener\LoginSuccessListener" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
@@ -13575,6 +13669,31 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.1vYpZ1B" method="withContext"/>
     </service>
+    <service id=".service_locator.z0A7H.F" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.z0A7H.F.App\Controller\EmployeeController::dashboard()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EmployeeController::dashboard()"/>
+      <argument>App\Controller\EmployeeController::dashboard()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.z0A7H.F" method="withContext"/>
+    </service>
+    <service id=".service_locator.s96J188" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="order" type="service_closure" id=".errored..service_locator.s96J188.App\Entity\Order"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.s96J188.App\Controller\EmployeeController::advance()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EmployeeController::advance()"/>
+      <argument>App\Controller\EmployeeController::advance()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.s96J188" method="withContext"/>
+    </service>
     <service id=".service_locator.sWWUFdD" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -13599,6 +13718,20 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.dcfjolD" method="withContext"/>
     </service>
+    <service id=".service_locator.UeYRGx." class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="hasher" type="service_closure" id="security.user_password_hasher"/>
+        <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="security" type="service_closure" id="security.helper"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UeYRGx..App\Controller\RegistrationController::register()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\RegistrationController::register()"/>
+      <argument>App\Controller\RegistrationController::register()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.UeYRGx." method="withContext"/>
+    </service>
     <service id=".service_locator.0MQaTBY" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -13611,20 +13744,26 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.0MQaTBY" method="withContext"/>
     </service>
-    <service id=".service_locator.5QKwnfR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.F_HeGgP" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
+        <argument key="App\Controller\EmployeeController::dashboard" type="service_closure" id=".service_locator.z0A7H.F.App\Controller\EmployeeController::dashboard()"/>
+        <argument key="App\Controller\EmployeeController::advance" type="service_closure" id=".service_locator.s96J188.App\Controller\EmployeeController::advance()"/>
         <argument key="App\Controller\HealthController::health" type="service_closure" id=".service_locator.sWWUFdD.App\Controller\HealthController::health()"/>
         <argument key="App\Controller\HomeController::inventory" type="service_closure" id=".service_locator.dcfjolD.App\Controller\HomeController::inventory()"/>
+        <argument key="App\Controller\RegistrationController::register" type="service_closure" id=".service_locator.UeYRGx..App\Controller\RegistrationController::register()"/>
         <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.0MQaTBY.App\Controller\SecurityController::login()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
+        <argument key="App\Controller\EmployeeController:dashboard" type="service_closure" id=".service_locator.z0A7H.F.App\Controller\EmployeeController::dashboard()"/>
+        <argument key="App\Controller\EmployeeController:advance" type="service_closure" id=".service_locator.s96J188.App\Controller\EmployeeController::advance()"/>
         <argument key="App\Controller\HealthController:health" type="service_closure" id=".service_locator.sWWUFdD.App\Controller\HealthController::health()"/>
         <argument key="App\Controller\HomeController:inventory" type="service_closure" id=".service_locator.dcfjolD.App\Controller\HomeController::inventory()"/>
+        <argument key="App\Controller\RegistrationController:register" type="service_closure" id=".service_locator.UeYRGx..App\Controller\RegistrationController::register()"/>
         <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.0MQaTBY.App\Controller\SecurityController::login()"/>
       </argument>
     </service>
@@ -13811,9 +13950,10 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.rht_M5G" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ps5ad0b" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="service_closure" id="form.type.form"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -14262,6 +14402,12 @@
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\EmployeeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\EmployeeController"/>
+      <argument>App\Controller\EmployeeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
     <service id=".service_locator.TJNRSaV.App\Controller\HealthController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HealthController"/>
       <argument>App\Controller\HealthController</argument>
@@ -14271,6 +14417,12 @@
     <service id=".service_locator.TJNRSaV.App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomeController"/>
       <argument>App\Controller\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.TJNRSaV" method="withContext"/>
+    </service>
+    <service id=".service_locator.TJNRSaV.App\Controller\RegistrationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\RegistrationController"/>
+      <argument>App\Controller\RegistrationController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.TJNRSaV" method="withContext"/>
     </service>
@@ -14486,8 +14638,10 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\EmployeeController</argument>
           <argument>App\Controller\HealthController</argument>
           <argument>App\Controller\HomeController</argument>
+          <argument>App\Controller\RegistrationController</argument>
           <argument>App\Controller\SecurityController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
@@ -14720,6 +14874,9 @@
     </service>
     <service id=".errored..service_locator.1vYpZ1B.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.1vYpZ1B&quot;: it needs an instance of &quot;Symfony\Component\Config\Loader\LoaderInterface&quot; but this type has been excluded from autowiring."/>
+    </service>
+    <service id=".errored..service_locator.s96J188.App\Entity\Order" class="App\Entity\Order">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.s96J188&quot;: it needs an instance of &quot;App\Entity\Order&quot; but this type has been excluded because it's a Doctrine entity."/>
     </service>
     <service id=".App\Command\CreateUserCommand.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>app:create-user</argument>
@@ -15991,7 +16148,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.5QKwnfR"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.F_HeGgP"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".Psr\Log\LoggerInterface $request" alias="monolog.logger.request"/>
@@ -16049,8 +16206,11 @@
     <service id=".signing.messenger.default_serializer.inner" alias="messenger.transport.native_php_serializer"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.c0wzfI4" alias=".service_locator.1vYpZ1B"/>
+    <service id=".service_locator.0ekWYPZ" alias=".service_locator.z0A7H.F"/>
+    <service id=".service_locator.Z8nlAPI" alias=".service_locator.s96J188"/>
     <service id=".service_locator.xer2AWF" alias=".service_locator.sWWUFdD"/>
     <service id=".service_locator.8yvv3rH" alias=".service_locator.dcfjolD"/>
+    <service id=".service_locator.IqS3OVu" alias=".service_locator.UeYRGx."/>
     <service id=".service_locator.uBwBrvQ" alias=".service_locator.0MQaTBY"/>
     <service id=".service_locator.D6tJ4Px" alias=".service_locator.TJNRSaV"/>
   </services>
