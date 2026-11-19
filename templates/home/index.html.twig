@@ -136,21 +136,9 @@
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="nav-inner">
-    
-<nav class="main-nav">
-    <a href="{{ path('home') }}">Home</a>
-    <a href="{{ path('inventory') }}">Inventory</a>
-    <a href="{{ path('cart') }}">Cart <span id="cart-count" class="cart-count">0</span></a>
-    <a href="{{ path('login') }}">Login</a>
-    <a href="{{ path('create') }}">Create Your Own</a>
-    <a href="{{ path('about_us') }}" class="active" aria-current="page">About Us!</a>
-</nav>
 
-    </div>
-
- </header>
+  {% include '_header.html.twig' with { active: 'home' } %}
+  
 <div class="hero-banner">
   <img src="images-for-website/cookieforbackgroundmeow.avif" alt="mister white yo" />
   <img src="images-for-website/cookie-time-cookie-logo.png" alt="IM DA DWIFTA" class="banner-logo" />
@@ -160,7 +148,7 @@
   </div>
 
   <main>
-    
+    {% include '_flash.html.twig' %}
 
     <section class="announcements">
     </section>
