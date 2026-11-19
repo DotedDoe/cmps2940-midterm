@@ -1185,3 +1185,78 @@ html[data-theme="dark"] h3 {
     100%    { opacity: 0; visibility: hidden; }
   }
 }
+
+.auth-form form ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--color-berry);
+  font-size: 0.9rem;
+}
+
+.auth-form-switch {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-form-switch a {
+  color: var(--color-berry);
+}
+
+.dashboard-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.orders-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.order-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 1rem 1.25rem;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.order-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-card-head h2 { margin: 0; font-size: 1.1rem; }
+.order-meta { color: var(--color-cocoa); font-size: 0.9rem; margin: 0.25rem 0 0.5rem; }
+.order-items { margin: 0 0 0.75rem; padding-left: 1.2rem; color: var(--color-cocoa); }
+.order-options { font-size: 0.85rem; opacity: 0.8; }
+
+.status-pill {
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--color-line);
+  color: var(--color-cocoa);
+}
+.status-pending   { background: var(--color-butter); color: #2E1C12; }
+.status-preparing { background: var(--color-berry); color: var(--color-cream); border-color: var(--color-berry); }
+.status-fulfilled { background: var(--color-card-bg); }
+
+.order-card form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-berry);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.order-card form button:hover { background: var(--color-butter); color: var(--color-cocoa); transform: translateY(-1px); }
