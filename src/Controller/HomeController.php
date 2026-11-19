@@ -55,4 +55,9 @@ public function inventory(ProductRepository $productRepository): Response
     {
         return $this->render('create/index.html.twig');
     }
+    #[Route('/checkout', name: 'checkout')]
+    public function checkout(): Response
+    {
+        return $this->render('checkout/index.html.twig');
+    }
 }
