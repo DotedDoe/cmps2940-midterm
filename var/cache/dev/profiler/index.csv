@@ -65,3 +65,9 @@ bedd2a,127.0.0.1,GET,http://127.0.0.1:8000/about-us.html,1795449055,,404,request
 311037,127.0.0.1,GET,http://127.0.0.1:8000/,1795449058,,200,request
 2cdbf5,127.0.0.1,GET,http://127.0.0.1:8000/create,1795449066,,200,request
 814550,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795449072,,200,request
+0c4603,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795449162,,200,request
+a5293e,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449163,365878,404,request
+365878,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449163,,404,request
+f1f4c1,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795449329,,200,request
+6762c2,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449330,4383fb,404,request
+4383fb,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449330,,404,request

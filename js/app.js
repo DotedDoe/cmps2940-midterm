@@ -249,7 +249,7 @@ const CATALOG_DATA = [
     name: "beignets",
     price: 4.50,
     category: "breads",
-    image: "images-for-website/bigneighs.jpg",
+    image: "images-for-website/bigneighs.png",
     description: "A New Orleans traditional bread, topped with powdered sugar and some chocolate drizzle if your heart desires.",
     nutrition: {
       servingSize: "3 beignets(16g)",
