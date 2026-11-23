@@ -71,3 +71,6 @@ a5293e,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449163,365878,404,req
 f1f4c1,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795449329,,200,request
 6762c2,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449330,4383fb,404,request
 4383fb,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449330,,404,request
+5a3a75,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795449369,,200,request
+6a74b4,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449370,64e3e2,404,request
+64e3e2,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795449370,,404,request
