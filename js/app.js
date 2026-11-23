@@ -259,6 +259,13 @@ const CATALOG_DATA = [
       sugar: "30g",
       protein: "1g",
       allergens: ["Wheat", "Egg", "Dairy"]
+    },
+    customizable:{
+      label: "Choose Add-on:",
+      options: [
+        {id: "choco-hazel", name:"Chocolate Hazelnut Drizzle", priceAdd: 1.00},
+        {id: "powdered", name: "Extra Powdered Sugar", priceAdd: 0.50}
+      ]
     }
   }
 ];

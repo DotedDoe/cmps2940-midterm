@@ -20,3 +20,14 @@ d3ff71,127.0.0.1,GET,http://127.0.0.1:8000/index.html,1795119334,,404,request
 698e94,127.0.0.1,POST,http://127.0.0.1:8000/login,1795119339,,302,request
 6e3441,127.0.0.1,GET,http://127.0.0.1:8000/,1795119339,,200,request
 9edd15,127.0.0.1,GET,http://127.0.0.1:8000/employee,1795119342,,200,request
+321684,127.0.0.1,GET,http://127.0.0.1:8000/,1795448329,,200,request
+81f6f3,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448334,,200,request
+c9e015,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448340,,200,request
+92f8d6,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448579,,200,request
+e22bb2,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448582,,200,request
+630238,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448582,,200,request
+a83705,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448582,,200,request
+ea2de2,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448583,,200,request
+cf49dc,127.0.0.1,GET,http://127.0.0.1:8000/inventory,1795448583,,200,request
+78fb6b,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795448588,b49f09,404,request
+b49f09,127.0.0.1,GET,http://127.0.0.1:8000/favicon.ico,1795448588,,404,request
